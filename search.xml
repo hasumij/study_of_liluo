@@ -101,7 +101,10 @@
 </ul>
 <!-- tocstop -->
 
-<h4><span id="通关视频">通关视频</span></h4><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E8%A7%86%E9%A2%91/%E5%AF%86%E5%AE%A4%20%E5%A5%B3%E4%BA%BA%20%E6%88%91%20%E9%80%9A%E5%85%B3%E6%BC%94%E7%A4%BA.mp4","pic":"http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E8%A7%86%E9%A2%91/%E5%AF%86%E5%AE%A4%20%E5%A5%B3%E4%BA%BA%20%E6%88%91%20%E9%80%9A%E5%85%B3%E6%BC%94%E7%A4%BA.jpg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+<h4><span id="通关视频">通关视频</span></h4><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><video controls loop <source src="http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E8%A7%86%E9%A2%91/%E5%AF%86%E5%AE%A4%20%E5%A5%B3%E4%BA%BA%20%E6%88%91%20%E9%80%9A%E5%85%B3%E6%BC%94%E7%A4%BA.mp4">
+scrolling="no" border="0" 
+frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
+height: 100%; left: 0; top: 0;"> </video></div>
 
 <h4><span id="游戏攻略转载自百度贴吧">游戏攻略（转载自）</span></h4><ol>
 <li>观察被绑女生眼部胶带，得到数字13，观察右侧墙壁，得到数字01，组成墙上电闸密码——1301</li>
@@ -768,7 +771,11 @@
 
 <h3><span id="游戏本体下载">游戏本体下载</span></h3><p><a href="http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E6%B8%B8%E6%88%8F/Konoka%20v1.03.zip">游戏下载</a></p>
 <p>注：需自行下载RPGVXAce才能运行游戏</p>
-<h3><span id="游戏通关演示视频">游戏通关演示视频</span></h3><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"theme":"#FADFA3","loop":true,"video":{"url":"http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E8%A7%86%E9%A2%91/konoka1.03%E5%90%84%E7%BB%93%E5%B1%80%E6%BC%94%E7%A4%BA.mp4","pic":"http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E8%A7%86%E9%A2%91/konoka1.03%E5%90%84%E7%BB%93%E5%B1%80%E6%BC%94%E7%A4%BA.jpg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+<h3><span id="游戏通关演示视频">游戏通关演示视频</span></h3><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><video controls loop <source src="http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E8%A7%86%E9%A2%91/konoka1.03%E5%90%84%E7%BB%93%E5%B1%80%E6%BC%94%E7%A4%BA.mp4">
+scrolling="no" border="0" 
+frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
+height: 100%; left: 0; top: 0;"> </video></div>
+
 
 <h3><span id="游戏改编互动小说">游戏改编互动小说</span></h3><p><a href="https://liluoaikunbang.github.io/interactive_fictions/3" target="_blank">互动小说：konoka</a></p>
 <p>开发工具：inky</p>
