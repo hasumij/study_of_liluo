@@ -2936,6 +2936,7 @@ height: 100%; left: 0; top: 0;"> </video></div>
 
 <ul>
 <li><a href="#%E6%B8%B8%E6%88%8F%E6%B5%81%E7%A8%8B">游戏流程</a></li>
+<li><a href="#%E5%BC%80%E5%A7%8B%E6%B8%B8%E6%88%8F">开始游戏</a></li>
 <li><a href="#%E6%B8%B8%E6%88%8F%E5%A4%A7%E7%BA%B2">游戏大纲</a></li>
 </ul>
 <!-- tocstop -->
@@ -2948,6 +2949,11 @@ height: 100%; left: 0; top: 0;"> </video></div>
 <li>难度评估阶段：根据当前主人公的紧 缚程度，脱缚能力，敏感程度三个方面综合评定游戏难度，游戏难度将会影响到最终的评分</li>
 <li>逃脱阶段：在100分钟（共10个回合）内选择合适的挣扎方式努力让主人公成功逃脱，期间可能会发生特殊事件（收特殊事件灵感……）</li>
 </ul>
+<h4><span id="开始游戏">开始游戏</span></h4><p>目前只是搭了一个框架，事件之间的承接还比较生硬，后续会逐步完善</p>
+<div id="tab_1">
+    <iframe src="https://liluoaikunbang.github.io/interactive_fictions/6/" height="500" width="1000" frameborder="1" scrolling="yes"></iframe>
+</div>
+
 <h4><span id="游戏大纲">游戏大纲</span></h4><p><img src="http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87/%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/%E7%B4%A7%E7%BC%9A%E6%8C%91%E6%88%98%E6%A8%A1%E6%8B%9F%E5%99%A8/%E7%81%B5%E6%84%9F%E5%9B%BE.png" alt="1"></p>
 ]]></content>
       <categories>
