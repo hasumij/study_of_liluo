@@ -3251,6 +3251,8 @@ height: 100%; left: 0; top: 0;"> </video></div>
 </ul>
 </li>
 <li><a href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E">补充说明</a><pre><code>- [创造值](#创造值)
+- [因果值](#因果值)
+- [人质](#人质)
 </code></pre>
 </li>
 </ul>
@@ -3285,7 +3287,59 @@ height: 100%; left: 0; top: 0;"> </video></div>
 <li>完成日常任务后的任务奖励兑换为一定的创造值</li>
 <li>通过祈愿将记忆水晶兑换为一定的创造值</li>
 </ol>
+<h4><span id="因果值">因果值</span></h4><p><strong>功能：</strong></p>
+<ol>
+<li>邀请人质进入领地时需要</li>
+<li>抓捕囚犯进入领地时需要</li>
+</ol>
+<p><strong>获取方式：</strong></p>
+<ol>
+<li>完成主线任务或日常任务后有机会获得</li>
+</ol>
+<h4><span id="人质">人质</span></h4><p>璃落拥有邀请其他生命作为人质进入璃落领地的权限，领地会自动消耗璃落一定的<strong>因果值</strong>并在人质囚牢中为人质女孩开辟一个房间，也会开启对应人质女孩的创造值设定和一部分领地权限。但邀请时必须满足一系列条件。</p>
+<p><strong>邀请条件：</strong></p>
+<ol>
+<li>璃落需要有一定的因果值储备，被邀请女孩的实力越强需要的因果值就越多</li>
+<li>被邀请的女孩必须同意</li>
+<li>这个女孩必须完成在自己所属位面的使命</li>
+</ol>
 ]]></content>
+      <categories>
+        <category>设定与灵感</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>璃落人设</title>
+    <url>//post/%E8%AE%BE%E5%AE%9A%E4%B8%8E%E7%81%B5%E6%84%9F/%E7%92%83%E8%90%BD%E4%BA%BA%E8%AE%BE.html</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E7%92%83%E8%90%BD">璃落</a><ul>
+<li><a href="#%E4%BA%BA%E8%AE%BE%E5%9B%BE">人设图</a></li>
+<li><a href="#%E7%A7%8D%E6%97%8F">种族</a></li>
+<li><a href="#%E6%80%A7%E6%A0%BC%E7%89%B9%E7%82%B9">性格特点</a></li>
+<li><a href="#%E5%BA%95%E7%BA%BF">底线</a></li>
+<li><a href="#%E8%83%BD%E5%8A%9B">能力</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="璃落">璃落</span></h2><p>《璃落的冒险》系列主角。</p>
+<h3><span id="人设图">人设图</span></h3><center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E7%92%83%E8%90%BD%E4%BA%BA%E8%AE%BE%E5%9B%BE.jpg" width="60%" alt>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+        《璃落人设图》由画师<a href="https://liluoaikunbang.github.io/page/gratitude">mrfoxy</a>有偿提供
+      </div>
+</center>
+### 种族
+
+<h3><span id="性格特点">性格特点</span></h3><h3><span id="底线">底线</span></h3><h3><span id="能力">能力</span></h3>]]></content>
       <categories>
         <category>设定与灵感</category>
       </categories>
