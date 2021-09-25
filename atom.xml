@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>璃落的小窝</title>
   
-  
+  <subtitle>璃落的小窝</subtitle>
   <link href="https://tridiamond.tech/atom.xml" rel="self"/>
   
   <link href="https://tridiamond.tech/"/>
@@ -445,9 +445,9 @@
     
     <category term="镣铐" scheme="https://tridiamond.tech/tags/%E9%95%A3%E9%93%90/"/>
     
-    <category term="DID" scheme="https://tridiamond.tech/tags/DID/"/>
-    
     <category term="完全紧缚" scheme="https://tridiamond.tech/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/"/>
+    
+    <category term="DID" scheme="https://tridiamond.tech/tags/DID/"/>
     
   </entry>
   
@@ -532,11 +532,11 @@
     <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://tridiamond.tech/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
     
     
+    <category term="完全紧缚" scheme="https://tridiamond.tech/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/"/>
+    
     <category term="拘束衣" scheme="https://tridiamond.tech/tags/%E6%8B%98%E6%9D%9F%E8%A1%A3/"/>
     
     <category term="DID" scheme="https://tridiamond.tech/tags/DID/"/>
-    
-    <category term="完全紧缚" scheme="https://tridiamond.tech/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/"/>
     
     <category term="伪装拘束" scheme="https://tridiamond.tech/tags/%E4%BC%AA%E8%A3%85%E6%8B%98%E6%9D%9F/"/>
     
