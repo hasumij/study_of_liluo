@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tridiamond.tech/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/13-hao-bing-yuan.html</loc>
+    
+    <lastmod>2021-09-25</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tridiamond.tech/outline/index.html</loc>
     
     <lastmod>2021-09-25</lastmod>
@@ -31,13 +38,6 @@
   
   <url>
     <loc>https://tridiamond.tech/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/xiao-nu-hai-jia-zhong-de-can-an.html</loc>
-    
-    <lastmod>2021-09-25</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tridiamond.tech/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/13-hao-bing-yuan.html</loc>
     
     <lastmod>2021-09-25</lastmod>
     
@@ -389,14 +389,14 @@
   </url>
   
   <url>
-    <loc>https://tridiamond.tech/tags/%E7%99%BE%E5%90%88/</loc>
+    <loc>https://tridiamond.tech/tags/%E9%83%BD%E5%B8%82/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tridiamond.tech/tags/%E9%83%BD%E5%B8%82/</loc>
+    <loc>https://tridiamond.tech/tags/%E7%99%BE%E5%90%88/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -489,13 +489,6 @@
   </url>
   
   <url>
-    <loc>https://tridiamond.tech/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%A4%96%E4%BC%A0/</loc>
-    <lastmod>2021-09-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tridiamond.tech/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E6%AD%A3%E4%BC%A0/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
@@ -510,6 +503,13 @@
   </url>
   
   <url>
+    <loc>https://tridiamond.tech/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%A4%96%E4%BC%A0/</loc>
+    <lastmod>2021-09-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tridiamond.tech/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
@@ -517,14 +517,14 @@
   </url>
   
   <url>
-    <loc>https://tridiamond.tech/categories/%E8%AE%BE%E5%AE%9A%E4%B8%8E%E7%81%B5%E6%84%9F/</loc>
+    <loc>https://tridiamond.tech/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tridiamond.tech/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/</loc>
+    <loc>https://tridiamond.tech/categories/%E8%AE%BE%E5%AE%9A%E4%B8%8E%E7%81%B5%E6%84%9F/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
