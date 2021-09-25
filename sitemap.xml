@@ -368,13 +368,6 @@
   </url>
   
   <url>
-    <loc>https://yourname.github.io/home_of_liluo/tags/%E7%99%BE%E5%90%88/</loc>
-    <lastmod>2021-09-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yourname.github.io/home_of_liluo/tags/%E8%B0%83%E6%95%99/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
@@ -403,6 +396,13 @@
   </url>
   
   <url>
+    <loc>https://yourname.github.io/home_of_liluo/tags/%E7%99%BE%E5%90%88/</loc>
+    <lastmod>2021-09-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yourname.github.io/home_of_liluo/tags/%E9%95%A3%E9%93%90/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
@@ -411,13 +411,6 @@
   
   <url>
     <loc>https://yourname.github.io/home_of_liluo/tags/%E8%AE%BE%E5%AE%9A/</loc>
-    <lastmod>2021-09-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yourname.github.io/home_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -459,6 +452,13 @@
   </url>
   
   <url>
+    <loc>https://yourname.github.io/home_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/</loc>
+    <lastmod>2021-09-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yourname.github.io/home_of_liluo/tags/%E4%BC%AA%E8%A3%85%E6%8B%98%E6%9D%9F/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
@@ -480,13 +480,6 @@
   </url>
   
 
-  
-  <url>
-    <loc>https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%A4%96%E4%BC%A0/</loc>
-    <lastmod>2021-09-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
   
   <url>
     <loc>https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%89%8D%E4%BC%A0/</loc>
@@ -511,6 +504,13 @@
   
   <url>
     <loc>https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E6%AD%A3%E4%BC%A0%E7%95%AA%E5%A4%96/</loc>
+    <lastmod>2021-09-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%A4%96%E4%BC%A0/</loc>
     <lastmod>2021-09-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
