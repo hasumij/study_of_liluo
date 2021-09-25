@@ -3,11 +3,11 @@
   <title>璃落的小窝-书房</title>
   
   <subtitle>璃落的小窝-书房</subtitle>
-  <link href="https://yourname.github.io/home_of_liluo/atom.xml" rel="self"/>
+  <link href="https://yourname.github.io/study_of_liluo/atom.xml" rel="self"/>
   
-  <link href="https://yourname.github.io/home_of_liluo/"/>
+  <link href="https://yourname.github.io/study_of_liluo/"/>
   <updated>2021-09-21T07:35:30.124Z</updated>
-  <id>https://yourname.github.io/home_of_liluo/</id>
+  <id>https://yourname.github.io/study_of_liluo/</id>
   
   <author>
     <name>璃落</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>都市冒险番外篇：脱缚之旅</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tuo-fu-zhi-lu.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tuo-fu-zhi-lu.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tuo-fu-zhi-lu.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tuo-fu-zhi-lu.html</id>
     <published>2021-09-21T07:32:29.000Z</published>
     <updated>2021-09-21T07:35:30.124Z</updated>
     
@@ -41,17 +41,17 @@
     
     
     
-    <category term="璃落的冒险番外篇之正传番外" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E6%AD%A3%E4%BC%A0%E7%95%AA%E5%A4%96/"/>
+    <category term="璃落的冒险番外篇之正传番外" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E6%AD%A3%E4%BC%A0%E7%95%AA%E5%A4%96/"/>
     
     
-    <category term="都市" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
+    <category term="都市" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
     
   </entry>
   
   <entry>
     <title>都市冒险番外篇：同路者绳艺演员培训</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tong-lu-zhe-sheng-yi-yan-yuan-pei-xun.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tong-lu-zhe-sheng-yi-yan-yuan-pei-xun.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tong-lu-zhe-sheng-yi-yan-yuan-pei-xun.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tong-lu-zhe-sheng-yi-yan-yuan-pei-xun.html</id>
     <published>2021-09-21T07:32:19.000Z</published>
     <updated>2021-09-21T07:35:17.680Z</updated>
     
@@ -68,17 +68,17 @@
     
     
     
-    <category term="璃落的冒险番外篇之正传番外" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E6%AD%A3%E4%BC%A0%E7%95%AA%E5%A4%96/"/>
+    <category term="璃落的冒险番外篇之正传番外" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E6%AD%A3%E4%BC%A0%E7%95%AA%E5%A4%96/"/>
     
     
-    <category term="都市" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
+    <category term="都市" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
     
   </entry>
   
   <entry>
     <title>都市冒险番外篇：同路者刺客训练</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tong-lu-zhe-ci-ke-xun-lian.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tong-lu-zhe-ci-ke-xun-lian.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tong-lu-zhe-ci-ke-xun-lian.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-zheng-chuan-fan-wai/du-shi-mou-xian-fan-wai-pian-tong-lu-zhe-ci-ke-xun-lian.html</id>
     <published>2021-09-21T07:32:05.000Z</published>
     <updated>2021-09-21T07:35:40.194Z</updated>
     
@@ -100,17 +100,17 @@
     
     
     
-    <category term="璃落的冒险番外篇之正传番外" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E6%AD%A3%E4%BC%A0%E7%95%AA%E5%A4%96/"/>
+    <category term="璃落的冒险番外篇之正传番外" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E6%AD%A3%E4%BC%A0%E7%95%AA%E5%A4%96/"/>
     
     
-    <category term="都市" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
+    <category term="都市" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
     
   </entry>
   
   <entry>
     <title>都市冒险特别篇之绳艺国度</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-sheng-yi-guo-du.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-sheng-yi-guo-du.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-sheng-yi-guo-du.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-sheng-yi-guo-du.html</id>
     <published>2021-09-21T07:20:49.000Z</published>
     <updated>2021-09-25T09:10:54.438Z</updated>
     
@@ -127,17 +127,17 @@
     
     
     
-    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
+    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
     
     
-    <category term="都市" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
+    <category term="都市" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
     
   </entry>
   
   <entry>
     <title>都市冒险特别篇之紧缚游记</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-you-ji.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-you-ji.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-you-ji.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-you-ji.html</id>
     <published>2021-09-21T07:20:34.000Z</published>
     <updated>2021-09-21T07:28:49.475Z</updated>
     
@@ -154,17 +154,17 @@
     
     
     
-    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
+    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
     
     
-    <category term="都市" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
+    <category term="都市" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
     
   </entry>
   
   <entry>
     <title>都市冒险特别篇之紧缚游戏</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-you-xi.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-you-xi.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-you-xi.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-you-xi.html</id>
     <published>2021-09-21T07:20:20.000Z</published>
     <updated>2021-09-21T07:26:17.000Z</updated>
     
@@ -181,15 +181,15 @@
     
     
     
-    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
+    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
     
     
   </entry>
   
   <entry>
     <title>都市冒险特别篇之紧缚星途</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-xing-tu.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-xing-tu.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-xing-tu.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-xing-tu.html</id>
     <published>2021-09-21T07:20:03.000Z</published>
     <updated>2021-09-21T07:28:33.521Z</updated>
     
@@ -211,17 +211,17 @@
     
     
     
-    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
+    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
     
     
-    <category term="都市" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
+    <category term="都市" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
     
   </entry>
   
   <entry>
     <title>都市冒险特别篇之紧缚鬼事</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-gui-shi.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-gui-shi.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-gui-shi.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-te-bie-pian/du-shi-mou-xian-te-bie-pian-zhi-jin-fu-gui-shi.html</id>
     <published>2021-09-21T07:19:47.000Z</published>
     <updated>2021-09-21T07:28:18.870Z</updated>
     
@@ -238,17 +238,17 @@
     
     
     
-    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
+    <category term="璃落的冒险特别篇" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%89%B9%E5%88%AB%E7%AF%87/"/>
     
     
-    <category term="都市" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
+    <category term="都市" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
     
   </entry>
   
   <entry>
     <title>万物皆有萌</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/wan-wu-jie-you-meng.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/wan-wu-jie-you-meng.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/wan-wu-jie-you-meng.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/wan-wu-jie-you-meng.html</id>
     <published>2021-09-19T13:26:22.000Z</published>
     <updated>2021-09-21T13:57:24.424Z</updated>
     
@@ -267,19 +267,19 @@
     
     
     
-    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
+    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
     
     
-    <category term="TK" scheme="https://yourname.github.io/home_of_liluo/tags/TK/"/>
+    <category term="TK" scheme="https://yourname.github.io/study_of_liluo/tags/TK/"/>
     
-    <category term="镣铐" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%95%A3%E9%93%90/"/>
+    <category term="镣铐" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%95%A3%E9%93%90/"/>
     
   </entry>
   
   <entry>
     <title>睡前故事</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-qian-chuan/shui-qian-gu-shi.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-qian-chuan/shui-qian-gu-shi.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-qian-chuan/shui-qian-gu-shi.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-qian-chuan/shui-qian-gu-shi.html</id>
     <published>2021-09-07T11:19:27.000Z</published>
     <updated>2021-09-22T07:14:25.663Z</updated>
     
@@ -297,17 +297,17 @@
     
     
     
-    <category term="璃落的冒险前传" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%89%8D%E4%BC%A0/"/>
+    <category term="璃落的冒险前传" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%89%8D%E4%BC%A0/"/>
     
     
-    <category term="百合" scheme="https://yourname.github.io/home_of_liluo/tags/%E7%99%BE%E5%90%88/"/>
+    <category term="百合" scheme="https://yourname.github.io/study_of_liluo/tags/%E7%99%BE%E5%90%88/"/>
     
   </entry>
   
   <entry>
     <title>紧缚挑战模拟器</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/jin-fu-tiao-zhan-mo-ni-qi.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/jin-fu-tiao-zhan-mo-ni-qi.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/jin-fu-tiao-zhan-mo-ni-qi.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/jin-fu-tiao-zhan-mo-ni-qi.html</id>
     <published>2021-09-06T11:20:21.000Z</published>
     <updated>2021-09-25T09:07:30.046Z</updated>
     
@@ -325,15 +325,15 @@
     
     
     
-    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
+    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
     
     
   </entry>
   
   <entry>
     <title>本网站注意事项（必读）</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/zhu-yi-shi-xiang.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/zhu-yi-shi-xiang.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/zhu-yi-shi-xiang.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/zhu-yi-shi-xiang.html</id>
     <published>2021-09-05T07:26:54.000Z</published>
     <updated>2021-09-25T08:55:25.312Z</updated>
     
@@ -349,14 +349,14 @@
     
     
     
-    <category term="注意事项" scheme="https://yourname.github.io/home_of_liluo/tags/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
+    <category term="注意事项" scheme="https://yourname.github.io/study_of_liluo/tags/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
     
   </entry>
   
   <entry>
     <title>魅魔百合花</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-wai-chuan/mei-mo-bai-he-hua.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-wai-chuan/mei-mo-bai-he-hua.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-wai-chuan/mei-mo-bai-he-hua.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-wai-chuan/mei-mo-bai-he-hua.html</id>
     <published>2021-09-03T14:47:25.000Z</published>
     <updated>2021-09-09T01:40:40.460Z</updated>
     
@@ -377,17 +377,17 @@
     
     
     
-    <category term="璃落的冒险外传" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%A4%96%E4%BC%A0/"/>
+    <category term="璃落的冒险外传" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%A4%96%E4%BC%A0/"/>
     
     
-    <category term="百合" scheme="https://yourname.github.io/home_of_liluo/tags/%E7%99%BE%E5%90%88/"/>
+    <category term="百合" scheme="https://yourname.github.io/study_of_liluo/tags/%E7%99%BE%E5%90%88/"/>
     
   </entry>
   
   <entry>
     <title>模拟人生</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/mo-ni-ren-sheng.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/mo-ni-ren-sheng.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/mo-ni-ren-sheng.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/mo-ni-ren-sheng.html</id>
     <published>2021-09-02T07:51:00.000Z</published>
     <updated>2021-09-21T07:21:51.863Z</updated>
     
@@ -406,25 +406,25 @@
     
     
     
-    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
+    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
     
     
-    <category term="调教" scheme="https://yourname.github.io/home_of_liluo/tags/%E8%B0%83%E6%95%99/"/>
+    <category term="调教" scheme="https://yourname.github.io/study_of_liluo/tags/%E8%B0%83%E6%95%99/"/>
     
-    <category term="都市" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
+    <category term="都市" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
     
-    <category term="镣铐" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%95%A3%E9%93%90/"/>
+    <category term="镣铐" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%95%A3%E9%93%90/"/>
     
-    <category term="DID" scheme="https://yourname.github.io/home_of_liluo/tags/DID/"/>
+    <category term="DID" scheme="https://yourname.github.io/study_of_liluo/tags/DID/"/>
     
-    <category term="完全紧缚" scheme="https://yourname.github.io/home_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/"/>
+    <category term="完全紧缚" scheme="https://yourname.github.io/study_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/"/>
     
   </entry>
   
   <entry>
     <title>单篇：惊心动魄</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-qian-chuan/liang-xin-dong-po.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-qian-chuan/liang-xin-dong-po.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-qian-chuan/liang-xin-dong-po.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-qian-chuan/liang-xin-dong-po.html</id>
     <published>2021-08-30T12:34:19.000Z</published>
     <updated>2021-09-04T06:47:34.599Z</updated>
     
@@ -444,21 +444,21 @@
     
     
     
-    <category term="璃落的冒险前传" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%89%8D%E4%BC%A0/"/>
+    <category term="璃落的冒险前传" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E5%89%8D%E4%BC%A0/"/>
     
     
-    <category term="调教" scheme="https://yourname.github.io/home_of_liluo/tags/%E8%B0%83%E6%95%99/"/>
+    <category term="调教" scheme="https://yourname.github.io/study_of_liluo/tags/%E8%B0%83%E6%95%99/"/>
     
-    <category term="TK" scheme="https://yourname.github.io/home_of_liluo/tags/TK/"/>
+    <category term="TK" scheme="https://yourname.github.io/study_of_liluo/tags/TK/"/>
     
-    <category term="高潮不能" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%AB%98%E6%BD%AE%E4%B8%8D%E8%83%BD/"/>
+    <category term="高潮不能" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%AB%98%E6%BD%AE%E4%B8%8D%E8%83%BD/"/>
     
   </entry>
   
   <entry>
     <title>小女孩家中的惨案（the ugly）</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/xiao-nu-hai-jia-zhong-de-can-an.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/xiao-nu-hai-jia-zhong-de-can-an.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/xiao-nu-hai-jia-zhong-de-can-an.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/xiao-nu-hai-jia-zhong-de-can-an.html</id>
     <published>2021-08-29T14:55:36.000Z</published>
     <updated>2021-09-25T09:07:50.795Z</updated>
     
@@ -472,23 +472,23 @@
     
     
     
-    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
+    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
     
     
-    <category term="都市" scheme="https://yourname.github.io/home_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
+    <category term="都市" scheme="https://yourname.github.io/study_of_liluo/tags/%E9%83%BD%E5%B8%82/"/>
     
-    <category term="DID" scheme="https://yourname.github.io/home_of_liluo/tags/DID/"/>
+    <category term="DID" scheme="https://yourname.github.io/study_of_liluo/tags/DID/"/>
     
-    <category term="致命" scheme="https://yourname.github.io/home_of_liluo/tags/%E8%87%B4%E5%91%BD/"/>
+    <category term="致命" scheme="https://yourname.github.io/study_of_liluo/tags/%E8%87%B4%E5%91%BD/"/>
     
-    <category term="00后童年" scheme="https://yourname.github.io/home_of_liluo/tags/00%E5%90%8E%E7%AB%A5%E5%B9%B4/"/>
+    <category term="00后童年" scheme="https://yourname.github.io/study_of_liluo/tags/00%E5%90%8E%E7%AB%A5%E5%B9%B4/"/>
     
   </entry>
   
   <entry>
     <title>Lia系列</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/lia.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/lia.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/lia.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/lia.html</id>
     <published>2021-08-20T17:09:11.000Z</published>
     <updated>2021-09-25T08:09:11.807Z</updated>
     
@@ -499,25 +499,25 @@
     
     
     
-    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
+    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
     
     
-    <category term="拘束衣" scheme="https://yourname.github.io/home_of_liluo/tags/%E6%8B%98%E6%9D%9F%E8%A1%A3/"/>
+    <category term="拘束衣" scheme="https://yourname.github.io/study_of_liluo/tags/%E6%8B%98%E6%9D%9F%E8%A1%A3/"/>
     
-    <category term="DID" scheme="https://yourname.github.io/home_of_liluo/tags/DID/"/>
+    <category term="DID" scheme="https://yourname.github.io/study_of_liluo/tags/DID/"/>
     
-    <category term="完全紧缚" scheme="https://yourname.github.io/home_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/"/>
+    <category term="完全紧缚" scheme="https://yourname.github.io/study_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/"/>
     
-    <category term="伪装拘束" scheme="https://yourname.github.io/home_of_liluo/tags/%E4%BC%AA%E8%A3%85%E6%8B%98%E6%9D%9F/"/>
+    <category term="伪装拘束" scheme="https://yourname.github.io/study_of_liluo/tags/%E4%BC%AA%E8%A3%85%E6%8B%98%E6%9D%9F/"/>
     
-    <category term="皮具" scheme="https://yourname.github.io/home_of_liluo/tags/%E7%9A%AE%E5%85%B7/"/>
+    <category term="皮具" scheme="https://yourname.github.io/study_of_liluo/tags/%E7%9A%AE%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>密室 女人 我</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/mi-shi-nu-ren-wo.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/mi-shi-nu-ren-wo.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/mi-shi-nu-ren-wo.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/mi-shi-nu-ren-wo.html</id>
     <published>2021-08-20T14:55:36.000Z</published>
     <updated>2021-09-19T13:28:33.913Z</updated>
     
@@ -528,15 +528,15 @@
     
     
     
-    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
+    <category term="璃落的冒险番外篇之虚拟游戏" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/"/>
     
     
   </entry>
   
   <entry>
     <title>节日趣闻</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-ji-nian/jie-ri-qu-wen.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-ji-nian/jie-ri-qu-wen.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-ji-nian/jie-ri-qu-wen.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-ji-nian/jie-ri-qu-wen.html</id>
     <published>2021-08-14T10:35:32.000Z</published>
     <updated>2021-09-21T01:17:36.369Z</updated>
     
@@ -547,17 +547,17 @@
     
     
     
-    <category term="璃落的冒险番外篇之纪念" scheme="https://yourname.github.io/home_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E7%BA%AA%E5%BF%B5/"/>
+    <category term="璃落的冒险番外篇之纪念" scheme="https://yourname.github.io/study_of_liluo/categories/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E7%BA%AA%E5%BF%B5/"/>
     
     
-    <category term="完全紧缚" scheme="https://yourname.github.io/home_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/"/>
+    <category term="完全紧缚" scheme="https://yourname.github.io/study_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/"/>
     
   </entry>
   
   <entry>
     <title>忍者紧缚绘卷</title>
-    <link href="https://yourname.github.io/home_of_liluo/post/xiao-shuo-fan-yi/renzhejinfuhuijuan.html"/>
-    <id>https://yourname.github.io/home_of_liluo/post/xiao-shuo-fan-yi/renzhejinfuhuijuan.html</id>
+    <link href="https://yourname.github.io/study_of_liluo/post/xiao-shuo-fan-yi/renzhejinfuhuijuan.html"/>
+    <id>https://yourname.github.io/study_of_liluo/post/xiao-shuo-fan-yi/renzhejinfuhuijuan.html</id>
     <published>2021-08-08T01:42:26.000Z</published>
     <updated>2021-08-30T07:12:50.810Z</updated>
     
@@ -571,7 +571,7 @@
     
     
     
-    <category term="小说翻译" scheme="https://yourname.github.io/home_of_liluo/categories/%E5%B0%8F%E8%AF%B4%E7%BF%BB%E8%AF%91/"/>
+    <category term="小说翻译" scheme="https://yourname.github.io/study_of_liluo/categories/%E5%B0%8F%E8%AF%B4%E7%BF%BB%E8%AF%91/"/>
     
     
   </entry>
