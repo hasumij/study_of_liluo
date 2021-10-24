@@ -347,13 +347,6 @@
 
   
   <url>
-    <loc>https://yourname.github.io/study_of_liluo/tags/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</loc>
-    <lastmod>2021-10-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yourname.github.io/study_of_liluo/tags/%E8%B0%83%E6%95%99/</loc>
     <lastmod>2021-10-24</lastmod>
     <changefreq>daily</changefreq>
@@ -369,6 +362,13 @@
   
   <url>
     <loc>https://yourname.github.io/study_of_liluo/tags/%E9%AB%98%E6%BD%AE%E4%B8%8D%E8%83%BD/</loc>
+    <lastmod>2021-10-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/study_of_liluo/tags/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</loc>
     <lastmod>2021-10-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -396,13 +396,6 @@
   </url>
   
   <url>
-    <loc>https://yourname.github.io/study_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/</loc>
-    <lastmod>2021-10-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yourname.github.io/study_of_liluo/tags/%E6%8B%98%E6%9D%9F%E8%A1%A3/</loc>
     <lastmod>2021-10-24</lastmod>
     <changefreq>daily</changefreq>
@@ -417,7 +410,7 @@
   </url>
   
   <url>
-    <loc>https://yourname.github.io/study_of_liluo/tags/%E8%87%B4%E5%91%BD/</loc>
+    <loc>https://yourname.github.io/study_of_liluo/tags/%E5%AE%8C%E5%85%A8%E7%B4%A7%E7%BC%9A/</loc>
     <lastmod>2021-10-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -425,6 +418,13 @@
   
   <url>
     <loc>https://yourname.github.io/study_of_liluo/tags/DID/</loc>
+    <lastmod>2021-10-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourname.github.io/study_of_liluo/tags/%E8%87%B4%E5%91%BD/</loc>
     <lastmod>2021-10-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
