@@ -1,0 +1,32 @@
+.textarea{
+  width: 90%;
+  margin-left: 5%;
+  height: 500px;
+}
+.textarea2{
+  width: 90%;
+  margin-left: 5%;
+  height: 200px;
+}
+input[type=button]{
+	padding: 0 20px;
+	background-color: #1e81d2;
+	height: 40px;
+	color: #ffffff;
+	border: none;
+	border-radius: 6px;
+}
+h1{
+  color: #1E81D2;
+}
+.absolu{
+  position: absolute;
+  right: 100px;
+  bottom: 100px;
+}
+.yincangyu{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100px;
+}

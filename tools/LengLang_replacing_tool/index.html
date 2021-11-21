@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>冷狼和谐器</title>
+    <!-- <script src="js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="js/minganci2.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="css/wu.css" />
+  </head>
+  <body>
+    <h1 style="text-align: center;margin: 40px 0;">冷狼敏感词和谐器5.0（由冷狼制作）</h1>
+    <div class="absolu">
+    	<img src="img/logo.png" style="width: 160px;" >
+    </div>
+    <textarea class="textarea" id="co" placeholder="文字复制到这里然后和谐然后复制出去就可以愉快的发文啦~"></textarea>
+    <!-- <button type="button" id="ceshi">ssss</button> -->
+    <div id="" class="textarea2">
+      <input type="button" name="" value="一键和谐" onclick="go()" />
+      <!-- <input type="button" name="" value="一键排版和谐" onclick="pbhx()" /> -->
+      <input type="text" maxlength="1" size="1" id="separator" style="display: none;" value=" " />
+      <input type="button" name="" id="fzcqaaa" onclick="convert_paiban()" value="一键排版和谐" />
+      <input type="button" name="" id="fzcqaaa" onclick="fzcq()" value="复制出去" />
+      <br>
+      <br>
+      <br>
+      <br>
+      <div>特别鸣谢：沙漏的爱版主</div>
+    </div>
+    
+    <div id="ycnr" class="yincangyu" style="width: 1%;height: 1px;border: none;color:#FFFFFF"></div>
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+      var hxjsnr
+   
+
+
+      function go() {
+        
+        var nr = document.getElementById('co').value
+        // console.log(nr)
+        var str_select = 'middle';
+        hxjsnr = minganci(nr, str_select);
+        console.log(hxjsnr)
+        nr = hxjsnr;
+        // console.log(nr)
+        nr = nr.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
+        nr = nr.replace(/\n/g, '<br/>'); //IE7-8
+        nr = nr.replace(/\s/g, '&nbsp;'); //空格处理
+        nr = nr.replace(/呵呵/g, "<span>$&</span>")
+        nr = nr.replace(/垃圾/g, "<span>$&</span>")
+        nr = nr.replace(/贞操/g, "<span>$&</span>")
+        nr = nr.replace(/母狗/g, "<span>$&</span>")
+        nr = nr.replace(/萝莉/g, "<span>$&</span>")
+        nr = nr.replace(/男s/g, "<span>$&</span>")
+        nr = nr.replace(/男S/g, "<span>$&</span>")
+        nr = nr.replace(/女m/g, "<span>$&</span>")
+        nr = nr.replace(/爆菊/g, "<span>$&</span>")
+        nr = nr.replace(/振动/g, "<span>$&</span>")
+        nr = nr.replace(/电击/g, "<span>$&</span>")
+        nr = nr.replace(/华闻/g, "<span>$&</span>")
+        nr = nr.replace(/爆破/g, "<span>$&</span>")
+        nr = nr.replace(/狗友/g, "<span>$&</span>")
+        nr = nr.replace(/天要/g, "<span>$&</span>")
+        nr = nr.replace(/足交/g, "<span>$&</span>")
+        nr = nr.replace(/警察/g, "<span>$&</span>")
+        nr = nr.replace(/爆菊/g, "<span>$&</span>")
+        nr = nr.replace(/阴蒂/g, "<span>$&</span>")
+        nr = nr.replace(/阳具/g, "<span>$&</span>")
+        nr = nr.replace(/高潮/g, "<span>$&</span>")
+        nr = nr.replace(/乳夹/g, "<span>$&</span>")
+        nr = nr.replace(/贱货/g, "<span>$&</span>")
+        nr = nr.replace(/淫水/g, "<span>$&</span>")
+        nr = nr.replace(/干扰/g, "<span>$&</span>")
+        nr = nr.replace(/双筒/g, "<span>$&</span>")
+        nr = nr.replace(/虐恋/g, "<span>$&</span>")
+        nr = nr.replace(/奸杀/g, "<span>$&</span>")
+        nr = nr.replace(/女警/g, "<span>$&</span>")
+        nr = nr.replace(/交互/g, "<span>$&</span>")
+        nr = nr.replace(/sm/g, "<text>$&</text>")
+        nr = nr.replace(/SΜ/g, "<text>$&</text>")
+        nr = nr.replace(/毛贼/g, "<span>$&</span>")
+        nr = nr.replace(/宇宙/g, "<span>$&</span>") //宇宙毁灭是敏感词,解决宇宙即可
+        nr = nr.replace(/气枪/g, "<span>$&</span>")
+        nr = nr.replace(/土枪/g, "<span>$&</span>")
+        nr = nr.replace(/写真/g, "<span>$&</span>")
+        nr = nr.replace(/贱人/g, "<span>$&</span>")
+        nr = nr.replace(/气狗/g, "<span>$&</span>")
+        nr = nr.replace(/器官/g, "<span>$&</span>")
+        nr = nr.replace(/土炮/g, "<span>$&</span>")
+        nr = nr.replace(/黎家/g, "<span>$&</span>")
+        nr = nr.replace(/铅弹/g, "<span>$&</span>") //给敏感词加span标签
+        // $("#ycnr").html(nr)
+        document.getElementById('ycnr').innerHTML = nr
+        console.log(nr)
+        var ul = document.getElementById('ycnr');
+        // for(var i=0;i<ul.childNodes.length;i++){
+        //   // if(ul.childNodes[i]==span){
+        //   //   console.log(this)
+        //   // }
+        //   console.log(ul.childNodes[1])
+
+        // }
+        var spans = document.getElementsByTagName("span");
+        // console.log(spans)
+        for (var i = 0; i < spans.length; i++) {
+          var sp = spans[i];
+          // console.log(sp.innerHTML[0])
+          sp.innerHTML = sp.innerHTML[0] + '&nbsp;' + sp.innerHTML[1]
+
+        }
+
+        var texts = document.getElementsByTagName("text");
+        console.log(texts)
+        for (var i = 0; i < texts.length; i++) {
+          var text = texts[i];
+          // console.log(text.innerHTML[0])
+          text.innerHTML = text.innerHTML[0] + '&nbsp;&nbsp;' + text.innerHTML[1]
+        }
+        $("co").value = document.getElementById('ycnr').innerText
+        console.log(document.getElementById('ycnr').innerText)
+        // $("span").each(function(){//加空格并输出给结果盒子
+        // 	var ci = $(this).html()
+        // 	$(this).html(ci[0] + '&nbsp;' + ci[1])
+        // })
+        // $("text").each(function(){//专门针对需要加两个空格的敏感词
+        // 	var ci = $(this).html()
+        // 	$(this).html(ci[0] + '&nbsp;&nbsp;' + ci[1])
+        // })
+      }
+
+
+
+      // function copyUrl2()
+      // {
+      // var Url2=document.getElementById("biao1");
+      // Url2.select(); // 选择对象
+      // document.execCommand("Copy"); // 执行浏览器复制命令
+      // alert("已复制好，可贴粘。");
+      // }
+
+      // <textarea cols="20" rows="10" id="biao1">用户定义的代码区域</textarea>
+      // <input type="button" onClick="copyUrl2()" value="点击复制代码" />
+      // function copyUrl2() {
+      //   var Url2 = document.getElementById("co");
+      //   Url2.select(); // 选择对象
+      //   document.execCommand("Copy"); // 执行浏览器复制命令
+
+      // }
+      function fzcq() {//复制出去
+        var fuzhineirong = document.getElementById('ycnr').innerHTML
+        console.log(fuzhineirong)
+        if (fuzhineirong == '') {
+          alert("要么你就没打字，要么你就没和谐，复制个毛线")
+        } else {
+          var Url2 = document.getElementById("co");
+          Url2.select(); // 选择对象
+          document.execCommand("Copy"); // 执行浏览器复制命令
+          alert("复制成功，去发文吧")
+
+        }
+        // console.log($("#ycnr").text())
+      }
+
+      function appendError(id, str) {
+        var spanNew = document.createElement("span"); // 创建span
+        spanNew.id = id + "span"; // 生成spanid
+        spanNew.style.color = "red";
+        spanNew.appendChild(document.createTextNode(str)); // 给span添加内容
+        var inputId = document.getElementById(id);
+        inputId.parentNode.insertBefore(spanNew, inputId.nextSibling); // 给需要添加元素后面添加span
+        //如果需要在前面添加改成就可以了
+        inputId.parentNode.insertBefore(spanNew, inputId); // 给需要添加元素后面添加span
+      }
+
+
+      function pbhx() { //排版和谐
+        go();
+        var hxjg = document.getElementById('ycnr').innerHTML
+        console.log(hxjg)
+        var brs = document.getElementsByTagName("br")
+        console.log(brs)
+        var fontnew = document.createElement("font");
+        fontnew.appendChild(document.createTextNode('&#12288;&#12288;'));
+        for (var i = 0; i < brs.length; i++) {
+
+          brs[i].parentNode.insertBefore(fontnew, brs[i])
+        }
+        // console.log(document.getElementById('ycnr').innerHTML)
+      }
+
+      function convert_paiban() {
+        go()
+        var body = "\n" + document.getElementById("co").value;
+        body = body.replace(/ |　/ig, "");
+        body = body.replace(/\r\n/ig, "\n");
+        body = body.replace(/\n\n/ig, "\n");
+        body = body.replace(/\n\n/ig, "\n");
+        body = body.replace(/\n\n/ig, "\n");
+        body = body.replace(/\n\n/ig, "\n");
+        body = body.replace(/\n/ig, "\n\n");
+        body = body.replace("\n\n", "　　");
+        body = body.replace(/\n/ig, "\n　　");
+        document.getElementById("co").value = body;
+      }
+
+      // function pbhx(){
+      // 				for (var i = 0; i < $("#ycnr").find("br").length; i++) {
+      // 					$("#ycnr").find("br").eq(i).after("&#12288;&#12288;")
+      // 				}
+      // 				var pbq = $("#ycnr").html()
+      // 				pbq = '&#12288;&#12288;' + pbq
+      // 				$("#ycnr").html(pbq)
+      // 			}
+    </script>
+  </body>
+</html>

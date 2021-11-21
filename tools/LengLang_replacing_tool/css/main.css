@@ -1,0 +1,38 @@
+.box-all{
+	width: 1180px;
+	margin: 0 auto;
+	position: relative;
+}
+.textarea{
+	width: 100%;
+	height: 300px;
+	resize: none;
+	padding: 10px;
+}
+input[type=button]{
+	padding: 0 20px;
+	background-color: #1e81d2;
+	height: 40px;
+	color: #ffffff;
+	border: none;
+	border-radius: 6px;
+}
+.jg{
+	width: 100%;
+	border: solid 1px #333333;
+	min-height: 30px;
+	padding: 10px;
+}
+.ycyc{
+	overflow: hidden;
+	width: 100%;
+	height: 456px;
+}
+h1{
+	color: #2196f2;
+}
+.absolu{
+	position: absolute;
+	right: 80px;
+	top: -44px;
+}
