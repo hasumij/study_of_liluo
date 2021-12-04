@@ -98,8 +98,8 @@ function gift_select(gift_bumber){
 	document.getElementById("gift_buttons").style.display = "none"; // ""/"none"
 	var all_gifts_mode = all_gifts
 	for (i = 0; i < gift_number; i++) { 
-    	var gift_index = Math.floor((Math.random()*all_gifts.length));
-    	gifts.push(all_gifts[gift_index]);
+    	var gift_index = Math.floor((Math.random()*all_gifts_mode.length));
+    	gifts.push(all_gifts_mode[gift_index]);
     	if (gift_index == 0) {
     		untie_mouth += 2
     	} else if (gift_index == 1) {
