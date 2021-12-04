@@ -4,7 +4,8 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-weight: lighter;
     background: white;
-    overflow: hidden;
+    overflow-x:hidden;
+    overflow-y:scroll;
 }
 
 body.switched {
@@ -104,12 +105,14 @@ h2 {
     transition: background-color 0.6s;
 }
 
+/*
 p {
     font-size: 13pt;
     color: #888;
     line-height: 1.7em;
     font-weight: lighter;
 }
+*/
 
 a {
     font-weight: 700;
@@ -260,3 +263,12 @@ body.dark {
 .dark #controls {
     background: black;
 }
+
+.button {
+  text-align:center;
+}
+
+.main_text {
+  text-align:center;
+}
+
