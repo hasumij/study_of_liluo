@@ -264,13 +264,13 @@ function tie_post_select() {
 	if (post[0].checked == true) {
 		tie_post += 0
 	} else if (post[1].checked == true) {
-		tie_arm -= 1
-		tie_leg -= 2
+		untie_arm -= 1
+		untie_leg -= 2
 		event_sudden_lose_prob += 10
 		tie_post += 50
 	} else if (post[2].checked == true) {
-		tie_arm -= 4
-		tie_leg -= 4
+		untie_arm -= 4
+		untie_leg -= 4
 		tie_post += 80
 	}
 }
@@ -611,11 +611,8 @@ function untie_epoch(eye_struggle, mouth_struggle, arm_struggle, finger_struggle
 		document.getElementById("event_untie_content").innerHTML = "<p>脱缚时间到，你尚未挣脱束缚。</p>"
 		return false
 	}
-
 	epoch += 1
-
 	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
-	
 	return untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle)
 }
 
