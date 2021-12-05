@@ -160,10 +160,10 @@ gift_button_3.onclick = function(){
 function clothes_select(clothes_id){
 	document.getElementById("clothes_buttons").style.display = "none";
 	if (clothes_id == 0) {
-		event_very_cute_prob += 10
+		event_very_cute_prob += 2
 		event_no_clothes_prob += 50
 	} else if (clothes_id == 1) {
-		event_sudden_lose_prob += 10
+		event_sudden_lose_prob += 2
 		sensitivity -= 0.2
 	} else if (clothes_id == 2) {
 		sensitivity -= 0.2
@@ -287,7 +287,7 @@ tie_confirm_button.onclick = function() {
 	tie_body_select();
 	tie_post_select();
 
-	document.getElementById("tie_functions").innerHTML = "你的捆绑方式为：";
+	document.getElementById("tie_functions").innerHTML = "你的捆绑方式为：" + document.getElementsByName("arm")[0].checked;
 	document.getElementById("tight_select").style.display = "";
 
 	window_scroll()
@@ -396,19 +396,180 @@ event_tie_button_1.onclick = function(){
 
 
 // ***************************************** 脱缚过程和最终评价
+function untie_eye_action() {
+	if (event_eye_free == false) {
+		document.getElementById("untie_button_1").style.display = "none";
+		document.getElementById("event_untie_content").innerHTML += "<p>你已重获光明</p>"
+		event_eye_free = true
+		tie_eye = 0
+	} else {
+		document.getElementById("untie_button_1").style.display = "none";
+		tie_eye = 0
+	}
+}
+
+function untie_mouth_action() {
+	if (event_eye_free == false) {
+		document.getElementById("untie_button_2").style.display = "none";
+		document.getElementById("event_untie_content").innerHTML += "<p>你已成功挣脱嘴部束缚</p>"
+		event_mouth_free = true
+		tie_mouth = 0
+		event_call_for_help_able = true
+		event_persuade_able = true
+	} else {
+		document.getElementById("untie_button_2").style.display = "none";
+		tie_mouth = 0
+		event_call_for_help_able = true
+		event_persuade_able = true
+	}
+}
+
+function untie_arm_action() {
+	if (event_eye_free == false) {
+		document.getElementById("untie_button_3").style.display = "none";
+		document.getElementById("event_untie_content").innerHTML += "<p>你已成功挣脱手臂束缚</p>"
+		event_arm_free = true
+		tie_arm = 0
+	} else {
+		document.getElementById("untie_button_3").style.display = "none";
+		tie_arm = 0
+	}
+}
+
+function untie_finger_action() {
+	if (event_finger_free == false) {
+		document.getElementById("untie_button_4").style.display = "none";
+		document.getElementById("event_untie_content").innerHTML += "<p>你已成功挣脱手指束缚</p>"
+		event_finger_free = true
+		tie_finger = 0
+		untie_leg += 2
+		untie_arm += 2
+	} else {
+		document.getElementById("untie_button_4").style.display = "none";
+		tie_finger = 0
+		untie_leg += 2
+		untie_arm += 2
+	}
+}
+
+function untie_leg_action() {
+	if (event_leg_free == false) {
+		document.getElementById("untie_button_5").style.display = "none";
+		document.getElementById("event_untie_content").innerHTML += "<p>你已成功挣脱双腿束缚</p>"
+		event_leg_free = true
+		tie_leg = 0
+	} else {
+		document.getElementById("untie_button_5").style.display = "none";
+		tie_leg = 0
+	}
+}
+
+
+function start_to_untie_judge () {
+	if (tie_eye <= 0) {
+		untie_eye_action()
+	}
+	if (tie_mouth <= 0) {
+		untie_mouth_action()
+	}
+	if (tie_arm <= 0) {
+		untie_arm_action()
+	}
+	if (tie_finger <= 0) {
+		untie_finger_action()
+	}
+	if (tie_leg <= 0) {
+		untie_leg_action()
+	}
+}
+
+
 var start_to_untie_button = document.getElementById("start_to_untie_button");
 start_to_untie_button.onclick = function(){  
 	document.getElementById("start_to_untie_buttons").style.display = "none";
 	document.getElementById("event_tie_content").innerHTML += display_array(display_attributes_values());
 	document.getElementById("event_untie").style.display = "";
+	start_to_untie_judge()
 	window_scroll()
 }
 
 
-function untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle) {
+function untie_judge() {
+	if (pleasant > pleasant_max) {
+		document.getElementById("event_untie_content").innerHTML += "快感到达极限，你忍不住达到高潮，逃脱失败。";
+		return false
+	}
+
+	if (tie_eye <= 0 && tie_mouth <= 0 && tie_arm <= 0 && tie_finger <= 0 && tie_leg <= 0) {
+		document.getElementById("event_untie_content").innerHTML += "所有部位解缚成功，成功逃脱。";
+		return true
+	}
+
+	if (tie_eye <= 0) {
+		untie_eye_action()
+	}
+	if (tie_mouth <= 0) {
+		untie_mouth_action()
+	}
+	if (tie_arm <= 0) {
+		untie_arm_action()
+	}
+	if (tie_finger <= 0) {
+		untie_finger_action()
+	}
+	if (tie_leg <= 0) {
+		untie_leg_action()
+	}
+
+	return "none"
+}
+
+
+function untie_event_judge() {
+	if (event_call_for_help_able == true && random(1, 100) <= event_call_for_help_prob) {
+		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——呼救。"
+		if (random(1, 100) <= event_call_for_help_success_prob <= 30) {
+			document.getElementById("event_untie_content").innerHTML += "你的呼救引来了绑架者，逃脱失败。</p>"
+			return false
+		} else if (random(1, 100) >= (100 - event_call_for_help_success_prob)) {
+			document.getElementById("event_untie_content").innerHTML += "你的呼救引来了帮手，她帮助你成功逃脱。</p>"
+			return true
+		} else {
+			document.getElementById("event_untie_content").innerHTML += "你的呼救没有引来任何人，请继续逃脱。</p>"
+			untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle)
+			return "none"
+		}
+	}
+	if (event_sudden_lose_able == true && random(1, 100) <= event_sudden_lose_prob) {
+		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——突发失败。" + 
+		"你挣扎的样子让监控中观察的绑架者控制不住，她不顾承诺强行将你带走了。</p>";
+		return false
+	}
+	if (event_very_cute_able == true && random(1, 100) <= event_very_cute_prob) {
+		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——萌化。" + 
+		"由于你挣扎的样子太萌了，让绑架者产生了羞愧的感觉，绑架者最终决定放了你。</p>" 
+		return true
+	}
+	if (event_persuade_able == true && random(1, 100) <= event_persuade_prob) {
+		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——说服。" + 
+		"由于你晓之以理动之以情，绑架者被你成功说动了，最终决定放了你。</p>" 
+		return true
+	}
+
 	if (event_arm_free == true) {
 		document.getElementById("event_untie_content").innerHTML += "<p>你成功解开了其他拘束，逃离了这里。</p>"
 		return true
+	}
+
+	return "none"
+}
+
+
+function untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle) {
+
+	untie_judge_epoch = untie_judge()
+	if (untie_judge_epoch == true || untie_judge_epoch == false) {
+		return untie_judge_epoch
 	}
 
 	if (eye_struggle == true) {
@@ -433,34 +594,13 @@ function untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggl
 	];
 	document.getElementById("event_untie_content").innerHTML += display_array(current_attribute_array);
 
-	if (pleasant > pleasant_max) {
-		document.getElementById("event_untie_content").innerHTML += "快感到达极限，你忍不住达到高潮，逃脱失败。";
-		return false
+	untie_judge_epoch = untie_judge()
+	if (untie_judge_epoch == true || untie_judge_epoch == false) {
+		return untie_judge_epoch
 	}
-
-	if (event_eye_free == false && tie_eye <= 0) {
-		document.getElementById("event_untie_content").innerHTML += "<p>你已重获光明</p>"
-		event_eye_free = true
-	}
-	if (event_mouth_free == false && tie_mouth <= 0) {
-		document.getElementById("event_untie_content").innerHTML += "<p>你已成功挣脱嘴部束缚</p>"
-		event_mouth_free = true
-		event_call_for_help_able = true
-		event_persuade_able = true
-	}
-	if (event_arm_free == false && tie_arm <= 0) {
-		document.getElementById("event_untie_content").innerHTML += "<p>你已成功挣脱手臂的束缚</p>"
-		event_arm_free = true
-	}
-	if (event_finger_free == false && tie_finger <= 0) {
-		document.getElementById("event_untie_content").innerHTML += "<p>你已成功挣脱手指的束缚</p>"
-		event_finger_free = true
-		untie_leg += 2
-		untie_arm += 2
-	}
-	if (event_leg_free == false && tie_leg <= 0) {
-		document.getElementById("event_untie_content").innerHTML += "<p>你已成功挣脱腿部的束缚</p>"
-		event_leg_free = true
+	untie_event_judge_epoch = untie_event_judge()
+	if (untie_event_judge_epoch == true || untie_event_judge_epoch == false) {
+		return untie_event_judge_epoch
 	}
 
 	return "none"
@@ -475,35 +615,7 @@ function untie_epoch(eye_struggle, mouth_struggle, arm_struggle, finger_struggle
 	epoch += 1
 
 	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
-	if (event_call_for_help_able == true && random(1, 100) <= event_call_for_help_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——呼救。"
-		if (random(1, 100) <= event_call_for_help_success_prob <= 30) {
-			document.getElementById("event_untie_content").innerHTML += "你的呼救引来了绑架者，逃脱失败。</p>"
-			return false
-		} else if (random(1, 100) >= (100 - event_call_for_help_success_prob)) {
-			document.getElementById("event_untie_content").innerHTML += "你的呼救引来了帮手，她帮助你成功逃脱。</p>"
-			return true
-		} else {
-			document.getElementById("event_untie_content").innerHTML += "你的呼救没有引来任何人，请继续逃脱。</p>"
-			untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle)
-			return
-		}
-	}
-	if (event_sudden_lose_able == true && random(1, 100) <= event_sudden_lose_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——突发失败。" + 
-		"你挣扎的样子让监控中观察的绑架者控制不住，她不顾承诺强行将你带走了。</p>";
-		return false
-	}
-	if (event_very_cute_able == true && random(1, 100) <= event_very_cute_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——萌化。" + 
-		"由于你挣扎的样子太萌了，让绑架者产生了羞愧的感觉，绑架者最终决定放了你。</p>" 
-		return true
-	}
-	if (event_persuade_able == true && random(1, 100) <= event_persuade_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——说服。" + 
-		"由于你晓之以理动之以情，绑架者被你成功说动了，最终决定放了你。</p>" 
-		return true
-	}
+	
 	return untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle)
 }
 

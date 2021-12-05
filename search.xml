@@ -856,34 +856,34 @@
     <content><![CDATA[<!-- toc -->
 
 <ul>
-<li><a href="#%E4%BF%AE%E6%94%B9%E6%97%A5%E5%BF%97">修改日志</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97">更新日志</a></li>
 <li><a href="#%E6%B8%B8%E6%88%8F%E6%B5%81%E7%A8%8B">游戏流程</a></li>
 <li><a href="#%E5%BC%80%E5%A7%8B%E6%B8%B8%E6%88%8F">开始游戏</a></li>
 <li><a href="#%E6%B8%B8%E6%88%8F%E5%A4%A7%E7%BA%B2">游戏大纲</a></li>
 </ul>
 <!-- tocstop -->
 
-<h4><span id="修改日志">修改日志</span></h4><ul>
+<h4><span id="更新日志">更新日志</span></h4><ul>
 <li>2021.9.19：解决逃脱阶段不显示状态的问题；解决最终评估阶段不显示的问题；增加了事件触发后的部分说明；增加了天赋，衣着，捆绑选择时属性变化的说明</li>
+<li>2021.12.5：将游戏转入JavaScript框架，开始继续更新</li>
 </ul>
 <h4><span id="游戏流程">游戏流程</span></h4><ul>
-<li>天赋选择阶段：自定义天赋的个数（3-5个），随后在天赋池中随机筛选出不同特点的天赋属性。（收天赋灵感……）</li>
+<li>天赋选择阶段：自定义天赋的个数，随后在天赋池中随机筛选出不同特点的天赋属性。（收天赋灵感……）</li>
 <li>衣着选择阶段：选择主人公的穿着，不同的穿着带有不同的特点（收衣着搭配灵感……）</li>
 <li>捆 绑方式选择阶段：选择主人公的捆 绑方式，捆 绑越紧密越难以逃脱，游戏难度也就越高（收捆 绑灵感……）</li>
 <li>捆 绑阶段：绑架者会根据之前的选择对主人公进行捆 绑，期间可能会发生特殊事件（收特殊事件灵感……）</li>
 <li>难度评估阶段：根据当前主人公的紧 缚程度，脱缚能力，敏感程度三个方面综合评定游戏难度，游戏难度将会影响到最终的评分</li>
-<li>逃脱阶段：在100分钟（共10个回合）内选择合适的挣扎方式努力让主人公成功逃脱，期间可能会发生特殊事件（收特殊事件灵感……）</li>
+<li>逃脱阶段：在100分钟内选择合适的挣扎方式努力让主人公成功逃脱，期间可能会发生特殊事件（收特殊事件灵感……）</li>
 <li>最终评估阶段</li>
 </ul>
-<h4><span id="开始游戏">开始游戏</span></h4><p>目前只是搭了一个框架，事件之间的承接还比较生硬，后续会逐步完善</p>
+<h4><span id="开始游戏">开始游戏</span></h4><p>如果本页面显示不全可<a href="https://liluoaikunbang.github.io/study_of_liluo/interactive_fictions/6/">从新页面打开</a>。</p>
 <div id="tab_1">
     <iframe src="https://liluoaikunbang.github.io/study_of_liluo/interactive_fictions/6/" height="500" width="800" frameborder="0" scrolling="yes"></iframe>
 </div>
 
 
 
-<h4><span id="游戏大纲">游戏大纲</span></h4><p><img src="http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E7%92%83%E8%90%BD%E7%9A%84%E5%86%92%E9%99%A9%E7%95%AA%E5%A4%96%E7%AF%87/%E8%99%9A%E6%8B%9F%E6%B8%B8%E6%88%8F/%E7%B4%A7%E7%BC%9A%E6%8C%91%E6%88%98%E6%A8%A1%E6%8B%9F%E5%99%A8/%E7%81%B5%E6%84%9F%E5%9B%BE.png" alt="1"></p>
-<script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.css">]]></content>
+<h4><span id="游戏大纲">游戏大纲</span></h4><script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.7.0/dist/mindmap.min.css">]]></content>
       <categories>
         <category>璃落的冒险番外篇之虚拟游戏</category>
       </categories>
@@ -3950,6 +3950,7 @@ height: 100%; left: 0; top: 0;"> </video></div>
 <li><a href="#%E7%BE%8A%E7%BE%8A%E7%9A%84%E7%94%9F%E6%97%A5%E8%9B%8B%E7%B3%95%E7%A5%9D%E7%BE%8A%E7%BE%8A%E7%94%9F%E6%97%A5%E5%BF%AB%E4%B9%90">羊羊的生日蛋糕（祝羊羊生日快乐）</a></li>
 <li><a href="#%E8%A2%AB%E6%8D%95%E7%9A%84%E7%B2%BE%E7%81%B5%E5%B0%91%E5%A5%B3">被捕的精灵少女</a></li>
 <li><a href="#%E7%A5%9E%E7%A4%BE%E4%B8%AD%E7%9A%84%E7%8B%90%E7%8B%B8%E5%85%AC%E4%B8%BB%E5%8D%83%E9%9B%AA%E8%A2%AB%E6%8D%86">神社中的狐狸公主（千雪被捆）</a></li>
+<li><a href="#%E6%8A%93%E6%8D%95%E5%B0%8F%E5%B0%8F%E5%90%B8%E8%A1%80%E5%A7%AC%E6%B2%90%E6%B2%90%E6%8D%86%E9%9B%A8%E6%B3%AA">抓捕小小吸血姬（沐沐捆雨泪）</a></li>
 </ul>
 </li>
 <li><a href="#%E4%B8%96%E7%95%8C%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E6%88%91%E5%8F%AA%E8%A6%81%E4%BD%A0%E5%8F%AF%E5%8F%AF%E7%88%B1%E7%88%B1">世界奇奇怪怪，我只要你可可爱爱</a><ul>
@@ -4804,7 +4805,27 @@ height: 100%; left: 0; top: 0;"> </video></div>
 <p>​        晚饭到睡前的这段时间，是千雪一天中难得的自由时光，其他大部分时候，千雪总是更习惯于被绳索或其他束具严厉拘束起来，似乎只有在失去自由的时候，才是她心中最放松的时候……</p>
 <p><img src="http://liluo-ziyuan.oss-cn-hangzhou.aliyuncs.com/%E6%96%87%E4%B8%AD%E8%BD%AC%E8%BD%BD%E5%9B%BE%E5%83%8F/%E7%9D%A1%E5%89%8D%E6%95%85%E4%BA%8B/%E5%8D%83%E9%9B%AA%E4%BA%BA%E8%AE%BE.jpg" alt="1"></p>
 <center>千雪人设。图片转自网络，侵删
+#### 抓捕小小吸血姬（沐沐捆雨泪）
 
+<p>​        “只有咱们两个人，真的可以抓到她吗？”跟着璃落住进小镇唯一一家旅店，沐沐有些担心地问道。</p>
+<p>​        这一次行动属于对沐沐私自造反的惩罚，而璃落当然又是陪罚的那个……任务目标是抓捕最近屡次潜入领地偷东西的一个小吸血姬。吸血姬普遍拥有不死的身体和远超人类的身体素质，并不是一个好对付的敌人，而她们这边虽说是两个人，战五渣璃落在战斗中不帮倒忙就可以了，沐沐虽说有一定战斗能力，可面对这样之前没有遇到过的敌人，她的心里仍有些发慌。</p>
+<p>​        “放心吧。”擅长白给的璃落自然信心满满，“姐姐说了，雨泪在大部分时候都是人类状态，只要别引出里人格，她就是一个普通的女孩。”</p>
+<p>​        沐沐毫不客气地拆台道：“可就算是普通的女孩，璃落大概也只能白给吧……”</p>
+<p>​        “咳咳……咱们等晚上她睡熟了之后去捆她吧。”</p>
+<p>​        ……</p>
+<p>​        ……</p>
+<p>​        时间一转，很快到了午夜，白天睡足的璃落和沐沐此时精力十足，按照计划，用璃雪姐姐给的万能钥匙打开旅店房门后，她们悄悄潜入了雨泪的房间中……</p>
+<p>​        没有什么战力又容易白给的璃落负责放风，而沐沐则悄悄溜到女孩的床前，从随身携带的箱子中取出拘束具，准备开绑！</p>
+<p>​        撩开被子，看着柔软大床上只穿着内衣内裤的白发女孩，沐沐首先取出了两双袜子用于堵嘴。这里毕竟是小镇上，如果绑的过程中雨泪醒来呼救的话，她们也不好解释。</p>
+<p>​        熟睡中的女孩小嘴微张，正好方便了沐沐稍稍掐住她的脸颊，将两双棉袜温柔地塞进樱唇……嘴里的不适很快便引得女孩苏醒，迷迷糊糊之间雨泪只看到一张大大的脚部粘在自己嘴唇之上，被突然的袭击弄得清醒过来之后，再想呼救却发现所有叫声全部被塞嘴翻译成了可爱的“呜呜”声……</p>
+<p>​        惊醒的雨泪虽然没法呼救，仍旧不断挥舞着手臂挣扎着，不让沐沐将绳索缠绕上去。几次失败之后，沐沐也逐渐失去了耐心，脸颊上开始闪烁起皮卡丘独特的电光。</p>
+<p>​        余光看到屋内白光一闪，璃落不禁有些担忧地回头看了看，小声提醒沐沐现在雨泪可还是普通的女孩，不要弄上了她。沐沐则表示这种程度的电击只会让她麻痹一会，不会受伤的。</p>
+<p>​        没有了挣扎，沐沐开心地倒出所有拘束具，在雨泪恐惧的眼神下，举起她的小手将几双中筒袜套在上面，袜子一直延伸到了手肘，手腕处还专门用胶带加固，凭借雨泪现在被袜子包裹成球的手指已然无法自己取下。</p>
+<p>​        袜子包手手一直是沐沐最喜欢的环节，这样捆缚之下，不仅可以限制雨泪手指的行动，还可以清晰地看到她的手指不断挣扎的可爱样子，因此每次沐沐动手绑人时，总免不了这一步骤。</p>
+<p>​        随后，沐沐将雨泪的双手在背后并拢，数到绳索横纵交错，左缠右绑，将雨泪的双手牢牢捆缚成了w形，两只小手则被上下左右固定的绳索紧缚在了后心处。</p>
+<p>​        随后，沐沐用绳索缠绕在雨泪的脚踝和膝盖上方，将她一双纤细的美腿同样并拢紧捆了起来。最后，沐沐将雨泪的身体团成一团，将她的大小腿折叠捆紧，身体与膝盖同样靠拢后紧紧缚住，将团缚的雨泪装入之前携带拘束具的行李箱。</p>
+<p>​        将箱子盖好上锁，沐沐拉着箱子跟璃落回到了自己的房间。</p>
+<p>​        事情进行的格外顺利，沐沐和璃落当晚都有些兴奋地睡不着觉。明天一早，她们就可以带着雨泪回领地交差啦，到时候，领地之中大概率又会迎来一位小小吸血姬……虽然还不确定她是以囚犯的身份还是自由人的身份进入领地。</p>
 <h3><span id="世界奇奇怪怪我只要你可可爱爱">世界奇奇怪怪，我只要你可可爱爱</span></h3><h4><span id="1姐姐好奇怪姐姐好厉害">1.姐姐好奇怪，姐姐好厉害</span></h4><p>​        虽然只差了两岁，我却总是感觉姐姐比我要成熟太多，其中一个原因，大概是姐姐总是会说出一些我听不懂的话吧，这些话，我从未在除了姐姐之外的第二个人身上听到过。</p>
 <p>​        “云云，你要记住，男人都是大猪蹄子，是靠不住的，女孩子之间才有真爱。”女孩子之间？</p>
 <p>​        “云云太可爱了，等你长大一点，我一定要把你绑起来。”可爱和绑起来之间有什么关系吗？是因为可爱的女孩子就要被绑起来？</p>
