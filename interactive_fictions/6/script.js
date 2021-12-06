@@ -9,7 +9,7 @@ var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员",
 			"娃娃脸", "口才", "抖M"]
 var gifts = []
 var clothes_id = 1
-var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装"]
+var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴"]
 
 var all_ties = []
 var tie_string = ""
@@ -98,6 +98,49 @@ function random(min, max) {
 }
 
 
+// ***************************************** 右上角函数
+var restart = document.getElementById("restart");
+restart.onclick = function() {
+	window.location.reload();
+}
+
+function god_eye_content_insert() {
+	god_eye_array = [
+	"被绑者角色名:" + heroine_name + " 绑架者角色名:" + villain_name,
+	"脱缚能力值:",
+	"眼部脱缚能力——" + untie_eye,
+	"嘴部脱缚能力——" + untie_mouth,
+	"手臂脱缚能力——" + untie_arm,
+	"手指脱缚能力——" + untie_finger,
+	"腿部脱缚能力——" + untie_leg,
+	"特殊姿势增量——" + tie_post,
+	"敏感度:" + sensitivity,
+	"当前快感值:" + pleasant,
+	"当前束缚值:",
+	"眼部束缚值——" + tie_eye,
+	"嘴部束缚值——" + tie_mouth,
+	"手臂束缚值——" + tie_arm,
+	"手指束缚值——" + tie_finger,
+	"腿部束缚值——" + tie_leg,
+	"特殊事件概率:",
+	"脱衣事件概率——" + event_no_clothes_prob + "%",
+	"收紧事件概率——" + event_string_prob + "%",
+	"呼救事件概率——" + event_call_for_help_prob + "%",
+	"突发失败事件概率——" + event_sudden_lose_prob + "%",
+	"萌化事件概率——" + event_very_cute_prob + "%",
+	"说服事件概率——" + event_persuade_prob + "%"
+	]
+	document.getElementById("god_eye_content").innerHTML = display_array(god_eye_array);
+}
+
+
+var god_eye = document.getElementById('god_eye');
+god_eye.onclick=function() {
+	god_eye_content_insert()
+    god_eye_window.style.display="block";
+}
+
+
 // ***************************************** 角色创建
 var character_submit_button = document.getElementById("character_submit_button");
 character_submit_button.onclick = function(){
@@ -133,7 +176,7 @@ function gift_select(gift_bumber){
     		untie_arm += 2
     		untie_leg += 2
     	} else if (gift_index == 3) {
-    		event_sudden_lose_prob += 10
+    		event_sudden_lose_prob += 5
     	} else if (gift_index == 4) {
     		event_no_clothes_prob += 10
     	} else if (gift_index == 5) {
@@ -141,7 +184,7 @@ function gift_select(gift_bumber){
     	} else if (gift_index == 6) {
     		sensitivity += 0.2
     	} else if (gift_index == 7) {
-    		event_very_cute_prob += 10
+    		event_very_cute_prob += 5
     	} else if (gift_index == 8) {
     		event_persuade_prob += 5
     	} else if (gift_index == 9) {
@@ -156,6 +199,7 @@ function gift_select(gift_bumber){
 		});
 	}
 	document.getElementById("gifts").innerHTML = heroine_name + "的天赋为：" + display_array(gifts);
+	clothes_init()
 	document.getElementById("clothes_select").style.display = "";
 	window_scroll()
 }
@@ -180,16 +224,29 @@ gift_button_3.onclick = function(){
 
 
 // ***************************************** 衣着选择
-function clothes_select(clothes_id){
+function clothes_init() {
+	clothes_select_button = document.getElementById("clothes_select_button");
+	for (i = 0; i < all_clothes.length; i++) {
+		clothes_option = document.createElement("option")
+		clothes_option.innerHTML = all_clothes[i]
+		clothes_option.value = all_clothes[i]
+		clothes_select_button.appendChild(clothes_option)
+	}
+}
+
+function clothes_select(clothes_id) {
 	document.getElementById("clothes_buttons").style.display = "none";
 	if (clothes_id == 0) {
-		event_very_cute_prob += 2
-		event_no_clothes_prob += 50
+		event_very_cute_prob += 5
+		event_no_clothes_prob += 10
 	} else if (clothes_id == 1) {
-		event_sudden_lose_prob += 2
+		event_sudden_lose_prob += 5
 		sensitivity -= 0.2
 	} else if (clothes_id == 2) {
 		sensitivity -= 0.2
+	} else if (clothes_id == 3) {
+		sensitivity += 0.2
+		event_very_cute_able = false
 	}
 	document.getElementById("clothes").innerHTML = heroine_name + "的服装为：" + all_clothes[clothes_id];
 	document.getElementById("tie_select").style.display = "";
@@ -197,19 +254,9 @@ function clothes_select(clothes_id){
 }
 
 
-var clothes_button_1 = document.getElementById("clothes_button_1");
-clothes_button_1.onclick = function(){  
-	clothes_id = 0
-    clothes_select(clothes_id);
-}
-var clothes_button_2 = document.getElementById("clothes_button_2");
-clothes_button_2.onclick = function(){  
-	clothes_id = 1
-    clothes_select(clothes_id);
-}
-var clothes_button_3 = document.getElementById("clothes_button_3");
-clothes_button_3.onclick = function(){  
-	clothes_id = 2
+var clothes_confirm_button = document.getElementById("clothes_confirm_button");
+clothes_confirm_button.onclick = function(){  
+	clothes_id = document.getElementById("clothes_select_button").selectedIndex;
     clothes_select(clothes_id);
 }
 
@@ -223,7 +270,7 @@ function tie_post_select() {
 	} else if (post[1].checked == true) {
 		untie_arm -= 1
 		untie_leg -= 2
-		event_sudden_lose_prob += 10
+		sensitivity += 0.1
 		tie_post += 50
 	} else if (post[2].checked == true) {
 		untie_arm -= 4

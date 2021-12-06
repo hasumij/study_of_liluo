@@ -8,19 +8,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="god_eye/god_eye.css">
 
 </head>
 
 <body>
 
     <div id="story" class="container">
-        <div class="header">
-            <h1>紧缚挑战模拟器</h1>
-            <h2 class="subsection">
-              <a href="https://liluoaikunbang.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/jin-fu-tiao-zhan-mo-ni-qi.html"  target="opentype">开发文档</a>，
-              <a href="http://jinfumoniqi.mikecrm.com/rFn74pM"  target="opentype">建议反馈</a>
-            </h2>
-        </div>
+      <div id="controls" class="buttons">
+          <a id="restart" title="" href="#">重新开始</a>
+          <a id="god_eye">上帝视角</a>
+      </div>
+
+      <!-- 上帝视角弹窗主体 -->
+      <div id="god_eye_window" class="god_eye_window">
+          <!-- 上帝视角标题 -->
+          <div id="god_eye_title" class="god_eye_title">
+            <span>上帝视角</span>
+            <span><a id="god_eye_close_button" href="javascript:void(0)">关闭</a></span>
+            <hr>
+          </div>
+          <!-- 上帝视角内容 -->
+          <div id="god_eye_content" class="main_text"></div>
+      </div>
+
+      <div class="header">
+          <h1>紧缚挑战模拟器</h1>
+          <h2 class="subsection">
+            <a href="https://liluoaikunbang.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/jin-fu-tiao-zhan-mo-ni-qi.html"  target="opentype">开发文档</a>，
+            <a href="http://jinfumoniqi.mikecrm.com/rFn74pM"  target="opentype">建议反馈</a>
+          </h2>
+      </div>
     </div>
 
     <div id="character_select">
@@ -47,9 +65,8 @@
     <div id="clothes_select" style="display: none;">
       <h2 calss="subsection">衣着选择</h2>
       <div id="clothes_buttons" class="button">
-       <p><input  id="clothes_button_1" type="button" value="可爱的jk制服" class="button"><p>
-       <p><input  id="clothes_button_2" type="button" value="保守的女仆装" class="button"></p>
-       <p><input  id="clothes_button_3" type="button" value="普通的休闲装" class="button"></p>
+       <p><select id="clothes_select_button"></select></p>
+       <p><input  id="clothes_confirm_button" type="button" value="确定" class="button"></p>
       </div>
       <div id="clothes" class="main_text">
       </div>
@@ -142,5 +159,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="god_eye/god_eye.js"></script>
 </body>
 </html>
