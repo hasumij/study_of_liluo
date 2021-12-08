@@ -13,152 +13,156 @@
 </head>
 
 <body>
-
-    <div id="story" class="container">
-      <div id="controls" class="buttons">
-          <a id="restart" title="" href="#">重新开始</a>
-          <a id="god_eye">上帝视角</a>
-      </div>
-
-      <!-- 上帝视角弹窗主体 -->
-      <div id="god_eye_window" class="god_eye_window">
-          <!-- 上帝视角标题 -->
-          <div id="god_eye_title" class="god_eye_title">
-            <span>上帝视角</span>
-            <span><a id="god_eye_close_button" href="javascript:void(0)">关闭</a></span>
-            <hr>
-          </div>
-          <!-- 上帝视角内容 -->
-          <div id="god_eye_content" class="main_text"></div>
-      </div>
-
-      <div class="header">
-          <h1>紧缚挑战模拟器</h1>
-          <h2 class="subsection">
-            <a href="https://liluoaikunbang.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/jin-fu-tiao-zhan-mo-ni-qi.html"  target="opentype">开发文档</a>，
-            <a href="http://jinfumoniqi.mikecrm.com/rFn74pM"  target="opentype">建议反馈</a>
-          </h2>
-      </div>
+  <div id="story" class="container">
+    <div id="controls" class="buttons">
+        <a id="restart" title="" href="#">重新开始</a>
+        <a id="god_eye">上帝视角</a>
     </div>
+  </div>
 
-    <div id="character_select">
-      <h2 class="subsection">角色创建</h2>
-      <div id="character_buttons" class="button">
-        <p>被绑者角色名:<input id="heroine_name" type="text" value="璃落" /></p>
-        <p>绑架者角色名:<input id="villain_name" type="text" value="沐沐" /></p>
-        <p><input id="character_submit_button" type="button" value="提交" class="button"></p>
-      </div>
-      <div id="character" class="main_text"></div>
+  <div class="header">
+        <h1>紧缚挑战模拟器</h1>
+        <h2 class="subsection">
+          <a href="https://liluoaikunbang.github.io/study_of_liluo/post/li-luo-de-mou-xian-fan-wai-pian-xu-ni-you-xi/jin-fu-tiao-zhan-mo-ni-qi.html"  target="opentype">开发文档</a>，
+          <a href="http://jinfumoniqi.mikecrm.com/rFn74pM"  target="opentype">建议反馈</a>
+        </h2>
     </div>
+  </div>
 
-    <div id="gift_select" style="display: none;">
-      <h2 calss="subsection">天赋筛选</h2>
-      <div id="gift_buttons" class="button">
-       <p><input  id="gift_button_1" type="button" value="随机两种天赋" class="button"></p>
-       <p><input  id="gift_button_2" type="button" value="随机四种天赋" class="button"></p>
-       <p><input  id="gift_button_3" type="button" value="随机六种天赋" class="button"></p>
+  <!-- 上帝视角弹窗主体 -->
+  <div id="god_eye_window" class="god_eye_window" style="display: none;">
+      <!-- 上帝视角标题 -->
+      <div id="god_eye_title" class="god_eye_title">
+        <span>上帝视角</span>
+        <span><a id="god_eye_close_button" href="javascript:void(0)">关闭</a></span>
+        <hr>
       </div>
-      <div id="gifts" class="main_text">
-      </div>
-    </div>
+      <!-- 上帝视角内容 -->
+      <div id="god_eye_content" class="main_text"></div>
+  </div>
 
-    <div id="clothes_select" style="display: none;">
-      <h2 calss="subsection">衣着选择</h2>
-      <div id="clothes_buttons" class="button">
-       <p><select id="clothes_select_button"></select></p>
-       <p><input  id="clothes_confirm_button" type="button" value="确定" class="button"></p>
-      </div>
-      <div id="clothes" class="main_text">
-      </div>
+  <div id="character_select">
+    <h2 class="subsection">角色创建</h2>
+    <div id="character_buttons" class="button">
+      <p>被绑者角色名:<input id="heroine_name" type="text" value="璃落" /></p>
+      <p>绑架者角色名:<input id="villain_name" type="text" value="沐沐" /></p>
+      <p>选择已有角色搭配:<select id="character_select_button"></select></p>
+      <p><input id="character_submit_button" type="button" value="提交" class="button"></p>
     </div>
+    <div id="character" class="main_text"></div>
+  </div>
 
-    <div id="tie_select" style="display: none;">
-      <h2 class="subsection">束缚选择</h2>
-      <div id="tie_buttons" class="button">
-        <p>
-          眼罩:
-          <input id="eye1" type="checkbox" name="eye" value="眼罩"/>
-        </p>
-        <p>
-          口球:
-          <input id="mouth1" type="radio" name="mouth" value="普通口球" />普通口球
-          <input id="mouth2" type="radio" name="mouth" value="马具型口球" />马具型口球
-          <input id="mouth3" type="radio" name="mouth" value="深喉口球" />深喉口球
-        </p>
-        <p>
-          手臂:
-          <input id="arm1" type="radio" name="arm" value="日式紧缚" />日式紧缚
-          <input id="arm2" type="radio" name="arm" value="五花大绑" />五花大绑
-          <input id="arm3" type="radio" name="arm" value="欧式紧缚" />欧式紧缚
-        </p>
-        <p>
-          手指：
-          <input id="finger1" type="checkbox" name="finger" value="袜子"/>袜子
-          <input id="finger2" type="checkbox" name="finger" value="胶带"/>胶带
-        </p>
-        <p>
-          双腿（脚踝必捆）：
-          <input id="leg1" type="checkbox" name="leg" value="捆绑膝盖上下"/>捆绑膝盖上下
-          <input id="leg2" type="checkbox" name="leg" value="捆绑大腿"/>捆绑大腿
-        </p>
-        <p>
-          身体:
-          <input id="body1" type="radio" name="body" value="股绳" />股绳
-          <input id="body2" type="radio" name="body" value="龟甲缚" />龟甲缚
-        </p>
-        <p>
-          姿势:
-          <input id="post1" type="radio" name="post" value="直立缚" />直立缚
-          <input id="post2" type="radio" name="post" value="海老缚" />海老缚
-          <input id="post3" type="radio" name="post" value="驷马" />驷马
-        </p>
-        <p>
-          <p><input  id="tie_confirm_button" type="button" value="确定" class="button"><p>
-        </p>
-      </div>
-      <div id="tie_functions" class="main_text"></div>
+  <div id="gift_select" style="display: none;">
+    <h2 calss="subsection">天赋筛选</h2>
+    <div id="gift_buttons" class="button">
+     <p><input  id="gift_button_1" type="button" value="随机两种天赋" class="button"></p>
+     <p><input  id="gift_button_2" type="button" value="随机四种天赋" class="button"></p>
+     <p><input  id="gift_button_3" type="button" value="随机六种天赋" class="button"></p>
     </div>
-
-    <div id="tight_select" style="display: none;">
-      <h2 class="subsection">是否继续收紧绳索</h2>
-      <div id="tight_buttons" class="button">
-       <p><input  id="tight_button_1" type="button" value="就这样吧(紧缚程度不变)" class="button"><p>
-       <p><input  id="tight_button_2" type="button" value="继续收紧(全部束缚值少量增加)" class="button"></p>
-       <p><input  id="tight_button_3" type="button" value="狠狠收紧(全部束缚值大量增加——逃出不可能)" class="button"></p>
-      </div>
-      <div id="tight_grade" class="main_text"></div>
+    <div id="gifts" class="main_text">
     </div>
+  </div>
 
-    <div id="event_tie" style="display: none;">
-      <h2 class="subsection">紧缚过程</h2>
-      <div id="event_tie_buttons" class="button">
-        <p><input  id="event_tie_button_1" type="button" value="开始紧缚" class="button"><p>
-      </div>
-      <div id="event_tie_content" class="main_text"></div>
+  <div id="clothes_select" style="display: none;">
+    <h2 calss="subsection">衣着选择</h2>
+    <div id="clothes_buttons" class="button">
+     <p><select id="clothes_select_button"></select></p>
+     <p><input  id="clothes_confirm_button" type="button" value="确定" class="button"></p>
     </div>
-
-    <div id="start_to_untie_buttons" class="button" style="display: none;">
-      <p><input  id="start_to_untie_button" type="button" value="开始脱缚" class="button"><p>
+    <div id="clothes" class="main_text">
     </div>
+  </div>
 
-    <div id="event_untie" style="display: none;">
-      <h2 class="subsection">脱缚过程</h2>
-      <div id="event_untie_content" class="main_text"></div>
-      <div id="event_untie_buttons" class="button">
-        <p><input  id="untie_button_1" type="button" value="挣扎眼部" class="button"><p>
-        <p><input  id="untie_button_2" type="button" value="挣扎嘴部" class="button"><p>
-        <p><input  id="untie_button_3" type="button" value="挣扎手臂" class="button"><p>
-        <p><input  id="untie_button_4" type="button" value="挣扎手指" class="button"><p>
-        <p><input  id="untie_button_5" type="button" value="挣扎双腿" class="button"><p>
-      </div>
+  <div id="tie_select" style="display: none;">
+    <h2 class="subsection">束缚选择</h2>
+    <div id="tie_buttons" class="button">
+      <p>
+        眼罩:
+        <input id="eye1" type="checkbox" name="eye" value="眼罩"/>
+      </p>
+      <p>
+        口球:
+        <input id="mouth1" type="radio" name="mouth" value="普通口球" />普通口球
+        <input id="mouth2" type="radio" name="mouth" value="马具型口球" />马具型口球
+        <input id="mouth3" type="radio" name="mouth" value="深喉口球" />深喉口球
+      </p>
+      <p>
+        手臂:
+        <input id="arm1" type="radio" name="arm" value="日式紧缚" />日式紧缚
+        <input id="arm2" type="radio" name="arm" value="五花大绑" />五花大绑
+        <input id="arm3" type="radio" name="arm" value="欧式紧缚" />欧式紧缚
+      </p>
+      <p>
+        手指：
+        <input id="finger1" type="checkbox" name="finger" value="袜子"/>袜子
+        <input id="finger2" type="checkbox" name="finger" value="胶带"/>胶带
+      </p>
+      <p>
+        双腿（脚踝必捆）：
+        <input id="leg1" type="checkbox" name="leg" value="捆绑膝盖上下"/>捆绑膝盖上下
+        <input id="leg2" type="checkbox" name="leg" value="捆绑大腿"/>捆绑大腿
+      </p>
+      <p>
+        身体:
+        <input id="body1" type="radio" name="body" value="股绳" />股绳
+        <input id="body2" type="radio" name="body" value="龟甲缚" />龟甲缚
+      </p>
+      <p>
+        姿势:
+        <input id="post1" type="radio" name="post" value="直立缚" />直立缚
+        <input id="post2" type="radio" name="post" value="海老缚" />海老缚
+        <input id="post3" type="radio" name="post" value="驷马" />驷马
+      </p>
+      <p>
+        <p><input  id="tie_confirm_button" type="button" value="确定" class="button"><p>
+      </p>
     </div>
+    <div id="tie_functions" class="main_text"></div>
+  </div>
 
-    <div id="final_evaluate" style="display: none;">
-      <h2 class="subsection">最终评分</h2>
-      <div id="final_evaluate_content" class="main_text"></div>
+  <div id="tight_select" style="display: none;">
+    <h2 class="subsection">是否继续收紧绳索</h2>
+    <div id="tight_buttons" class="button">
+     <p><input  id="tight_button_1" type="button" value="就这样吧(紧缚程度不变)" class="button"><p>
+     <p><input  id="tight_button_2" type="button" value="继续收紧(全部束缚值少量增加)" class="button"></p>
+     <p><input  id="tight_button_3" type="button" value="狠狠收紧(全部束缚值大量增加——逃出不可能)" class="button"></p>
     </div>
+    <div id="tight_grade" class="main_text"></div>
+  </div>
 
-    <script src="script.js"></script>
-    <script src="god_eye/god_eye.js"></script>
+  <div id="event_tie" style="display: none;">
+    <h2 class="subsection">紧缚过程</h2>
+    <div id="event_tie_buttons" class="button">
+      <p><input  id="event_tie_button_1" type="button" value="开始紧缚" class="button"><p>
+    </div>
+    <div id="event_tie_content" class="main_text"></div>
+  </div>
+
+  <div id="start_to_untie_buttons" class="button" style="display: none;">
+    <p><input  id="start_to_untie_button" type="button" value="开始脱缚" class="button"><p>
+  </div>
+
+  <div id="event_untie" style="display: none;">
+    <h2 class="subsection">脱缚过程</h2>
+    <div id="event_untie_content" class="main_text"></div>
+    <div id="event_untie_buttons" class="button">
+      <p><input  id="untie_button_1" type="button" value="挣扎眼部" class="button"><p>
+      <p><input  id="untie_button_2" type="button" value="挣扎嘴部" class="button"><p>
+      <p><input  id="untie_button_3" type="button" value="挣扎手臂" class="button"><p>
+      <p><input  id="untie_button_4" type="button" value="挣扎手指" class="button"><p>
+      <p><input  id="untie_button_5" type="button" value="挣扎双腿" class="button"><p>
+    </div>
+  </div>
+
+  <div id="final_evaluate" style="display: none;">
+    <h2 class="subsection">最终评分</h2>
+    <div id="final_evaluate_content" class="main_text"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="god_eye/god_eye.js"></script>
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="character_select.js"></script>
 </body>
 </html>

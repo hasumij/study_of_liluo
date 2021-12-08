@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>JS拼图游戏</title>
+<style>
+    body{
+        font-size:9pt;
+    }
+table{
+border-collapse: collapse;
+}
+input{
+    width:20px;
+}
+</style>
+</head>
+<body>
+    JS原创作品：JS拼图游戏<br>
+    注释完整， 面向对象<br>
+    转载请注明来自<a href="http://blog.csdn.net/sunxing007">http://blog.csdn.net/sunxing007</a><br>
+    <input type="text" id="lines" value='3'/>行<input type="text" id="cols" value='3'/>列 &nbsp;&nbsp; <button id="start"> 开 始 </button><br>
+<table id="board" border=1 cellspacing=0 cellpadding=0>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<img id='img' src="http://img.jb51.net/online/pintu/dog.jpg" style="" /><br>
+转载请注明来自<a href="http://blog.csdn.net/sunxing007">http://blog.csdn.net/sunxing007</a><br>
+</body>
+</html>
+<script>
+//ie7以下默认不缓存背景图像，造成延迟和闪烁，修正此bug.
+//（csdn网友wtcsy提供http://blog.csdn.net/wtcsy/）
+try{
+document.execCommand("BackgroundImageCache", false, true);
+}catch(e){alert(e)};
+    //辅助函数
+    function $(id){return document.getElementById(id)};
+    /*************************************************
+    * js拼图游戏 v1.6
+    * 作者 sunxing007
+    * 转载请注明来自http://blog.csdn.net/sunxing007
+    **************************************************/
+    var PicGame = {
+            //行数
+            x: 3,
+            //列数
+            y: 3,
+            //图片源
+            img: $('img'),
+            //单元格高度
+            cellHeight: 0,
+            //单元格宽度
+            cellWidth: 0,
+            //本游戏最主要的对象：表格，每个td对应着一个可以移动的小格子
+            board: $('board'),
+            //初始函数
+            init: function(){
+                        //确定拼图游戏的行数和列数
+                        this.x = $('lines').value>1?$('lines').value : 3;
+                        this.y = $('cols').value>1?$('cols').value : 3;
+                        //删除board原有的行
+                        while(this.board.rows.length>0){
+                                this.board.deleteRow(0);
+                        }
+                        //按照行数和列数重新构造board
+                        for(var i=0; i<this.x; i++){
+                                var tr = this.board.insertRow(-1);
+                                for(var j=0; j<this.y; j++){
+                                        var td=tr.insertCell(-1);
+                                }
+                        }
+                        //计算单元格高度和宽度
+                        this.cellHeight = this.img.height/this.x;
+                        this.cellWidth = this.img.width/this.y;
+                        //获取所有的td
+                        var tds = this.board.getElementsByTagName('td');
+                        //对每个td， 设置样式
+                     for(var i=0; i<tds.length-1; i++){
+                             tds[i].style.width = this.cellWidth;
+                             tds[i].style.height = this.cellHeight;
+                             tds[i].style.background = "url(" + this.img.src + ")";
+                             tds[i].style.border = "solid #ccc 1px";
+                             var currLine = parseInt(i/this.y);
+                             var currCol = i%this.y;
+                             //这里最重要，计算每个单元格的背景图的位置，使他们看起来像一幅图像
+                             tds[i].style.backgroundPositionX = -this.cellWidth * currCol;
+                             tds[i].style.backgroundPositionY = -this.cellHeight * currLine;
+                     }
+                     /** begin: 打乱排序*******************/
+                     /**
+                     *    打乱排序的算法是这样的：比如我当前是3*3布局，
+                     * 则我为每一个td产生一个目标位置，这些目标位置小于9且各不相同，
+                     * 然后把它们替换到那个地方。
+                     **/
+
+                     //目标位置序列
+                     var index = [];
+                     index[0] = Math.floor(Math.random()*(this.x*this.y));
+                     while(index.length<(this.x*this.y)){
+                     var num = Math.floor(Math.random()*(this.x*this.y));
+                     for(var i=0; i<index.length; i++){
+                     if(index[i]==num){
+                     break;
+                     }
+                     }
+                     if(i==index.length){
+                     index[index.length] = num;
+                     }
+                     //window.status = index;
+                     }
+                     var cloneTds = [];
+                     //把每个td克隆， 然后依据目标位置序列index，替换到目标位置
+                     for(var i=0; i<tds.length; i++){
+                     cloneTds.push(tds[i].cloneNode(true));
+                     }
+                     for(var i=0; i<index.length; i++){
+                     tds[i].parentNode.replaceChild(cloneTds[index[i]],tds[i]);
+                     }
+                     /** end: 打乱排序*********************/
+
+                     //为每个td添加onclick事件。
+                     tds = this.board.getElementsByTagName('td');
+                     for(var i=0; i<tds.length; i++){
+                             tds[i].onclick = function(){
+                             //被点击对象的坐标
+                         var row = this.parentNode.rowIndex;
+                         var col = this.cellIndex;
+                         //window.status = "row:" + row + " col:" + col;
+                         //空白方块的坐标
+                         var rowBlank = 0;
+                         var colBlank = 0;
+                         //reachable表示当前被点击的方块是否可移动
+                         var reachable = false;
+                         if(row+1<PicGame.x && PicGame.board.rows[row+1].cells[col].style.background == ''){
+                         rowBlank = row + 1;
+                         colBlank = col;
+                         reachable = true;
+                         //window.status +=" reachable! rowBlank: " + rowBlank + " colBlank:" + colBlank;
+                         }
+                         else if(row-1>=0 && PicGame.board.rows[row-1].cells[col].style.background == ''){
+                         rowBlank = row - 1;
+                         colBlank = col;
+                         reachable = true;
+                         //window.status +=" reachable! rowBlank: " + rowBlank + " colBlank:" + colBlank;
+                         }
+                         else if(col+1<PicGame.y && PicGame.board.rows[row].cells[col+1].style.background == ''){
+                         rowBlank = row;
+                         colBlank = col + 1;
+                         reachable = true;
+                         //window.status +=" reachable! rowBlank: " + rowBlank + " colBlank:" + colBlank;
+                         }
+                         else if(col-1>=0 && PicGame.board.rows[row].cells[col-1].style.background == ''){
+                         rowBlank = row;
+                         colBlank = col - 1;
+                         reachable = true;
+                         //window.status +=" reachable! rowBlank: " + rowBlank + " colBlank:" + colBlank;
+                         }
+                         else{
+                         //window.status +=" unreachable!";
+                         reachable = false;
+                         }
+                         //如果可移动，则把当前方块和空白方块交换
+                         if(reachable){
+                         var tmpBlankNode = PicGame.board.rows[rowBlank].cells[colBlank].cloneNode(true);
+                         //需要注意的是克隆对象丢失了onclick方法，所以要补上
+                         tmpBlankNode.onclick = arguments.callee;
+                         var tmpCurrNode = PicGame.board.rows[row].cells[col].cloneNode(true);
+                         tmpCurrNode.onclick = arguments.callee;
+                         PicGame.board.rows[rowBlank].cells[colBlank].parentNode.replaceChild(tmpCurrNode,PicGame.board.rows[rowBlank].cells[colBlank]);
+                         PicGame.board.rows[row].cells[col].parentNode.replaceChild(tmpBlankNode, PicGame.board.rows[row].cells[col]);
+                         }
+                         }
+                     }
+            }
+    };
+PicGame.init();
+$('start').onclick = function(){
+        PicGame.init();
+}
+</script> 
