@@ -1,3 +1,93 @@
+// ***************************************** 变量定义
+var heroine_name = ""
+var villain_name = ""
+character_array = ["角色创建完毕"]
+
+all_characters = ["", "沐沐绑璃落", "安宁绑香月"]
+
+var gift_number = 2
+var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", 
+			"天生丽质", "天生媚骨", "冷静头脑", "敏感身体", 
+			"娃娃脸", "口才", "抖M"]
+var gifts = []
+var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴"]
+
+var tie_post_array = ["直立缚", "海老缚", "驷马"]
+var tie_eye_array = ["", "眼罩"]
+var tie_mouth_array = ["普通口球", "马具型口球", "深喉口球"]
+var tie_arm_array = ["日式紧缚", "五花大绑", "欧式紧缚"]
+var tie_finger_array = ["袜子", "胶带"]
+var tie_leg_array = ["捆绑脚踝", "捆绑脚踝和膝盖上下", "捆绑脚踝，膝盖上下和大腿"]
+var tie_body_array = ["股绳", "龟甲缚"]
+var all_ties = []
+var tie_string = ""
+
+var tight_id = 1
+var all_tight = ["不变", "继续收紧", "狠狠收紧"]
+
+var all_event_tie = ["脱衣", "继续狠狠收紧"]
+var event_tie_array = []
+
+//脱缚能力值，敏感度
+var untie_mouth = 2
+var untie_eye = 5
+var untie_arm = 10
+var untie_finger = 1
+var untie_leg = 10
+var sensitivity = 1
+
+//束缚值，特殊姿势增量，松紧程度
+var tie_eye = 0
+var tie_mouth = 0
+var tie_arm = 0
+var tie_finger = 0
+var tie_leg = 0 //下身束缚值
+var tie_post = 0 //特殊姿势增量
+var tie_tightness = 1 //0-较松；1-正常；2-较紧；4-最紧
+
+//难度值
+var tie_difficulty = 0
+var untie_difficulty = 0
+var sensitivity_difficulty = 0
+var final_difficulty = 0
+
+//脱缚阶段
+var epoch = 0
+var epoch_max = 30
+var power = 200
+var pleasant = 0
+var pleasant_max = 100
+var final_evaluation = 0
+
+//特殊事件概率及状态
+var event_no_clothes_prob = 0 // 脱衣
+var event_no_clothes_able = true
+var event_no_clothes = false
+var event_string_prob = 0  //收紧
+var event_string_able = true
+var event_string = false
+
+var event_eye_free = true // 是否能够看见
+var event_mouth_free = false //嘴部是否自由
+var event_arm_free = false // 手臂是否自由
+var event_finger_free = false //手指是否自由
+var event_leg_free = false // 双腿是否自由
+
+var event_call_for_help_prob = 10 // 呼救
+var event_call_for_help_able = false
+var event_call_for_help = false
+var event_call_for_help_success_prob = 30  // 呼救出帮手或绑架者的概率
+var event_sudden_lose_prob = 5 // 突发收紧
+var event_sudden_lose_able = true
+var event_sudden_lose = false
+var event_very_cute_prob = 1 // 萌化
+var event_very_cute_able = true
+var event_very_cute = false
+var event_persuade_prob = 1 // 说服
+var event_persuade_able = false
+var event_persuade = false
+
+
 // ***************************************** 右上角函数
 var restart = document.getElementById("restart");
 restart.onclick = function() {
@@ -5,7 +95,61 @@ restart.onclick = function() {
 	window.location.reload();
 }
 
-try{
+
+// ***************************************** 角色创建
+function character_init() {
+	try {
+	character_select_button = document.getElementById("character_select_button");
+	for (i = 0; i < all_characters.length; i++) {
+		character_option = document.createElement("option")
+		character_option.innerHTML = all_characters[i]
+		character_option.value = all_characters[i]
+		character_select_button.appendChild(character_option)
+	}
+}
+	catch(err) {
+		window.alert(err)
+	}
+}
+
+character_init()
+
+
+var character_select_button = document.getElementById("character_select_button")
+character_select_button.onchange = function() {
+	character_select_index = document.getElementById("character_select_button").selectedIndex
+	if (character_select_index == 0) {
+		document.getElementById("heroine_name").value = ""
+		document.getElementById("villain_name").value = ""
+	} else if (character_select_index == 1) {
+		document.getElementById("heroine_name").value = "璃落"
+		document.getElementById("villain_name").value = "沐沐"
+	} else if (character_select_index == 2) {
+		document.getElementById("heroine_name").value = "香月"
+		document.getElementById("villain_name").value = "安宁"
+	}
+}
+
+
+var character_submit_button = document.getElementById("character_submit_button");
+character_submit_button.onclick = function(){
+	heroine_name = document.getElementById("heroine_name").value
+	villain_name = document.getElementById("villain_name").value
+	if (heroine_name == "" || villain_name == "") {
+		window.alert("主角名或绑匪名为空。")
+		return
+	}
+	character_array.push("被绑者角色名为" + heroine_name)
+	character_array.push("绑架者角色名为" + villain_name)
+	window.localStorage["heroine_name"] = heroine_name
+	window.localStorage["villain_name"] = villain_name
+
+	document.getElementById("character_buttons").style.display = "none";
+	document.getElementById("character").innerHTML = display_array(character_array);
+	document.getElementById("gift_select").style.display = ""
+}
+
+
 
 // ***************************************** 天赋选择
 function gift_select(gift_bumber){
@@ -72,6 +216,35 @@ gift_button_3.onclick = function(){
 
 
 // ***************************************** 衣着选择
+function clothes_display(clothes_id) {
+	if (clothes_id == 0) {
+		document.getElementById("clothes_introduction").innerHTML = display_array([
+			"可爱的学院风制服。",
+			"<img src='./my_images/clothes1.png' width='200' height='250'",
+			"图片来自百度"
+			])
+	} else if (clothes_id == 1) {
+		document.getElementById("clothes_introduction").innerHTML = display_array([
+			"女仆装原本只是从事女仆职业的女性所穿的服装。而随着女仆这种职业成为一种萌属性，女仆装这种服饰也成为一种萌属性，除了女仆穿着之外，部分非女仆的人物也常穿着女仆装，有的是出于个人着装喜好，有的是为了cosplay，有的是为了卖萌等。(萌娘百科)",
+			"<img src='./my_images/clothes2.png' width='200' height='250'",
+			"图片来自百度"
+			])
+	} else if (clothes_id == 2) {
+		document.getElementById("clothes_introduction").innerHTML = display_array([
+			"草绿色的连衣裙，搭配洁白的长筒袜，在风中稍显凌乱，更显清纯。",
+			"<img src='./my_images/clothes3.png' width='200' height='300'",
+			"图片来自百度"
+			])
+	} else if (clothes_id == 3) {
+		document.getElementById("clothes_introduction").innerHTML = display_array([
+			"乳贴有舒适、安全、时尚、便捷、美观、防走光等作用，搭配上各式束缚，更能衬托得" + heroine_name + "愈发性感。",
+			"<img src='./my_images/clothes4.png' width='200' height='250'",
+			"图片来自百度"
+			])
+	}
+}
+
+
 function clothes_init() {
 	clothes_select_button = document.getElementById("clothes_select_button");
 	for (i = 0; i < all_clothes.length; i++) {
@@ -80,7 +253,16 @@ function clothes_init() {
 		clothes_option.value = all_clothes[i]
 		clothes_select_button.appendChild(clothes_option)
 	}
+	clothes_display(0)
 }
+
+var clothes_select_button = document.getElementById("clothes_select_button")
+clothes_select_button.onchange = function() {
+	character_select_index = document.getElementById("clothes_select_button").selectedIndex
+	clothes_display(character_select_index)
+	window_scroll()
+}
+
 
 function clothes_select(clothes_id) {
 	document.getElementById("clothes_buttons").style.display = "none";
@@ -112,7 +294,6 @@ clothes_confirm_button.onclick = function(){
 // ***************************************** 束缚选择
 function tie_post_select() {
 	post = document.getElementsByName("post");
-	// document.getElementById("tie_functions").innerHTML = post[0].checked;
 	if (post[0].checked == true) {
 		tie_post += 0
 	} else if (post[1].checked == true) {
@@ -419,17 +600,12 @@ function start_to_untie_judge () {
 
 var start_to_untie_button = document.getElementById("start_to_untie_button");
 start_to_untie_button.onclick = function(){  
-	try{
 	document.getElementById("start_to_untie_buttons").style.display = "none";
 	tie_array = display_attributes_values()
 	document.getElementById("event_tie_content").innerHTML += display_array(display_attributes_values());
 	document.getElementById("event_untie").style.display = "";
 	start_to_untie_judge()
 	window_scroll()
-}
-	catch(err) {
-		window.alert(err)
-	}
 }
 
 
@@ -629,12 +805,6 @@ var untie_button_5 = document.getElementById("untie_button_5");
 untie_button_5.onclick = function(){  
 	result_judge(false, false, false, false, true)
 	window_scroll()
-}
-
-}
-
-catch(err) {
-	window.alert(err)
 }
 
 /*

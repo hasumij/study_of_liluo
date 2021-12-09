@@ -1,14 +1,14 @@
 /* 登陆框主体 */
 .god_eye_window{
     position: fixed;
-    width: 512px;
-    height: 284px;
+    width: 50%;
+    height: 50%;
     z-index: 9999;
     display: none;
     background-color: silver;
     /* 这里要注意绝对定位的盒子怎么在屏幕显示居中 */
     left: 50%;
-    margin-left: -256px;
+    margin-left: -350px;
     bottom: 20px;
     border: 1px solid gray;
     overflow-x:hidden;
