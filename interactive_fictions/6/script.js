@@ -5,6 +5,7 @@ restart.onclick = function() {
 	window.location.reload();
 }
 
+try{
 
 // ***************************************** 天赋选择
 function gift_select(gift_bumber){
@@ -286,7 +287,7 @@ function event_tie_action() {
 		event_tie_array.push(all_event_tie[1])
 	}
 	if (event_no_clothes == false && event_string == false) {
-		event_tie_array.push("无特殊事件")
+		event_tie_array.push("捆绑过程无特殊事件")
 	}
 }
 
@@ -304,7 +305,11 @@ function display_attributes_values() {
 	"腿部脱缚能力——" + untie_leg,
 	"特殊姿势增量——" + tie_post,
 	"敏感度:" + sensitivity,
+	"体力值:" + power,
 	"当前束缚值:",
+	]
+	if (tie_eye <= 0) {
+		tie_array = tie_array.concat([
 	"眼部束缚值——" + tie_eye,
 	"嘴部束缚值——" + tie_mouth,
 	"手臂束缚值——" + tie_arm,
@@ -315,7 +320,21 @@ function display_attributes_values() {
 	"敏感程度-难度值——" + sensitivity_difficulty,
 	"脱缚能力-难度值——" + untie_difficulty,
 	"最终难度值——" + final_difficulty
-	]
+	])
+	} else {
+		tie_array = tie_array.concat([
+	"眼前一片黑暗，无法看到束缚程度。",
+		])
+	}
+
+	tie_array = tie_array.concat([
+	"难度值:",
+	"束缚程度-难度值——" + tie_difficulty,
+	"敏感程度-难度值——" + sensitivity_difficulty,
+	"脱缚能力-难度值——" + untie_difficulty,
+	"最终难度值——" + final_difficulty
+	])
+	
 	return tie_array
 }
 
@@ -334,11 +353,8 @@ function untie_eye_action() {
 		document.getElementById("untie_button_1").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已重获光明</p>"
 		event_eye_free = true
-		tie_eye = 0
-	} else {
-		document.getElementById("untie_button_1").style.display = "none";
-		tie_eye = 0
 	}
+	tie_eye = 0
 }
 
 function untie_mouth_action() {
@@ -346,15 +362,10 @@ function untie_mouth_action() {
 		document.getElementById("untie_button_2").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱嘴部束缚</p>"
 		event_mouth_free = true
-		tie_mouth = 0
-		event_call_for_help_able = true
-		event_persuade_able = true
-	} else {
-		document.getElementById("untie_button_2").style.display = "none";
-		tie_mouth = 0
-		event_call_for_help_able = true
-		event_persuade_able = true
 	}
+	tie_mouth = 0
+	event_call_for_help_able = true
+	event_persuade_able = true
 }
 
 function untie_arm_action() {
@@ -362,11 +373,8 @@ function untie_arm_action() {
 		document.getElementById("untie_button_3").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚</p>"
 		event_arm_free = true
-		tie_arm = 0
-	} else {
-		document.getElementById("untie_button_3").style.display = "none";
-		tie_arm = 0
 	}
+	tie_arm = 0
 }
 
 function untie_finger_action() {
@@ -374,15 +382,10 @@ function untie_finger_action() {
 		document.getElementById("untie_button_4").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手指束缚</p>"
 		event_finger_free = true
-		tie_finger = 0
-		untie_leg += 2
-		untie_arm += 2
-	} else {
-		document.getElementById("untie_button_4").style.display = "none";
-		tie_finger = 0
-		untie_leg += 2
-		untie_arm += 2
 	}
+	tie_finger = 0
+	untie_leg += 10
+	untie_arm += 10
 }
 
 function untie_leg_action() {
@@ -390,11 +393,8 @@ function untie_leg_action() {
 		document.getElementById("untie_button_5").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱双腿束缚</p>"
 		event_leg_free = true
-		tie_leg = 0
-	} else {
-		document.getElementById("untie_button_5").style.display = "none";
-		tie_leg = 0
 	}
+	tie_leg = 0
 }
 
 
@@ -419,40 +419,38 @@ function start_to_untie_judge () {
 
 var start_to_untie_button = document.getElementById("start_to_untie_button");
 start_to_untie_button.onclick = function(){  
+	try{
 	document.getElementById("start_to_untie_buttons").style.display = "none";
+	tie_array = display_attributes_values()
 	document.getElementById("event_tie_content").innerHTML += display_array(display_attributes_values());
 	document.getElementById("event_untie").style.display = "";
 	start_to_untie_judge()
 	window_scroll()
 }
+	catch(err) {
+		window.alert(err)
+	}
+}
 
 
 function untie_judge() {
-	if (pleasant > pleasant_max) {
-		document.getElementById("event_untie_content").innerHTML += "快感到达极限，" + heroine_name + "忍不住达到高潮，逃脱失败。";
+	if (power <= 0) {
+		document.getElementById("event_untie_content").innerHTML = "<p>体力值耗尽，" + heroine_name + "没有挣脱束缚。</p>"
 		return false
 	}
 
-	if (tie_eye <= 0 && tie_mouth <= 0 && tie_arm <= 0 && tie_finger <= 0 && tie_leg <= 0) {
+	if (event_eye_free == true && event_mouth_free == true && event_arm_free == true && event_finger_free == true && event_leg_free == true) {
 		document.getElementById("event_untie_content").innerHTML += "所有部位解缚成功，成功逃脱。";
 		return true
 	}
 
-	if (tie_eye <= 0) {
-		untie_eye_action()
+	if (pleasant > pleasant_max) {
+		document.getElementById("event_untie_content").innerHTML += "快感到达极限，" + heroine_name + "忍不住达到高潮，体力值减半。";
+		power /= 2
+		pleasant = 0
 	}
-	if (tie_mouth <= 0) {
-		untie_mouth_action()
-	}
-	if (tie_arm <= 0) {
-		untie_arm_action()
-	}
-	if (tie_finger <= 0) {
-		untie_finger_action()
-	}
-	if (tie_leg <= 0) {
-		untie_leg_action()
-	}
+
+	start_to_untie_judge()
 
 	return "none"
 }
@@ -474,14 +472,21 @@ function untie_event_judge() {
 		}
 	}
 	if (event_sudden_lose_able == true && random(1, 100) <= event_sudden_lose_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——突发失败。" + heroine_name +
-		"挣扎的样子让监控中观察的" + villain_name + "控制不住，她不顾承诺强行将" + heroine_name + "带走了。</p>";
-		return false
+		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——突发加固。" + heroine_name +
+		"挣扎的样子让监控中观察的" + villain_name + "控制不住，她不顾承诺强行将" + heroine_name + "全身的束缚收紧了。</p>";
+		tie_eye *= 2
+		tie_mouth *= 2
+		tie_arm *= 2
+		tie_finger *= 2
+		tie_leg *= 2
+		return "none"
 	}
 	if (event_very_cute_able == true && random(1, 100) <= event_very_cute_prob) {
 		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——萌化。" + 
-		"由于" + heroine_name + "挣扎的样子太萌了，让" + villain_name + "产生了羞愧的感觉，" + villain_name + "最终决定放了" + heroine_name + "。</p>" 
-		return true
+		"由于" + heroine_name + "挣扎的样子太萌了，让" + villain_name + "忍不住与" + heroine_name + "贴贴，" + heroine_name + "达到了巅峰。</p>" 
+		power /= 2
+		pleasant = 0
+		return "none"
 	}
 	if (event_persuade_able == true && random(1, 100) <= event_persuade_prob) {
 		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——说服。" + 
@@ -499,7 +504,6 @@ function untie_event_judge() {
 
 
 function untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle) {
-
 	untie_judge_epoch = untie_judge()
 	if (untie_judge_epoch == true || untie_judge_epoch == false) {
 		return untie_judge_epoch
@@ -531,15 +535,28 @@ function untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggl
 			tie_leg = 0
 		}
 	}
+
 	pleasant += sensitivity*10
-	current_attribute_array = [
+	power -= 10
+
+	if (tie_eye <= 0) {
+		current_attribute_array = [
 	"眼部束缚值——" + tie_eye,
 	"嘴部束缚值——" + tie_mouth,
 	"手臂束缚值——" + tie_arm,
 	"手指束缚值——" + tie_finger,
 	"腿部束缚值——" + tie_leg,
-	"当前快感值——" + pleasant + "(" + pleasant_max + ")"
+	"当前快感值——" + pleasant + "(" + pleasant_max + ")",
+	"当前体力值——" + power,
 	];
+	} else {
+		current_attribute_array = [
+	heroine_name + "的眼前一片黑暗，无法看到当前身上的束缚情况。",
+	"当前快感值——" + pleasant + "(" + pleasant_max + ")",
+	"当前体力值——" + power,
+		]
+	}
+	
 	document.getElementById("event_untie_content").innerHTML += display_array(current_attribute_array);
 
 	untie_judge_epoch = untie_judge()
@@ -555,10 +572,6 @@ function untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggl
 }
 
 function untie_epoch(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle) {
-	if (epoch > epoch_max) {
-		document.getElementById("event_untie_content").innerHTML = "<p>脱缚时间到，" + heroine_name + "尚未挣脱束缚。</p>"
-		return false
-	}
 	epoch += 1
 	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
 	return untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle)
@@ -618,6 +631,11 @@ untie_button_5.onclick = function(){
 	window_scroll()
 }
 
+}
+
+catch(err) {
+	window.alert(err)
+}
 
 /*
 try {

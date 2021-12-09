@@ -41,9 +41,10 @@ var final_difficulty = 0
 
 //脱缚阶段
 var epoch = 0
-var epoch_max = 20
+var epoch_max = 30
+var power = 200
 var pleasant = 0
-var pleasant_max = epoch_max*10
+var pleasant_max = 100
 var final_evaluation = 0
 
 //特殊事件概率及状态

@@ -10,6 +10,7 @@ function god_eye_content_insert() {
     "特殊姿势增量——" + tie_post,
     "敏感度:" + sensitivity,
     "当前快感值:" + pleasant,
+    "当前体力值:" + power,
     "当前束缚值:",
     "眼部束缚值——" + tie_eye,
     "嘴部束缚值——" + tie_mouth,
@@ -20,7 +21,7 @@ function god_eye_content_insert() {
     "脱衣事件概率——" + event_no_clothes_prob + "%",
     "收紧事件概率——" + event_string_prob + "%",
     "呼救事件概率——" + event_call_for_help_prob + "%",
-    "突发失败事件概率——" + event_sudden_lose_prob + "%",
+    "突发收紧事件概率——" + event_sudden_lose_prob + "%",
     "萌化事件概率——" + event_very_cute_prob + "%",
     "说服事件概率——" + event_persuade_prob + "%"
     ]
