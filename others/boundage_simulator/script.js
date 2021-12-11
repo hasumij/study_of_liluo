@@ -529,8 +529,8 @@ function untie_eye_action() {
 		document.getElementById("untie_button_1").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已重获光明</p>"
 		event_eye_free = true
+		tie_eye = 0
 	}
-	tie_eye = 0
 }
 
 function untie_mouth_action() {
@@ -538,10 +538,10 @@ function untie_mouth_action() {
 		document.getElementById("untie_button_2").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱嘴部束缚</p>"
 		event_mouth_free = true
+		tie_mouth = 0
+		event_call_for_help_able = true
+		event_persuade_able = true
 	}
-	tie_mouth = 0
-	event_call_for_help_able = true
-	event_persuade_able = true
 }
 
 function untie_arm_action() {
@@ -549,8 +549,8 @@ function untie_arm_action() {
 		document.getElementById("untie_button_3").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚</p>"
 		event_arm_free = true
+		tie_arm = 0
 	}
-	tie_arm = 0
 }
 
 function untie_finger_action() {
@@ -558,10 +558,10 @@ function untie_finger_action() {
 		document.getElementById("untie_button_4").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手指束缚</p>"
 		event_finger_free = true
+		untie_leg += 10
+		untie_arm += 10
+		tie_finger = 0
 	}
-	tie_finger = 0
-	untie_leg += 10
-	untie_arm += 10
 }
 
 function untie_leg_action() {
@@ -569,8 +569,8 @@ function untie_leg_action() {
 		document.getElementById("untie_button_5").style.display = "none";
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱双腿束缚</p>"
 		event_leg_free = true
+		tie_leg = 0
 	}
-	tie_leg = 0
 }
 
 
