@@ -3,14 +3,14 @@ var heroine_name = ""
 var villain_name = ""
 character_array = ["角色创建完毕"]
 
-all_characters = ["", "沐沐绑璃落", "安宁绑香月"]
+all_characters = ["", "沐沐绑璃落", "安宁绑香月", "言兮绑花梦"]
 
 var gift_number = 2
-var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", 
-			"天生丽质", "天生媚骨", "冷静头脑", "敏感身体", 
-			"娃娃脸", "口才", "抖M", "强健体魄", "宅女"]
+var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", "天生丽质", "天生媚骨", "冷静头脑", "敏感身体", "娃娃脸", "口才", "抖M", 
+				"强健体魄", "宅女", "娇柔易推倒", "饥渴难耐", "高潮经验丰富", "性冷淡"]
 var gifts = []
-var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴", "全包乳胶衣", "单薄的泳装"]
+var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴", "全包乳胶衣", "单薄的泳装", "性感的旗袍", 
+				   "被诅咒的乳胶衣"]
 
 var tie_post_array = ["直立缚", "海老缚", "驷马"]
 var tie_eye_array = ["眼罩", "暗淡的美瞳"]
@@ -36,7 +36,8 @@ var untie_arm = 10
 var untie_finger = 10
 var untie_leg = 10
 var sensitivity = 1
-var power_consume = 10
+var power_consume = 10  //每轮体力消耗
+var power_consume_pleasure = 50
 
 //该部位是否可以脱缚
 var untie_eye_able = true
@@ -95,6 +96,8 @@ var event_very_cute = false
 var event_persuade_prob = 1 // 说服
 var event_persuade_able = false
 var event_persuade = false
+var event_tk_prob = 5 //挠痒
+var event_tk_able = true
 
 
 // ***************************************** 右上角函数
@@ -131,6 +134,9 @@ character_select_button.onchange = function() {
 	} else if (character_select_index == 2) {
 		document.getElementById("heroine_name").value = "香月"
 		document.getElementById("villain_name").value = "安宁"
+	} else if (character_select_index == 3) {
+		document.getElementById("heroine_name").value = "花梦"
+		document.getElementById("villain_name").value = "言兮"
 	}
 }
 
@@ -176,9 +182,9 @@ function gift_select(gift_bumber){
     	} else if (gift_index == 4) {
     		event_no_clothes_prob += 10
     	} else if (gift_index == 5) {
-    		sensitivity -= 0.2
+    		sensitivity -= 0.3
     	} else if (gift_index == 6) {
-    		sensitivity += 0.2
+    		sensitivity += 0.3
     	} else if (gift_index == 7) {
     		event_very_cute_prob += 5
     	} else if (gift_index == 8) {
@@ -193,6 +199,18 @@ function gift_select(gift_bumber){
     		power += 100
     	} else if (gift_index == 11) {
     		power -= 50
+    	} else if (gift_index == 12) {
+    		pleasant_max -= 30
+    		power_consume_pleasure += 20
+    	} else if (gift_index == 13) {
+    		event_no_clothes_prob += 5
+    		event_string_prob += 5
+    		sensitivity += 0.1
+    	} else if (gift_index == 14) {
+    		power_consume_pleasure /= 2
+    	} else if (gift_index == 15) {
+    		sensitivity -= 0.1
+    		pleasant_max += 30
     	}
     	all_gifts_mode = all_gifts_mode.filter(function(item) {
 		    return item != all_gifts_mode[gift_index];
@@ -257,6 +275,14 @@ function clothes_display(clothes_id) {
 		document.getElementById("clothes_introduction").innerHTML = display_array([
 			"性感的泳衣，完美展示着" + villain_name + "绝美性感的身材。",
 			])
+	} else if (clothes_id == 6) {
+		document.getElementById("clothes_introduction").innerHTML = display_array([
+			"性感的旗袍，能够完美体现女孩的身材优势。"
+			])
+	} else if (clothes_id == 7) {
+		document.getElementById("clothes_introduction").innerHTML = display_array([
+			"被诅咒的乳胶衣，外观上看起来就像一件普通的黑色紧身衣，但它也许有着某些特殊的效果"
+			])
 	}
 }
 
@@ -296,6 +322,15 @@ function clothes_select(clothes_id) {
 		event_sudden_lose_prob += 5
 		event_very_cute_prob -= 10
 		sensitivity += 0.3
+	} else if (clothes_id == 6) {
+		event_no_clothes_prob += 5
+		event_string_prob += 5
+		event_sudden_lose_prob += 5
+		event_very_cute_prob -= 5
+	} else if (clothes_id == 7) {
+		sensitivity += 0.3
+		event_sudden_lose_prob += 10
+		event_tk_prob += 10
 	}
 	document.getElementById("clothes").innerHTML = heroine_name + "的服装为：" + all_clothes[clothes_id];
 	document.getElementById("tie_select").style.display = "";
@@ -703,79 +738,58 @@ event_tie_button_1.onclick = function(){
 
 
 // ***************************************** 脱缚过程和最终评价
-function untie_eye_action() {
-	if (event_eye_free == false) {
-		document.getElementById("untie_button_1").style.display = "none";
-		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已重获光明</p>"
-		event_eye_free = true
-		tie_eye = 0
-	}
-}
-
-function untie_mouth_action() {
-	if (event_eye_free == false) {
-		document.getElementById("untie_button_2").style.display = "none";
-		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱嘴部束缚</p>"
-		event_mouth_free = true
-		tie_mouth = 0
-		event_call_for_help_able = true
-		event_persuade_able = true
-	}
-}
-
-function untie_arm_action() {
-	if (event_eye_free == false) {
-		document.getElementById("untie_button_3").style.display = "none";
-		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚，开始解开其他束缚</p>"
-		event_arm_free = true
-		tie_arm = 0
-		untie_eye *= 3
-		untie_eye_able = true
-		untie_mouth *= 3
-		untie_mouth_able = true
-		untie_finger *= 3
-		untie_finger_able = true
-		untie_leg *= 3
-		untie_leg_able = true
-	}
-}
-
-function untie_finger_action() {
-	if (event_finger_free == false) {
-		document.getElementById("untie_button_4").style.display = "none";
-		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手指束缚</p>"
-		event_finger_free = true
-		untie_leg += 10
-		untie_arm += 10
-		tie_finger = 0
-	}
-}
-
-function untie_leg_action() {
-	if (event_leg_free == false) {
-		document.getElementById("untie_button_5").style.display = "none";
-		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱双腿束缚</p>"
-		event_leg_free = true
-		tie_leg = 0
-	}
-}
-
-
 function start_to_untie_judge() {
 	if (tie_eye <= 0) {
-		untie_eye_action()
+		if (event_eye_free == false) {
+			document.getElementById("untie_button_1").style.display = "none";
+			document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已重获光明</p>"
+			event_eye_free = true
+			tie_eye = 0
+		}
 	}
 	if (tie_mouth <= 0) {
-		untie_mouth_action()
+		if (event_mouth_free == false) {
+			document.getElementById("untie_button_2").style.display = "none";
+			document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱嘴部束缚</p>"
+			event_mouth_free = true
+			tie_mouth = 0
+			event_call_for_help_able = true
+			event_persuade_able = true
+		}
 	}
 	if (tie_arm <= 0) {
-		untie_arm_action()
+		if (event_arm_free == false) {
+			document.getElementById("untie_button_3").style.display = "none";
+			document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚，开始解开其他束缚</p>"
+			event_arm_free = true
+			tie_arm = 0
+			untie_eye *= 3
+			untie_eye_able = true
+			untie_mouth *= 3
+			untie_mouth_able = true
+			untie_finger *= 3
+			untie_finger_able = true
+			untie_leg *= 3
+			untie_leg_able = true
+		}
 	}
 	if (tie_finger <= 0) {
-		untie_finger_action()
+		if (event_finger_free == false) {
+			document.getElementById("untie_button_4").style.display = "none";
+			document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手指束缚</p>"
+			event_finger_free = true
+			untie_leg += 10
+			untie_arm += 10
+			tie_finger = 0
+		}
 	}
 	if (tie_leg <= 0) {
-		untie_leg_action()
+		if (event_leg_free == false) {
+		document.getElementById("untie_button_5").style.display = "none";
+			document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱双腿束缚</p>"
+			event_leg_free = true
+			tie_leg = 0
+		}
 	}
 }
 
@@ -826,6 +840,11 @@ function untie_judge() {
 		return false
 	}
 
+	if (epoch >= epoch_max) {
+		document.getElementById("event_untie_content").innerHTML = "<p>脱缚时间到，" + heroine_name + "没有挣脱束缚。</p>"
+		return false
+	}
+
 	if (event_eye_free == true && event_mouth_free == true && event_arm_free == true && event_finger_free == true && event_leg_free == true) {
 		document.getElementById("event_untie_content").innerHTML += "所有部位解缚成功，成功逃脱。";
 		return true
@@ -833,7 +852,7 @@ function untie_judge() {
 
 	if (pleasant > pleasant_max) {
 		document.getElementById("event_untie_content").innerHTML += "快感到达极限，" + heroine_name + "忍不住达到高潮，体力值减半。";
-		power /= 2
+		power -= power_consume_pleasure
 		pleasant = 0
 	}
 
@@ -880,6 +899,13 @@ function untie_event_judge() {
 		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——说服。" + 
 		"由于" + heroine_name + "晓之以理动之以情，" + villain_name + "被" + heroine_name + "成功说动了，最终决定放了" + heroine_name + "。</p>" 
 		return true
+	}
+	if (event_tk_able == true && random(1, 100) <= event_tk_prob) {
+		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——挠痒。" + 
+		villain_name + "忍不住将手伸向" + heroine_name + "的脚丫，" + heroine_name + "被阵阵钻心的痒感刺激的无力挣扎。</p>" 
+		pleasant += 20
+		power -= 10
+		return "none"
 	}
 
 	return "none"
