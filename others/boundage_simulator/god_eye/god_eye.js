@@ -11,6 +11,7 @@ function god_eye_content_insert() {
     "敏感度:" + sensitivity,
     "当前快感值:" + pleasant,
     "当前体力值:" + power,
+    "每轮脱缚消耗体力值:" + power_consume,
     "当前束缚值:",
     "眼部束缚值——" + tie_eye,
     "嘴部束缚值——" + tie_mouth,

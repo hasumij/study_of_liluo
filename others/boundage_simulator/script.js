@@ -8,15 +8,15 @@ all_characters = ["", "沐沐绑璃落", "安宁绑香月"]
 var gift_number = 2
 var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", 
 			"天生丽质", "天生媚骨", "冷静头脑", "敏感身体", 
-			"娃娃脸", "口才", "抖M"]
+			"娃娃脸", "口才", "抖M", "强健体魄", "宅女"]
 var gifts = []
-var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴"]
+var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴", "全包乳胶衣", "单薄的泳装"]
 
 var tie_post_array = ["直立缚", "海老缚", "驷马"]
 var tie_eye_array = ["眼罩", "暗淡的美瞳"]
 var tie_mouth_array = ["普通口球", "马具型口球", "深喉口球"]
-var tie_arm_array = ["日式紧缚", "五花大绑", "欧式紧缚"]
-var tie_finger_array = ["袜子", "胶带", "拇指铐"]
+var tie_arm_array = ["日式紧缚", "五花大绑", "欧式紧缚", "后手观音"]
+var tie_finger_array = ["袜子", "胶带", "拇指铐", "皮革无指手套"]
 var tie_leg_array = ["捆绑脚踝", "捆绑脚踝和膝盖上下", "捆绑脚踝，膝盖上下和大腿"]
 var tie_body_array = ["股绳", "龟甲缚"]
 var tie_reinforce_array = ["", "多层丝袜包裹"]
@@ -36,6 +36,14 @@ var untie_arm = 10
 var untie_finger = 10
 var untie_leg = 10
 var sensitivity = 1
+var power_consume = 10
+
+//该部位是否可以脱缚
+var untie_eye_able = true
+var untie_mouth_able = true
+var untie_arm_able = true
+var untie_finger_able = true
+var untie_leg_able = true
 
 //束缚值，特殊姿势增量，松紧程度
 var tie_eye = 0
@@ -181,6 +189,10 @@ function gift_select(gift_bumber){
     		untie_finger -= 2
     		untie_arm -= 2
     		untie_leg -= 2
+    	} else if (gift_index == 10) {
+    		power += 100
+    	} else if (gift_index == 11) {
+    		power -= 50
     	}
     	all_gifts_mode = all_gifts_mode.filter(function(item) {
 		    return item != all_gifts_mode[gift_index];
@@ -237,6 +249,14 @@ function clothes_display(clothes_id) {
 			"<img src='./my_images/clothes4.png' width='200' height='250'",
 			"图片来自百度"
 			])
+	} else if (clothes_id == 4) {
+		document.getElementById("clothes_introduction").innerHTML = display_array([
+			"包裹着" + heroine_name + "全身的黑色性感乳胶衣，只在鼻子处留有小小的开口。",
+			])
+	} else if (clothes_id == 5) {
+		document.getElementById("clothes_introduction").innerHTML = display_array([
+			"性感的泳衣，完美展示着" + villain_name + "绝美性感的身材。",
+			])
 	}
 }
 
@@ -266,8 +286,16 @@ function clothes_select(clothes_id) {
 	} else if (clothes_id == 2) {
 		sensitivity -= 0.2
 	} else if (clothes_id == 3) {
-		sensitivity += 0.2
+		sensitivity += 0.5
 		event_very_cute_able = false
+	} else if (clothes_id == 4) {
+		untie_eye_able = false
+		tie_eye += 30
+		power_consume += 5
+	} else if (clothes_id == 5) {
+		event_sudden_lose_prob += 5
+		event_very_cute_prob -= 10
+		sensitivity += 0.3
 	}
 	document.getElementById("clothes").innerHTML = heroine_name + "的服装为：" + all_clothes[clothes_id];
 	document.getElementById("tie_select").style.display = "";
@@ -288,15 +316,18 @@ function tie_post_select() {
 	post = document.getElementsByName("post");
 	if (post[0].checked == true) {
 		tie_post += 0
+		tie_string += villain_name + "准备使用直立后手缚捆绑" + heroine_name
 	} else if (post[1].checked == true) {
 		untie_arm -= 2
 		untie_leg -= 2
 		sensitivity += 0.1
 		tie_post += 70
+		tie_string += villain_name + "准备使用桃缚捆绑" + heroine_name
 	} else if (post[2].checked == true) {
 		untie_arm -= 3
 		untie_leg -= 3
 		tie_post += 100
+		tie_string += villain_name + "准备使用驷马缚捆绑" + heroine_name
 	}
 }
 
@@ -348,6 +379,8 @@ function tie_select_display(tie_id, tie_select_id) {
 			document.getElementById("tie_introduction").innerHTML = "传统的绑犯人的方法，确保紧缚在背后的双手纹丝不动。"
 		} else if (tie_select_id == 2) {
 			document.getElementById("tie_introduction").innerHTML = "后手直臂缚，从手腕到手肘直到大臂的牢固紧缚。"
+		} else if (tie_select_id == 3) {
+			document.getElementById("tie_introduction").innerHTML = "手肘并拢的极限后手观音缚，最为严厉的手臂绑法。"
 		}
 	} else if (tie_id == 3) {
 		if (tie_select_id == 0) {
@@ -356,6 +389,8 @@ function tie_select_display(tie_id, tie_select_id) {
 			document.getElementById("tie_introduction").innerHTML = "用胶带将手指缠裹成两个小球，难以挣脱。"
 		} else if (tie_select_id == 2) {
 			document.getElementById("tie_introduction").innerHTML = "可以铐住大拇指的拇指铐。"
+		} else if (tie_select_id == 3) {
+			document.getElementById("tie_introduction").innerHTML = "彻底拘束手指的皮革无指手套"
 		}
 	} else if (tie_id == 4) {
 		if (tie_select_id == 0) {
@@ -435,7 +470,8 @@ function tie_select(tie_id, tie_select_id) {
 			tie_eye += 20
 			tie_string += villain_name + "给" + heroine_name + "戴上了眼罩，"
 		} else if (tie_select_id == 1) {
-			tie_eye += 10000
+			untie_eye_able = false
+			tie_eye += 10
 			tie_string += villain_name + "给" + heroine_name + "戴上了难以取下的不透光隐形眼镜，"
 		}
 	} else if (tie_id == 1) {
@@ -465,6 +501,11 @@ function tie_select(tie_id, tie_select_id) {
 			tie_arm += 100
 			untie_arm -= 2
 			tie_string += villain_name + "用欧式紧缚的方式将" + heroine_name + "的双手捆绑了起来，"
+		} else if (tie_select_id == 3) {
+			tie_arm += 200
+			untie_arm -= 3
+			untie_finger -= 1
+			tie_string += villain_name + "将" + heroine_name + "捆成了极限的后手观音姿势，"
 		}
 	} else if (tie_id == 3) {
 		if (tie_select_id == 0) {
@@ -477,6 +518,10 @@ function tie_select(tie_id, tie_select_id) {
 			tie_finger += 30
 			untie_finger -= 2
 			tie_string += villain_name + "给" + heroine_name + "的双手拇指锁到了指铐之中，并且将钥匙扔到了附近，"
+		} else if (tie_select_id == 3) {
+			untie_finger_able = false
+			tie_finger += 100
+			tie_string += villain_name + "将" + heroine_name + "的双手锁入了一个皮革无指手套之中。"
 		}
 	} else if (tie_id == 4) {
 		if (tie_select_id == 0) {
@@ -514,6 +559,7 @@ tie_confirm_button.onclick = function() {
 	document.getElementById("tie_buttons").style.display = "none";
 
 	tie_post_select();
+
 	eye_select_index = document.getElementById("eye_select_button").selectedIndex
 	tie_select(0, eye_select_index)
 	mouth_select_index = document.getElementById("mouth_select_button").selectedIndex
@@ -526,6 +572,8 @@ tie_confirm_button.onclick = function() {
 	tie_select(4, leg_select_index)
 	body_select_index = document.getElementById("body_select_button").selectedIndex
 	tie_select(5, body_select_index)
+	reinforce_select_index = document.getElementById("reinforce_select_button").selectedIndex
+	tie_select(6, reinforce_select_index)
 
 	document.getElementById("tie_functions").innerHTML = tie_string;
 	document.getElementById("tight_select").style.display = "";
@@ -612,6 +660,7 @@ function display_attributes_values() {
 	"特殊姿势增量——" + tie_post,
 	"敏感度:" + sensitivity,
 	"体力值:" + power,
+	"每轮脱缚的体力消耗" + power_consume,
 	"当前束缚值:",
 	]
 	if (tie_eye <= 0) {
@@ -680,10 +729,14 @@ function untie_arm_action() {
 		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚，开始解开其他束缚</p>"
 		event_arm_free = true
 		tie_arm = 0
-		tie_eye = 0
-		tie_mouth = 0
-		tie_finger = 0
-		tie_leg = 0
+		untie_eye *= 3
+		untie_eye_able = true
+		untie_mouth *= 3
+		untie_mouth_able = true
+		untie_finger *= 3
+		untie_finger_able = true
+		untie_leg *= 3
+		untie_leg_able = true
 	}
 }
 
@@ -708,7 +761,7 @@ function untie_leg_action() {
 }
 
 
-function start_to_untie_judge () {
+function start_to_untie_judge() {
 	if (tie_eye <= 0) {
 		untie_eye_action()
 	}
@@ -726,6 +779,34 @@ function start_to_untie_judge () {
 	}
 }
 
+function able_to_untie_judge() {
+	if (untie_eye_able == false) {
+		document.getElementById("untie_button_1").style.display = "none";
+	} else {
+		document.getElementById("untie_button_1").style.display = "";
+	}
+	if (untie_mouth_able == false) {
+		document.getElementById("untie_button_2").style.display = "none";
+	} else {
+		document.getElementById("untie_button_2").style.display = "";
+	}
+	if (untie_arm_able == false) {
+		document.getElementById("untie_button_3").style.display = "none";
+	} else {
+		document.getElementById("untie_button_3").style.display = "";
+	}
+	if (untie_finger_able == false) {
+		document.getElementById("untie_button_4").style.display = "none";
+	} else {
+		document.getElementById("untie_button_4").style.display = "";
+	}
+	if (untie_leg_able == false) {
+		document.getElementById("untie_button_5").style.display = "none";
+	} else {
+		document.getElementById("untie_button_5").style.display = "";
+	}
+}
+
 
 var start_to_untie_button = document.getElementById("start_to_untie_button");
 start_to_untie_button.onclick = function(){  
@@ -734,6 +815,7 @@ start_to_untie_button.onclick = function(){
 	document.getElementById("event_tie_content").innerHTML += display_array(display_attributes_values());
 	document.getElementById("event_untie").style.display = "";
 	start_to_untie_judge()
+	able_to_untie_judge()
 	window_scroll()
 }
 
@@ -756,6 +838,7 @@ function untie_judge() {
 	}
 
 	start_to_untie_judge()
+	able_to_untie_judge()
 
 	return "none"
 }
@@ -799,11 +882,6 @@ function untie_event_judge() {
 		return true
 	}
 
-	if (event_arm_free == true) {
-		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "成功解开了其他拘束，逃离了这里。</p>"
-		return true
-	}
-
 	return "none"
 }
 
@@ -842,7 +920,7 @@ function untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggl
 	}
 
 	pleasant += sensitivity*10
-	power -= 10
+	power -= power_consume
 
 	if (tie_eye <= 0) {
 		current_attribute_array = [
