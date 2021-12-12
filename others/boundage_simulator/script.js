@@ -13,12 +13,13 @@ var gifts = []
 var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴"]
 
 var tie_post_array = ["直立缚", "海老缚", "驷马"]
-var tie_eye_array = ["", "眼罩"]
+var tie_eye_array = ["眼罩", "暗淡的美瞳"]
 var tie_mouth_array = ["普通口球", "马具型口球", "深喉口球"]
 var tie_arm_array = ["日式紧缚", "五花大绑", "欧式紧缚"]
-var tie_finger_array = ["袜子", "胶带"]
+var tie_finger_array = ["袜子", "胶带", "拇指铐"]
 var tie_leg_array = ["捆绑脚踝", "捆绑脚踝和膝盖上下", "捆绑脚踝，膝盖上下和大腿"]
 var tie_body_array = ["股绳", "龟甲缚"]
+var tie_reinforce_array = ["", "多层丝袜包裹"]
 var all_ties = []
 var tie_string = ""
 
@@ -29,10 +30,10 @@ var all_event_tie = ["脱衣", "继续狠狠收紧"]
 var event_tie_array = []
 
 //脱缚能力值，敏感度
-var untie_mouth = 2
-var untie_eye = 5
+var untie_mouth = 10
+var untie_eye = 10
 var untie_arm = 10
-var untie_finger = 1
+var untie_finger = 10
 var untie_leg = 10
 var sensitivity = 1
 
@@ -54,20 +55,20 @@ var final_difficulty = 0
 //脱缚阶段
 var epoch = 0
 var epoch_max = 30
-var power = 200
+var power = 300
 var pleasant = 0
 var pleasant_max = 100
 var final_evaluation = 0
 
 //特殊事件概率及状态
-var event_no_clothes_prob = 0 // 脱衣
+var event_no_clothes_prob = 5 // 脱衣
 var event_no_clothes_able = true
 var event_no_clothes = false
-var event_string_prob = 0  //收紧
+var event_string_prob = 5  //收紧
 var event_string_able = true
 var event_string = false
 
-var event_eye_free = true // 是否能够看见
+var event_eye_free = false // 是否能够看见
 var event_mouth_free = false //嘴部是否自由
 var event_arm_free = false // 手臂是否自由
 var event_finger_free = false //手指是否自由
@@ -154,14 +155,14 @@ function gift_select(gift_bumber){
     	var gift_index = Math.floor((Math.random()*all_gifts_mode.length));
     	gifts.push(all_gifts_mode[gift_index]);
     	if (gift_index == 0) {
-    		untie_mouth += 2
+    		untie_mouth += 5
     	} else if (gift_index == 1) {
-    		untie_finger += 2
-    		untie_arm += 2
+    		untie_finger += 5
+    		untie_arm += 5
     	} else if (gift_index == 2) {
-    		untie_finger += 2
-    		untie_arm += 2
-    		untie_leg += 2
+    		untie_finger += 5
+    		untie_arm += 5
+    		untie_leg += 5
     	} else if (gift_index == 3) {
     		event_sudden_lose_prob += 5
     	} else if (gift_index == 4) {
@@ -175,11 +176,11 @@ function gift_select(gift_bumber){
     	} else if (gift_index == 8) {
     		event_persuade_prob += 5
     	} else if (gift_index == 9) {
-    		untie_eye -= 1
-    		untie_mouth -= 1
-    		untie_finger -= 1
-    		untie_arm -= 1
-    		untie_leg -= 1
+    		untie_eye -= 2
+    		untie_mouth -= 2
+    		untie_finger -= 2
+    		untie_arm -= 2
+    		untie_leg -= 2
     	}
     	all_gifts_mode = all_gifts_mode.filter(function(item) {
 		    return item != all_gifts_mode[gift_index];
@@ -242,12 +243,7 @@ function clothes_display(clothes_id) {
 
 function clothes_init() {
 	clothes_select_button = document.getElementById("clothes_select_button");
-	for (i = 0; i < all_clothes.length; i++) {
-		clothes_option = document.createElement("option")
-		clothes_option.innerHTML = all_clothes[i]
-		clothes_option.value = all_clothes[i]
-		clothes_select_button.appendChild(clothes_option)
-	}
+	options_init(clothes_select_button, all_clothes)
 	clothes_display(0)
 }
 
@@ -283,6 +279,7 @@ var clothes_confirm_button = document.getElementById("clothes_confirm_button");
 clothes_confirm_button.onclick = function(){  
 	clothes_id = document.getElementById("clothes_select_button").selectedIndex;
     clothes_select(clothes_id);
+    tie_select_init();
 }
 
 
@@ -292,96 +289,223 @@ function tie_post_select() {
 	if (post[0].checked == true) {
 		tie_post += 0
 	} else if (post[1].checked == true) {
-		untie_arm -= 1
+		untie_arm -= 2
 		untie_leg -= 2
 		sensitivity += 0.1
-		tie_post += 50
+		tie_post += 70
 	} else if (post[2].checked == true) {
-		untie_arm -= 4
-		untie_leg -= 4
-		tie_post += 80
+		untie_arm -= 3
+		untie_leg -= 3
+		tie_post += 100
 	}
 }
 
 
-function tie_eye_select() {
-	eye = document.getElementsByName("eye");
-	if (eye[0].checked == true) {
-		tie_eye += 10
-		event_eye_free = false
-		tie_string += villain_name + "给" + heroine_name + "戴上了眼罩，"
+function tie_select_init() {
+	eye_select_button = document.getElementById("eye_select_button");
+	options_init(eye_select_button, tie_eye_array)
+
+	mouth_select_button = document.getElementById("mouth_select_button")
+	options_init(mouth_select_button, tie_mouth_array)
+
+	arm_select_button = document.getElementById("arm_select_button")
+	options_init(arm_select_button, tie_arm_array)
+
+	finger_select_button = document.getElementById("finger_select_button")
+	options_init(finger_select_button, tie_finger_array)
+
+	leg_select_button = document.getElementById("leg_select_button")
+	options_init(leg_select_button, tie_leg_array)
+
+	body_select_button = document.getElementById("body_select_button")
+	options_init(body_select_button, tie_body_array)
+
+	reinforce_select_button = document.getElementById("reinforce_select_button")
+	options_init(reinforce_select_button, tie_reinforce_array)
+
+	tie_select_display(0, 0);
+}
+
+function tie_select_display(tie_id, tie_select_id) {
+	if (tie_id == 0) {
+		if (tie_select_id == 0) {
+			document.getElementById("tie_introduction").innerHTML = "不透光的黑色眼罩，保证眼前一片黑暗。"
+		} else if (tie_select_id == 1) {
+			document.getElementById("tie_introduction").innerHTML = "暗淡的美瞳，不透光，手臂自由前无法取下。"
+		}
+	} else if (tie_id == 1) {
+		if (tie_select_id == 0) {
+			document.getElementById("tie_introduction").innerHTML = "普通的带孔口球。"
+		} else if (tie_select_id == 1) {
+			document.getElementById("tie_introduction").innerHTML = "马具型口球，多重皮带加固，更牢固更紧致。"
+		} else if (tie_select_id == 2) {
+			document.getElementById("tie_introduction").innerHTML = "深喉口球，直插入咽喉，带来极大刺激。"
+		}
+	} else if (tie_id == 2) {
+		if (tie_select_id == 0) {
+			document.getElementById("tie_introduction").innerHTML = "相对舒适但依然牢固的捆缚方法。"
+		} else if (tie_select_id == 1) {
+			document.getElementById("tie_introduction").innerHTML = "传统的绑犯人的方法，确保紧缚在背后的双手纹丝不动。"
+		} else if (tie_select_id == 2) {
+			document.getElementById("tie_introduction").innerHTML = "后手直臂缚，从手腕到手肘直到大臂的牢固紧缚。"
+		}
+	} else if (tie_id == 3) {
+		if (tie_select_id == 0) {
+			document.getElementById("tie_introduction").innerHTML = "用袜子套在手指上，简单的限制手指自由的方法。"
+		} else if (tie_select_id == 1) {
+			document.getElementById("tie_introduction").innerHTML = "用胶带将手指缠裹成两个小球，难以挣脱。"
+		} else if (tie_select_id == 2) {
+			document.getElementById("tie_introduction").innerHTML = "可以铐住大拇指的拇指铐。"
+		}
+	} else if (tie_id == 4) {
+		if (tie_select_id == 0) {
+			document.getElementById("tie_introduction").innerHTML = "用绳索将脚踝紧紧捆缚起来。"
+		} else if (tie_select_id == 1) {
+			document.getElementById("tie_introduction").innerHTML = "除了脚踝之外，绳索继续捆绑至膝盖上下。"
+		} else if (tie_select_id == 2) {
+			document.getElementById("tie_introduction").innerHTML = "绳索完全捆绑了脚踝，膝盖上下和大腿。"
+		}
+	} else if (tie_id == 5) {
+		if (tie_select_id == 0) {
+			document.getElementById("tie_introduction").innerHTML = "紧紧勒入下体的股绳，随着挣扎不断引起刺激。"
+		} else if (tie_select_id == 1) {
+			document.getElementById("tie_introduction").innerHTML = "上面刺激胸部，下面刺激下体的龟甲缚。"
+		}
+	} else if (tie_id == 6) {
+		if (tie_select_id == 0) {
+			document.getElementById("tie_introduction").innerHTML = ""
+		} else if (tie_select_id == 1) {
+			document.getElementById("tie_introduction").innerHTML = "多重丝袜包裹，从外部继续加固束缚。"
+		}
 	}
 }
 
-function tie_mouth_select() {
-	mouth = document.getElementsByName("mouth");
-	if (mouth[0].checked == true) {
-		tie_mouth += 10;
-		tie_string += villain_name + "给" + heroine_name + "戴上了口球，"
-	} else if (mouth[1].checked == true) {
-		tie_mouth += 30;
-		event_call_for_help_prob += 5;
-		tie_string += villain_name + "给" + heroine_name + "戴上了马具型口球，"
-	} else if (mouth[2].checked == true) {
-		tie_mouth += 20;
-		event_call_for_help_prob -= 5
-		sensitivity -= 0.1
-		tie_string += villain_name + "给" + heroine_name + "戴上了深喉口球，"
-	}
+var eye_select_button = document.getElementById("eye_select_button")
+eye_select_button.onchange = function() {
+	eye_select_index = document.getElementById("eye_select_button").selectedIndex
+	tie_select_display(0, eye_select_index)
+	window_scroll()
 }
 
-function tie_finger_select() {
-	finger = document.getElementsByName("finger");
-	if (finger[0].checked == true) {
-		tie_finger += 1
-		tie_string += villain_name + "给" + heroine_name + "的小手上分别套上几双棉袜，"
-	}
-	if (finger[1].checked == true) {
-		tie_finger += 2
-		tie_string += villain_name + "用胶带将" + heroine_name + "的两只手分别握拳缠裹成两个小球，"
-	}
+var mouth_select_button = document.getElementById("mouth_select_button")
+mouth_select_button.onchange = function() {
+	mouth_select_index = document.getElementById("mouth_select_button").selectedIndex
+	tie_select_display(1, mouth_select_index)
+	window_scroll()
 }
 
-function tie_arm_select() {
-	arm = document.getElementsByName("arm");
-	if (arm[0].checked == true) {
-		tie_arm += 80
-		sensitivity += 0.1
-		tie_string += villain_name + "将" + heroine_name + "的双手用日式紧缚的方法捆了起来，"
-	} else if (arm[1].checked == true) {
-		tie_arm += 100
-		untie_finger -= 1
-		tie_string += villain_name + "将" + heroine_name + "的双手五花大绑，"
-	} else if (arm[2].checked == true) {
-		tie_arm += 100
-		untie_arm -= 2
-		tie_string += villain_name + "用欧式紧缚的方式将" + heroine_name + "的双手捆绑了起来，"
-	}
+var arm_select_button = document.getElementById("arm_select_button")
+arm_select_button.onchange = function() {
+	arm_select_index = document.getElementById("arm_select_button").selectedIndex
+	tie_select_display(2, arm_select_index)
+	window_scroll()
 }
 
-function tie_leg_select() {
-	tie_leg += 50 //捆脚踝
-	tie_string += villain_name + "将" + heroine_name + "的脚踝并拢捆了起来，"
-	leg = document.getElementsByName("leg");
-	if (leg[0].checked == true) {
-		tie_leg += 40
-		tie_string += villain_name + "将" + heroine_name + "的膝盖上下捆缚了起来，"
-	}
-	if (leg[1].checked == true) {
-		tie_leg += 40
-		tie_string += villain_name + "将" + heroine_name + "的大腿捆缚了起来，"
-	}
+var finger_select_button = document.getElementById("finger_select_button")
+finger_select_button.onchange = function() {
+	finger_select_index = document.getElementById("finger_select_button").selectedIndex
+	tie_select_display(3, finger_select_index)
+	window_scroll()
 }
 
+var leg_select_button = document.getElementById("leg_select_button")
+leg_select_button.onchange = function() {
+	leg_select_index = document.getElementById("leg_select_button").selectedIndex
+	tie_select_display(4, leg_select_index)
+	window_scroll()
+}
 
-function tie_body_select() {
-	body = document.getElementsByName("body");
-	if (body[0].checked ==  true) {
-		sensitivity += 0.2
-		tie_string += villain_name + "继续为" + heroine_name + "捆缚了股绳，"
-	} else if (body[1].checked == true) {
-		sensitivity += 0.3
-		tie_string += villain_name + "在" + heroine_name + "的身上编织出了漂亮的龟甲缚，"
+var body_select_button = document.getElementById("body_select_button")
+body_select_button.onchange = function() {
+	body_select_index = document.getElementById("body_select_button").selectedIndex
+	tie_select_display(5, body_select_index)
+	window_scroll()
+}
+
+var reinforce_select_button = document.getElementById("reinforce_select_button")
+reinforce_select_button.onchange = function() {
+	reinforce_select_index = document.getElementById("reinforce_select_button").selectedIndex
+	tie_select_display(6, reinforce_select_index)
+	window_scroll()
+}
+
+function tie_select(tie_id, tie_select_id) {
+	if (tie_id == 0) {
+		if (tie_select_id == 0) {
+			tie_eye += 20
+			tie_string += villain_name + "给" + heroine_name + "戴上了眼罩，"
+		} else if (tie_select_id == 1) {
+			tie_eye += 10000
+			tie_string += villain_name + "给" + heroine_name + "戴上了难以取下的不透光隐形眼镜，"
+		}
+	} else if (tie_id == 1) {
+		if (tie_select_id == 0) {
+			tie_mouth += 30;
+			tie_string += villain_name + "给" + heroine_name + "戴上了口球，"
+		} else if (tie_select_id == 1) {
+			tie_mouth += 50;
+			event_call_for_help_prob += 5;
+			tie_string += villain_name + "给" + heroine_name + "戴上了马具型口球，"
+		} else if (tie_select_id == 2) {
+			tie_mouth += 30;
+			event_call_for_help_prob -= 5
+			sensitivity -= 0.1
+			tie_string += villain_name + "给" + heroine_name + "戴上了深喉口球，"
+		}
+	} else if (tie_id == 2) {
+		if (tie_select_id == 0) {
+			tie_arm += 80
+			sensitivity += 0.1
+			tie_string += villain_name + "将" + heroine_name + "的双手用日式紧缚的方法捆了起来，"
+		} else if (tie_select_id == 1) {
+			tie_arm += 100
+			untie_finger -= 1
+			tie_string += villain_name + "将" + heroine_name + "的双手五花大绑，"
+		} else if (tie_select_id == 2) {
+			tie_arm += 100
+			untie_arm -= 2
+			tie_string += villain_name + "用欧式紧缚的方式将" + heroine_name + "的双手捆绑了起来，"
+		}
+	} else if (tie_id == 3) {
+		if (tie_select_id == 0) {
+			tie_finger += 20
+			tie_string += villain_name + "给" + heroine_name + "的小手上分别套上几双棉袜，"
+		} else if (tie_select_id == 1) {
+			tie_finger += 30
+			tie_string += villain_name + "用胶带将" + heroine_name + "的两只手分别握拳缠裹成两个小球，"
+		} else if (tie_select_id == 2) {
+			tie_finger += 30
+			untie_finger -= 2
+			tie_string += villain_name + "给" + heroine_name + "的双手拇指锁到了指铐之中，并且将钥匙扔到了附近，"
+		}
+	} else if (tie_id == 4) {
+		if (tie_select_id == 0) {
+			tie_leg += 50
+			tie_string += villain_name + "将" + heroine_name + "的脚踝并拢捆了起来，"
+		} else if (tie_select_id == 1) {
+			tie_leg += 90
+			tie_string += villain_name + "将" + heroine_name + "的脚踝和膝盖上下捆了起来，"
+		} else if (tie_select_id == 2) {
+			tie_leg += 130
+			tie_string += villain_name + "将" + heroine_name + "的脚踝，膝盖上下，大腿分别捆缚了起来，"
+		}
+	} else if (tie_id == 5) {
+		if (tie_select_id == 0) {
+			sensitivity += 0.2
+			tie_string += villain_name + "继续为" + heroine_name + "捆缚了股绳，"
+		} else if (tie_select_id == 1) {
+			sensitivity += 0.3
+			tie_string += villain_name + "在" + heroine_name + "的身上编织出了漂亮的龟甲缚，"
+		}
+	} else if (tie_id == 6) {
+		if (tie_select_id == 1) {
+			tie_eye *= 1.5
+			tie_mouth *= 1.5
+			tie_arm *= 1.5
+			tie_finger *= 1.5
+			tie_leg *= 1.5
+			tie_string += villain_name + "用多层丝袜将" + heroine_name + "包裹成了一个丝袜茧子，"
+		}
 	}
 }
 
@@ -389,13 +513,19 @@ var tie_confirm_button = document.getElementById("tie_confirm_button");
 tie_confirm_button.onclick = function() {  
 	document.getElementById("tie_buttons").style.display = "none";
 
-	tie_eye_select();
-	tie_mouth_select();
-	tie_arm_select();
-	tie_finger_select();
-	tie_leg_select();
-	tie_body_select();
 	tie_post_select();
+	eye_select_index = document.getElementById("eye_select_button").selectedIndex
+	tie_select(0, eye_select_index)
+	mouth_select_index = document.getElementById("mouth_select_button").selectedIndex
+	tie_select(1, mouth_select_index)
+	arm_select_index = document.getElementById("arm_select_button").selectedIndex
+	tie_select(2, arm_select_index)
+	finger_select_index = document.getElementById("finger_select_button").selectedIndex
+	tie_select(3, finger_select_index)
+	leg_select_index = document.getElementById("leg_select_button").selectedIndex
+	tie_select(4, leg_select_index)
+	body_select_index = document.getElementById("body_select_button").selectedIndex
+	tie_select(5, body_select_index)
 
 	document.getElementById("tie_functions").innerHTML = tie_string;
 	document.getElementById("tight_select").style.display = "";
@@ -410,11 +540,11 @@ function tight_select(tight_id){
 	if (tight_id == 0) {
 		tie_arm += 0
 	} else if (tight_id == 1) {
-		tie_eye *= 1.2
-		tie_mouth *= 1.2
-		tie_arm *= 1.2
-		tie_finger *= 1.2
-		tie_leg *= 1.2
+		tie_eye *= 1.5
+		tie_mouth *= 1.5
+		tie_arm *= 1.5
+		tie_finger *= 1.5
+		tie_leg *= 1.5
 	} else if (tight_id == 2) {
 		tie_eye *= 2
 		tie_mouth *= 2
@@ -547,9 +677,13 @@ function untie_mouth_action() {
 function untie_arm_action() {
 	if (event_eye_free == false) {
 		document.getElementById("untie_button_3").style.display = "none";
-		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚</p>"
+		document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚，开始解开其他束缚</p>"
 		event_arm_free = true
 		tie_arm = 0
+		tie_eye = 0
+		tie_mouth = 0
+		tie_finger = 0
+		tie_leg = 0
 	}
 }
 
@@ -645,11 +779,11 @@ function untie_event_judge() {
 	if (event_sudden_lose_able == true && random(1, 100) <= event_sudden_lose_prob) {
 		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——突发加固。" + heroine_name +
 		"挣扎的样子让监控中观察的" + villain_name + "控制不住，她不顾承诺强行将" + heroine_name + "全身的束缚收紧了。</p>";
-		tie_eye *= 2
-		tie_mouth *= 2
-		tie_arm *= 2
-		tie_finger *= 2
-		tie_leg *= 2
+		tie_eye *= 1.2
+		tie_mouth *= 1.2
+		tie_arm *= 1.2
+		tie_finger *= 1.2
+		tie_leg *= 1.2
 		return "none"
 	}
 	if (event_very_cute_able == true && random(1, 100) <= event_very_cute_prob) {

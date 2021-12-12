@@ -15,3 +15,13 @@ function window_scroll(){
 function random(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
+function options_init(select_button, select_array) {
+	for (i = 0; i < select_array.length; i++) {
+		option = document.createElement("option")
+		option.innerHTML = select_array[i]
+		option.value = select_array[i]
+		select_button.appendChild(option)
+	}
+}
+
