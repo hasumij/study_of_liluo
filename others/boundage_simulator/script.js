@@ -7,7 +7,7 @@ all_characters = ["", "沐沐绑璃落", "安宁绑香月", "言兮绑花梦"]
 
 var gift_number = 2
 var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", "天生丽质", "天生媚骨", "冷静头脑", "敏感身体", "娃娃脸", "口才", "抖M", 
-				"强健体魄", "宅女", "娇柔易推倒", "饥渴难耐", "高潮经验丰富", "性冷淡"]
+				"强健体魄", "宅女", "娇柔易推倒", "饥渴难耐", "高潮经验丰富", "性冷淡", "快感忍耐"]
 var gifts = []
 var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴", "全包乳胶衣", "单薄的泳装", "性感的旗袍", 
 				   "被诅咒的乳胶衣"]
@@ -66,6 +66,7 @@ var epoch = 0
 var epoch_max = 30
 var power = 300
 var pleasant = 0
+var pleasant_augment = 10
 var pleasant_max = 100
 var final_evaluation = 0
 
@@ -211,6 +212,9 @@ function gift_select(gift_bumber){
     	} else if (gift_index == 15) {
     		sensitivity -= 0.1
     		pleasant_max += 30
+    	} else if (gift_index == 16) {
+    		pleasant_augment /= 2
+    		power_consume_pleasure *= 1.5
     	}
     	all_gifts_mode = all_gifts_mode.filter(function(item) {
 		    return item != all_gifts_mode[gift_index];
@@ -742,7 +746,7 @@ function start_to_untie_judge() {
 	if (tie_eye <= 0) {
 		if (event_eye_free == false) {
 			document.getElementById("untie_button_1").style.display = "none";
-			document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已重获光明</p>"
+			document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已获得光明</p>"
 			event_eye_free = true
 			tie_eye = 0
 		}
@@ -857,7 +861,6 @@ function untie_judge() {
 	}
 
 	start_to_untie_judge()
-	able_to_untie_judge()
 
 	return "none"
 }
@@ -945,7 +948,7 @@ function untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggl
 		}
 	}
 
-	pleasant += sensitivity*10
+	pleasant += sensitivity*pleasant_augment
 	power -= power_consume
 
 	if (tie_eye <= 0) {
