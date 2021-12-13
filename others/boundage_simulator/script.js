@@ -1,27 +1,6 @@
 // ***************************************** 变量定义
 var heroine_name = ""
 var villain_name = ""
-character_array = ["角色创建完毕"]
-
-all_characters = ["", "沐沐绑璃落", "安宁绑香月", "言兮绑花梦"]
-
-var gift_number = 2
-var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", "天生丽质", "天生媚骨", "冷静头脑", "敏感身体", "娃娃脸", "口才", "抖M", 
-				"强健体魄", "宅女", "娇柔易推倒", "饥渴难耐", "高潮经验丰富", "性冷淡", "快感忍耐"]
-var gifts = []
-var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴", "全包乳胶衣", "单薄的泳装", "性感的旗袍", 
-				   "被诅咒的乳胶衣"]
-
-var tie_post_array = ["直立缚", "海老缚", "驷马"]
-var tie_eye_array = ["眼罩", "暗淡的美瞳"]
-var tie_mouth_array = ["普通口球", "马具型口球", "深喉口球"]
-var tie_arm_array = ["日式紧缚", "五花大绑", "欧式紧缚", "后手观音"]
-var tie_finger_array = ["袜子", "胶带", "拇指铐", "皮革无指手套"]
-var tie_leg_array = ["捆绑脚踝", "捆绑脚踝和膝盖上下", "捆绑脚踝，膝盖上下和大腿"]
-var tie_body_array = ["股绳", "龟甲缚"]
-var tie_reinforce_array = ["", "多层丝袜包裹"]
-var all_ties = []
-var tie_string = ""
 
 var tight_id = 1
 var all_tight = ["不变", "继续收紧", "狠狠收紧"]
@@ -30,11 +9,11 @@ var all_event_tie = ["脱衣", "继续狠狠收紧"]
 var event_tie_array = []
 
 //脱缚能力值，敏感度
-var untie_mouth = 10
-var untie_eye = 10
-var untie_arm = 10
-var untie_finger = 10
-var untie_leg = 10
+var untie_mouth = 15
+var untie_eye = 15
+var untie_arm = 15
+var untie_finger = 15
+var untie_leg = 15
 var sensitivity = 1
 var power_consume = 10  //每轮体力消耗
 var power_consume_pleasure = 50
@@ -110,6 +89,9 @@ restart.onclick = function() {
 
 
 // ***************************************** 角色创建
+character_array = ["角色创建完毕"]
+all_characters = ["", "沐沐绑璃落", "安宁绑香月", "言兮绑花梦"]
+
 function character_init() {
 	character_select_button = document.getElementById("character_select_button");
 	for (i = 0; i < all_characters.length; i++) {
@@ -163,62 +145,46 @@ character_submit_button.onclick = function(){
 
 
 // ***************************************** 天赋选择
+var gift_number = 2
+var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", "天生丽质", "天生媚骨", "冷静头脑", "敏感身体", "娃娃脸", "口才", "抖M", 
+				"强健体魄", "宅女", "娇柔易推倒", "饥渴难耐", "高潮经验丰富", "性冷淡", "快感忍耐"]
+var all_gifts_function = [
+	function gift_function1() {untie_mouth += 5},
+	function gift_function2() {untie_finger += 5; untie_arm += 5},
+	function gift_function3() {untie_finger += 5; untie_arm += 5; untie_leg += 5},
+	function gift_function4() {event_sudden_lose_prob += 5},
+	function gift_function5() {event_no_clothes_prob += 10},
+	function gift_function6() {sensitivity -= 0.3},
+	function gift_function7() {sensitivity += 0.3},
+	function gift_function8() {event_very_cute_prob += 5},
+	function gift_function9() {event_persuade_prob += 5},
+	function gift_function10() {untie_eye -= 2; untie_mouth -= 2; untie_finger -= 2; untie_arm -= 2; untie_leg -= 2},
+	function gift_function11() {power += 100},
+	function gift_function12() {power -= 50},
+	function gift_function13() {pleasant_max -= 30; power_consume_pleasure += 20},
+	function gift_function14() {event_no_clothes_prob += 5; event_string_prob += 5; sensitivity += 0.1},
+	function gift_function15() {power_consume_pleasure /= 2},
+	function gift_function16() {sensitivity -= 0.1; pleasant_max += 30},
+	function gift_function17() {pleasant_augment /= 2; power_consume_pleasure *= 1.5},
+	]
+var gifts = []
+
 function gift_select(gift_bumber){
 	document.getElementById("gift_buttons").style.display = "none"; // ""/"none"
-	var all_gifts_mode = all_gifts
+	all_gifts_mode = all_gifts
+	all_gifts_function_mode = all_gifts_function
 	for (i = 0; i < gift_number; i++) { 
-    	var gift_index = Math.floor((Math.random()*all_gifts_mode.length));
+    	gift_index = Math.floor((Math.random()*all_gifts_mode.length));
     	gifts.push(all_gifts_mode[gift_index]);
-    	if (gift_index == 0) {
-    		untie_mouth += 5
-    	} else if (gift_index == 1) {
-    		untie_finger += 5
-    		untie_arm += 5
-    	} else if (gift_index == 2) {
-    		untie_finger += 5
-    		untie_arm += 5
-    		untie_leg += 5
-    	} else if (gift_index == 3) {
-    		event_sudden_lose_prob += 5
-    	} else if (gift_index == 4) {
-    		event_no_clothes_prob += 10
-    	} else if (gift_index == 5) {
-    		sensitivity -= 0.3
-    	} else if (gift_index == 6) {
-    		sensitivity += 0.3
-    	} else if (gift_index == 7) {
-    		event_very_cute_prob += 5
-    	} else if (gift_index == 8) {
-    		event_persuade_prob += 5
-    	} else if (gift_index == 9) {
-    		untie_eye -= 2
-    		untie_mouth -= 2
-    		untie_finger -= 2
-    		untie_arm -= 2
-    		untie_leg -= 2
-    	} else if (gift_index == 10) {
-    		power += 100
-    	} else if (gift_index == 11) {
-    		power -= 50
-    	} else if (gift_index == 12) {
-    		pleasant_max -= 30
-    		power_consume_pleasure += 20
-    	} else if (gift_index == 13) {
-    		event_no_clothes_prob += 5
-    		event_string_prob += 5
-    		sensitivity += 0.1
-    	} else if (gift_index == 14) {
-    		power_consume_pleasure /= 2
-    	} else if (gift_index == 15) {
-    		sensitivity -= 0.1
-    		pleasant_max += 30
-    	} else if (gift_index == 16) {
-    		pleasant_augment /= 2
-    		power_consume_pleasure *= 1.5
-    	}
+
+    	all_gifts_function_mode[gift_index]();
+
     	all_gifts_mode = all_gifts_mode.filter(function(item) {
 		    return item != all_gifts_mode[gift_index];
 		});
+		all_gifts_function_mode = all_gifts_function_mode.filter(function(item) {
+			return item != all_gifts_function_mode[gift_index];
+		})
 	}
 	document.getElementById("gifts").innerHTML = heroine_name + "的天赋为：" + display_array(gifts);
 	clothes_init()
@@ -246,6 +212,9 @@ gift_button_3.onclick = function(){
 
 
 // ***************************************** 衣着选择
+var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴", "全包乳胶衣", "单薄的泳装", "性感的旗袍", 
+				   "被诅咒的乳胶衣"]
+
 function clothes_display(clothes_id) {
 	if (clothes_id == 0) {
 		document.getElementById("clothes_introduction").innerHTML = display_array([
@@ -351,6 +320,17 @@ clothes_confirm_button.onclick = function(){
 
 
 // ***************************************** 束缚选择
+var tie_post_array = ["直立缚", "海老缚", "驷马"]
+var tie_eye_array = ["眼罩", "暗淡的美瞳"]
+var tie_mouth_array = ["普通口球", "马具型口球", "深喉口球"]
+var tie_arm_array = ["日式紧缚", "五花大绑", "欧式紧缚", "后手观音"]
+var tie_finger_array = ["袜子", "胶带", "拇指铐", "皮革无指手套"]
+var tie_leg_array = ["捆绑脚踝", "捆绑脚踝和膝盖上下", "捆绑脚踝，膝盖上下和大腿"]
+var tie_body_array = ["股绳", "龟甲缚"]
+var tie_reinforce_array = ["", "多层丝袜包裹"]
+var all_ties = []
+var tie_string = ""
+
 function tie_post_select() {
 	post = document.getElementsByName("post");
 	if (post[0].checked == true) {
@@ -894,7 +874,7 @@ function untie_event_judge() {
 	if (event_very_cute_able == true && random(1, 100) <= event_very_cute_prob) {
 		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——萌化。" + 
 		"由于" + heroine_name + "挣扎的样子太萌了，让" + villain_name + "忍不住与" + heroine_name + "贴贴，" + heroine_name + "达到了巅峰。</p>" 
-		power /= 2
+		power -= power_consume_pleasure
 		pleasant = 0
 		return "none"
 	}

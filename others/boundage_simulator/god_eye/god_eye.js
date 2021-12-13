@@ -43,6 +43,7 @@ god_eye_close_button.onclick=function(){
 }
 
 // 鼠标拖拽功能
+/*
 var god_eye_window_title=document.getElementById('god_eye_title');
 god_eye_window_title.onmousedown=function(e){
     e = e || window.event;
@@ -67,3 +68,4 @@ god_eye_window_title.onmousedown=function(e){
 god_eye_window_title.onmouseup = function(){
     document.onmousemove=null;
 }
+*/
