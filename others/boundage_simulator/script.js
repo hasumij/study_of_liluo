@@ -839,6 +839,8 @@ start_to_untie_button.onclick = function(){
 
 
 function untie_judge() {
+	start_to_untie_judge()
+
 	if (power <= 0) {
 		document.getElementById("event_untie_content").innerHTML = "<p>体力值耗尽，" + heroine_name + "没有挣脱束缚。</p>"
 		return false
@@ -855,12 +857,10 @@ function untie_judge() {
 	}
 
 	if (pleasant > pleasant_max) {
-		document.getElementById("event_untie_content").innerHTML += "快感到达极限，" + heroine_name + "忍不住达到高潮，体力值减半。";
+		document.getElementById("event_untie_content").innerHTML += "快感到达极限，" + heroine_name + "忍不住达到高潮，体力大幅度下降。";
 		power -= power_consume_pleasure
 		pleasant = 0
 	}
-
-	start_to_untie_judge()
 
 	return "none"
 }
