@@ -306,13 +306,18 @@ function event_tie_action() {
 	document.getElementById("event_tie_buttons").style.display = "none";
 	if (event_no_clothes_able == true && random(1, 100) <= event_no_clothes_prob) {
 		event_no_clothes_function()
+		return
 	}
 	if (event_string_able == true && random(1, 100) <= event_string_prob) {
 		event_string_function()
+		return
 	}
-	if (event_no_clothes == false && event_string == false) {
-		event_tie_array.push("捆绑过程无特殊事件")
+	if (event_careless_able == true && random(1, 100) <= event_careless_prob) {
+		event_careless_function()
+		return
 	}
+
+	event_tie_array.push("捆绑过程无特殊事件")
 }
 
 function display_attributes_values() {
@@ -471,49 +476,20 @@ function untie_judge() {
 
 function untie_event_judge() {
 	if (event_call_for_help_able == true && random(1, 100) <= event_call_for_help_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——呼救。"
-		if (random(1, 100) <= event_call_for_help_success_prob <= 30) {
-			document.getElementById("event_untie_content").innerHTML += heroine_name + "的呼救引来了" + villain_name + "，逃脱失败。</p>"
-			return false
-		} else if (random(1, 100) >= (100 - event_call_for_help_success_prob)) {
-			document.getElementById("event_untie_content").innerHTML += heroine_name + "的呼救引来了帮手，她帮助" + heroine_name + "成功逃脱。</p>"
-			return true
-		} else {
-			document.getElementById("event_untie_content").innerHTML += heroine_name + "的呼救没有引来任何人，请继续逃脱。</p>"
-			untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle)
-			return "none"
-		}
+		return event_call_for_help_function()
 	}
-	if (event_sudden_lose_able == true && random(1, 100) <= event_sudden_lose_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——突发加固。" + heroine_name +
-		"挣扎的样子让监控中观察的" + villain_name + "控制不住，她不顾承诺强行将" + heroine_name + "全身的束缚收紧了。</p>";
-		tie_eye *= 1.2
-		tie_mouth *= 1.2
-		tie_arm *= 1.2
-		tie_finger *= 1.2
-		tie_leg *= 1.2
-		return "none"
+	if (event_sudden_string_able == true && random(1, 100) <= event_sudden_string_prob) {
+		return event_sudden_string_function()
 	}
 	if (event_very_cute_able == true && random(1, 100) <= event_very_cute_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——萌化。" + 
-		"由于" + heroine_name + "挣扎的样子太萌了，让" + villain_name + "忍不住与" + heroine_name + "贴贴，" + heroine_name + "达到了巅峰。</p>" 
-		power -= power_consume_pleasure
-		pleasant = 0
-		return "none"
+		return event_very_cute_function()
 	}
 	if (event_persuade_able == true && random(1, 100) <= event_persuade_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——说服。" + 
-		"由于" + heroine_name + "晓之以理动之以情，" + villain_name + "被" + heroine_name + "成功说动了，最终决定放了" + heroine_name + "。</p>" 
-		return true
+		return event_persuade_function()
 	}
 	if (event_tk_able == true && random(1, 100) <= event_tk_prob) {
-		document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——挠痒。" + 
-		villain_name + "忍不住将手伸向" + heroine_name + "的脚丫，" + heroine_name + "被阵阵钻心的痒感刺激的无力挣扎。</p>" 
-		pleasant += 20
-		power -= 10
-		return "none"
+		return event_tk_function()
 	}
-
 	return "none"
 }
 

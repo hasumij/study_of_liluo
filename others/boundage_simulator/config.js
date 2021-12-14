@@ -3,10 +3,10 @@ var heroine_name = ""
 var villain_name = ""
 
 //脱缚能力值，敏感度
-var untie_mouth = 15
-var untie_eye = 15
-var untie_arm = 15
-var untie_finger = 15
+var untie_mouth = 10
+var untie_eye = 10
+var untie_arm = 20
+var untie_finger = 10
 var untie_leg = 15
 var sensitivity = 1
 var power_consume = 10  //每轮体力消耗
@@ -44,7 +44,7 @@ var pleasant_max = 100
 var final_evaluation = 0
 
 //特殊事件概率及状态
-var all_event_tie = ["脱衣", "继续狠狠收紧"]
+var all_event_tie = ["扒衣", "收紧绳索", "粗心大意"]
 var event_tie_array = []
 var event_no_clothes_prob = 5 // 脱衣
 var event_no_clothes_able = true
@@ -52,13 +52,18 @@ var event_no_clothes = false
 function event_no_clothes_function() {
 	event_no_clothes = true; sensitivity += 0.2; event_very_cute_able = false; event_tie_array.push(all_event_tie[0]);
 }
-var event_no_clothes = false
 var event_string_prob = 5  //收紧
 var event_string_able = true
 var event_string = false
 function event_string_function() {
 	tie_eye *= 2; tie_mouth *= 2; tie_arm *= 2; tie_finger *= 2; tie_leg *= 2; event_tie_array.push(all_event_tie[1]);
 	event_string = true;
+}
+var event_careless_prob = 5
+var event_careless_able = true
+var event_careless = false
+function event_careless_function() {
+	tie_eye *= 0.5; tie_mouth *= 0.5; tie_arm *= 0.5; tie_finger *= 0.5; tie_leg *= 0.5; event_tie_array.push(all_event_tie[2]);
 }
 
 var event_eye_free = false // 是否能够看见
@@ -71,17 +76,54 @@ var event_call_for_help_prob = 10 // 呼救
 var event_call_for_help_able = false
 var event_call_for_help = false
 var event_call_for_help_success_prob = 30  // 呼救出帮手或绑架者的概率
-var event_sudden_lose_prob = 5 // 突发收紧
-var event_sudden_lose_able = true
-var event_sudden_lose = false
+function event_call_for_help_function() {
+	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——呼救。"
+	if (random(1, 100) <= event_call_for_help_success_prob <= 30) {
+		document.getElementById("event_untie_content").innerHTML += heroine_name + "的呼救引来了" + villain_name + "，逃脱失败。</p>"
+		return false
+	} else if (random(1, 100) >= (100 - event_call_for_help_success_prob)) {
+		document.getElementById("event_untie_content").innerHTML += heroine_name + "的呼救引来了帮手，她帮助" + heroine_name + "成功逃脱。</p>"
+		return true
+	} else {
+		document.getElementById("event_untie_content").innerHTML += heroine_name + "的呼救没有引来任何人，请继续逃脱。</p>"
+		untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle)
+		return "none"
+	}
+}
+var event_sudden_string_prob = 5 // 突发收紧
+var event_sudden_string_able = true
+var event_sudden_string = false
+function event_sudden_string_function() {
+	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——突发收紧。" + heroine_name +
+	"挣扎的样子让监控中观察的" + villain_name + "控制不住，她不顾承诺强行将" + heroine_name + "全身的束缚收紧了。</p>";
+	tie_eye *= 1.2; tie_mouth *= 1.2; tie_arm *= 1.2; tie_finger *= 1.2; tie_leg *= 1.2;
+	return "none";
+}
 var event_very_cute_prob = 1 // 萌化
 var event_very_cute_able = true
 var event_very_cute = false
+function event_very_cute_function() {
+	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——萌化。" + 
+	"由于" + heroine_name + "挣扎的样子太萌了，让" + villain_name + "忍不住与" + heroine_name + "贴贴，" + heroine_name + "达到了巅峰。</p>" 
+	power -= power_consume_pleasure; pleasant = 0;
+	return "none"
+}
 var event_persuade_prob = 1 // 说服
 var event_persuade_able = false
 var event_persuade = false
+function event_persuade_function() {
+	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——说服。" + 
+	"由于" + heroine_name + "晓之以理动之以情，" + villain_name + "被" + heroine_name + "成功说动了，最终决定放了" + heroine_name + "。</p>" 
+	return true
+}
 var event_tk_prob = 5 //挠痒
 var event_tk_able = true
+function event_tk_function() {
+	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——挠痒。" + 
+	villain_name + "忍不住将手伸向" + heroine_name + "的脚丫，" + heroine_name + "被阵阵钻心的痒感刺激的无力挣扎。</p>" 
+	pleasant += 20; power -= 10;
+	return "none"
+}
 
 // ***************************************** 角色创建
 character_array = ["角色创建完毕"]
@@ -96,7 +138,7 @@ var all_gifts_function = [
 	function gift_function1() {untie_mouth += 5},
 	function gift_function2() {untie_finger += 5; untie_arm += 5},
 	function gift_function3() {untie_finger += 5; untie_arm += 5; untie_leg += 5},
-	function gift_function4() {event_sudden_lose_prob += 5},
+	function gift_function4() {event_sudden_string_prob += 5},
 	function gift_function5() {event_no_clothes_prob += 10},
 	function gift_function6() {sensitivity -= 0.3},
 	function gift_function7() {sensitivity += 0.3},
@@ -172,13 +214,13 @@ var all_clothes_display = [
 ]
 var all_clothes_function = [
 	function clothes_function1() {event_very_cute_prob += 5; event_no_clothes_prob += 10},
-	function clothes_fucntion2() {event_sudden_lose_prob += 5; sensitivity -= 0.2},
+	function clothes_fucntion2() {event_sudden_string_prob += 5; sensitivity -= 0.2},
 	function clothes_function3() {sensitivity -= 0.2},
 	function clothes_function4() {sensitivity += 0.5; event_very_cute_able = false},
 	function clothes_function5() {untie_eye_able = false; tie_eye += 30; power_consume += 5},
-	function clothes_function6() {event_sudden_lose_prob += 5; event_very_cute_prob -= 10; sensitivity += 0.3},
-	function clothes_function7() {event_no_clothes_prob += 5; event_string_prob += 5; event_sudden_lose_prob += 5; event_very_cute_prob -= 5},
-	function clothes_function8() {sensitivity += 0.3; event_sudden_lose_prob += 10; event_tk_prob += 10},
+	function clothes_function6() {event_sudden_string_prob += 5; event_very_cute_prob -= 10; sensitivity += 0.3},
+	function clothes_function7() {event_no_clothes_prob += 5; event_string_prob += 5; event_sudden_string_prob += 5; event_very_cute_prob -= 5},
+	function clothes_function8() {sensitivity += 0.3; event_sudden_string_prob += 10; event_tk_prob += 10},
 ]
 
 // ***************************************** 束缚选择
@@ -410,7 +452,7 @@ function event_untie_arm_function() {
 function event_untie_finger_function() {
 	document.getElementById("untie_button_4").style.display = "none";
 	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手指束缚</p>"
-	event_finger_free = true; untie_leg += 10; untie_arm += 10; tie_finger = 0;
+	event_finger_free = true; untie_leg *= 3; untie_arm *= 3; tie_finger = 0;
 }
 function event_untie_leg_function() {
 	document.getElementById("untie_button_5").style.display = "none";
