@@ -378,6 +378,13 @@ event_tie_button_1.onclick = function(){
 
 
 // ***************************************** 脱缚过程和最终评价
+var untie_main_button_1 = document.getElementById("untie_main_button_1");
+untie_main_button_1.onclick = function(){  
+	document.getElementById("event_untie_buttons").style.display = "";
+	document.getElementById("event_untie_main_buttons").style.display = "none";
+	window_scroll()
+}
+
 function start_to_untie_judge() {
 	if (tie_eye <= 0) {
 		if (event_eye_free == false) {
@@ -619,6 +626,100 @@ untie_button_4.onclick = function(){
 var untie_button_5 = document.getElementById("untie_button_5");
 untie_button_5.onclick = function(){  
 	result_judge(false, false, false, false, true)
+	window_scroll()
+}
+var untie_button_6 = document.getElementById("untie_button_6");
+untie_button_6.onclick = function(){  
+	document.getElementById("event_untie_buttons").style.display = "none";
+	document.getElementById("event_untie_main_buttons").style.display = "";
+	window_scroll()
+}
+
+
+var untie_main_button_2 = document.getElementById("untie_main_button_2");
+untie_main_button_2.onclick = function() {
+	untie_judge_epoch = untie_judge()
+	if (untie_judge_epoch == true || untie_judge_epoch == false) {
+		return untie_judge_epoch
+	}
+
+	epoch += 1
+	power += 20
+	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
+
+	if (tie_eye <= 0) {
+		current_attribute_array = [
+	"眼部束缚值——" + tie_eye,
+	"嘴部束缚值——" + tie_mouth,
+	"手臂束缚值——" + tie_arm,
+	"手指束缚值——" + tie_finger,
+	"腿部束缚值——" + tie_leg,
+	"当前快感值——" + pleasant + "(" + pleasant_max + ")",
+	"当前体力值——" + power,
+	];
+	} else {
+		current_attribute_array = [
+	heroine_name + "的眼前一片黑暗，无法看到当前身上的束缚情况。",
+	"当前快感值——" + pleasant + "(" + pleasant_max + ")",
+	"当前体力值——" + power,
+		]
+	}
+	
+	document.getElementById("event_untie_content").innerHTML += display_array(current_attribute_array);
+	document.getElementById("event_untie_content").innerHTML += "<p>本回合休息，体力值获得了少量恢复。</p>"
+
+	untie_judge_epoch = untie_judge()
+	if (untie_judge_epoch == true || untie_judge_epoch == false) {
+		return untie_judge_epoch
+	}
+	window_scroll()
+}
+
+var untie_main_button_3 = document.getElementById("untie_main_button_3");
+untie_main_button_3.onclick = function() {
+	untie_judge_epoch = untie_judge()
+	if (untie_judge_epoch == true || untie_judge_epoch == false) {
+		return untie_judge_epoch
+	}
+
+	epoch += 1
+	power -= 20
+	pleasant += sensitivity * pleasant_augment
+	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
+
+	if (tie_eye <= 0) {
+		current_attribute_array = [
+	"眼部束缚值——" + tie_eye,
+	"嘴部束缚值——" + tie_mouth,
+	"手臂束缚值——" + tie_arm,
+	"手指束缚值——" + tie_finger,
+	"腿部束缚值——" + tie_leg,
+	"当前快感值——" + pleasant + "(" + pleasant_max + ")",
+	"当前体力值——" + power,
+	];
+	} else {
+		current_attribute_array = [
+	heroine_name + "的眼前一片黑暗，无法看到当前身上的束缚情况。",
+	"当前快感值——" + pleasant + "(" + pleasant_max + ")",
+	"当前体力值——" + power,
+		]
+	}
+	
+	document.getElementById("event_untie_content").innerHTML += display_array(current_attribute_array);
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "对自己周围进行了探索。</p>"
+
+	if (event_knife_able == true && random(1, 100) <= event_knife_prob && event_knife == false) {
+		return event_knife_function()
+	}
+	if (event_expose_able == true && random(1, 100) <= event_expose_prob) {
+		return event_expose_function()
+	}
+
+	untie_judge_epoch = untie_judge()
+	if (untie_judge_epoch == true || untie_judge_epoch == false) {
+		return untie_judge_epoch
+	}
+	document.getElementById("event_untie_content").innerHTML += "<p>没有找到什么东西。"
 	window_scroll()
 }
 

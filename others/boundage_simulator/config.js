@@ -125,6 +125,25 @@ function event_tk_function() {
 	return "none"
 }
 
+var event_knife_prob = 30 //找到小刀
+var event_knife_able = true
+var event_knife = false
+function event_knife_function() {
+	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——挠痒。" + 
+	heroine_name + "在探索过程中找到了小刀，更容易脱缚了。"
+	untie_arm += 20; untie_finger += 20; untie_leg += 20; event_knife = true;
+}
+var event_expose_prob = 30 //暴露行踪
+var event_expose_able = true
+var event_expose = false
+function event_expose_function() {
+	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——发觉。" + 
+	heroine_name + "在探索过程中被" + villain_name + "发现了，她继续加固了" + heroine_name + "身上的束缚。"
+	untie_arm += 20; untie_finger += 20; untie_leg += 20; event_knife = true;
+	tie_eye *= 1.2; tie_mouth *= 1.2; tie_arm *= 1.2; tie_finger *= 1.2; tie_leg *= 1.2; event_expose = true;
+}
+
+
 // ***************************************** 角色创建
 character_array = ["角色创建完毕"]
 all_characters = ["", "沐沐绑璃落", "安宁绑香月", "言兮绑花梦"]
