@@ -22,7 +22,7 @@ function god_eye_content_insert() {
     "脱衣事件概率——" + event_no_clothes_prob + "%",
     "收紧事件概率——" + event_string_prob + "%",
     "呼救事件概率——" + event_call_for_help_prob + "%",
-    "突发收紧事件概率——" + event_sudden_lose_prob + "%",
+    "突发收紧事件概率——" + event_sudden_string_prob + "%",
     "萌化事件概率——" + event_very_cute_prob + "%",
     "说服事件概率——" + event_persuade_prob + "%"
     ]
