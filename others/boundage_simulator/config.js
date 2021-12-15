@@ -38,6 +38,7 @@ var final_difficulty = 0
 var epoch = 0
 var epoch_max = 30
 var power = 300
+var power_recover = 20 // 每次休息时的体力恢复值
 var pleasant = 0
 var pleasant_augment = 10
 var pleasant_max = 100
@@ -122,6 +123,9 @@ function event_tk_function() {
 	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——挠痒。" + 
 	villain_name + "忍不住将手伸向" + heroine_name + "的脚丫，" + heroine_name + "被阵阵钻心的痒感刺激的无力挣扎。</p>" 
 	pleasant += 20; power -= 10;
+	if (gift_23_judge == true) {
+		gift_23_function()
+	}
 	return "none"
 }
 
@@ -129,9 +133,13 @@ var event_knife_prob = 30 //找到小刀
 var event_knife_able = true
 var event_knife = false
 function event_knife_function() {
-	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——挠痒。" + 
+	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——发现小刀。" + 
 	heroine_name + "在探索过程中找到了小刀，更容易脱缚了。"
 	untie_arm += 20; untie_finger += 20; untie_leg += 20; event_knife = true;
+	if (gift_22_judge == true) {
+		gift_22_function()
+	}
+	return "none"
 }
 var event_expose_prob = 30 //暴露行踪
 var event_expose_able = true
@@ -141,41 +149,57 @@ function event_expose_function() {
 	heroine_name + "在探索过程中被" + villain_name + "发现了，她继续加固了" + heroine_name + "身上的束缚。"
 	untie_arm += 20; untie_finger += 20; untie_leg += 20; event_knife = true;
 	tie_eye *= 1.2; tie_mouth *= 1.2; tie_arm *= 1.2; tie_finger *= 1.2; tie_leg *= 1.2; event_expose = true;
+	return "none"
 }
 
 
 // ***************************************** 角色创建
-character_array = ["角色创建完毕"]
-all_characters = ["", "沐沐绑璃落", "安宁绑香月", "言兮绑花梦"]
+var character_array = ["角色创建完毕"]
+var all_heroine_characters = ["", "璃落", "香月", "花梦", "千雪"]
+var all_villain_characters = ["", "沐沐", "安宁", "言兮", "幽灵"]
 
 
 // ***************************************** 天赋选择
 var gift_number = 2
 var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", "天生丽质", "天生媚骨", "冷静头脑", "敏感身体", "娃娃脸", "口才", "抖M", 
-				"强健体魄", "宅女", "娇柔易推倒", "饥渴难耐", "高潮经验丰富", "性冷淡", "快感忍耐", "意志薄弱"]
+				"强健体魄", "宅女", "娇柔易推倒", "饥渴难耐", "高潮经验丰富", "性冷淡", "快感忍耐", "意志薄弱", "笨拙的舌头",
+				"笨拙的手指", "平稳气息", "幸运儿", "刀具精通", "怕痒"]
 var all_gifts_function = [
-	function gift_function1() {untie_mouth += 5},
-	function gift_function2() {untie_finger += 5; untie_arm += 5},
-	function gift_function3() {untie_finger += 5; untie_arm += 5; untie_leg += 5},
+	function gift_function1() {untie_mouth += 3},
+	function gift_function2() {untie_finger += 3; untie_arm += 2},
+	function gift_function3() {untie_finger += 3; untie_arm += 3; untie_leg += 3},
 	function gift_function4() {event_sudden_string_prob += 5},
-	function gift_function5() {event_no_clothes_prob += 10},
-	function gift_function6() {sensitivity -= 0.3},
-	function gift_function7() {sensitivity += 0.3},
+	function gift_function5() {event_no_clothes_prob += 5},
+	function gift_function6() {sensitivity -= 0.3; gift_6_judge = true},
+	function gift_function7() {sensitivity += 0.3; gift_7_judge = true},
 	function gift_function8() {event_very_cute_prob += 5},
-	function gift_function9() {event_persuade_prob += 5},
+	function gift_function9() {event_persuade_prob += 3},
 	function gift_function10() {untie_eye -= 2; untie_mouth -= 2; untie_finger -= 2; untie_arm -= 2; untie_leg -= 2},
-	function gift_function11() {power += 100},
-	function gift_function12() {power -= 50},
+	function gift_function11() {power += 100; power_consume_pleasure -= 10;},
+	function gift_function12() {power -= 50; power_consume_pleasure += 20;},
 	function gift_function13() {pleasant_max -= 30; power_consume_pleasure += 20},
-	function gift_function14() {event_no_clothes_prob += 5; event_string_prob += 5; sensitivity += 0.1},
+	function gift_function14() {event_no_clothes_prob += 3; event_string_prob += 3; sensitivity += 0.1; pleasant_max -= 20;},
 	function gift_function15() {power_consume_pleasure /= 2},
-	function gift_function16() {sensitivity -= 0.1; pleasant_max += 30},
+	function gift_function16() {sensitivity -= 0.3; pleasant_max += 30},
 	function gift_function17() {pleasant_augment /= 2; power_consume_pleasure *= 1.5},
-	function gitf_function18() {gift_18_judge = true;},
+	function gift_function18() {gift_18_judge = true;},
+	function gift_function19() {untie_mouth -= 3},
+	function gift_function20() {untie_finger -= 3; untie_arm -= 2},
+	function gift_function21() {power_recover += 20;},
+	function gift_function22() {event_knife_prob += 3; event_expose_prob -= 3;},
+	function gift_function23() {gift_22_judge == true;},
 	]
 var gifts = []
+var gift_6_judge = false
+function gift_6_function() {pleasant -= sensitivity * 5}
+var gift_7_judge = false
+function gift_7_function() {pleasant += sensitivity * 5}
 var gift_18_judge = false
-function gift_18_fucntion() {pleasant_max -= 10; sensitivity += 0.1}
+function gift_18_fucntion() {pleasant_max -= 10; sensitivity += 0.2;}
+var gift_22_judge = false
+function gift_22_function() {untie_arm += 5; untie_leg += 5;}
+var gift_23_judge = false
+function gift_23_function() {pleasant += 10; power -= 5}
 
 
 // ***************************************** 衣着选择
@@ -451,32 +475,73 @@ var all_tight_function = [
 	function tight_function3() {tie_eye *= 2; tie_mouth *= 2; tie_arm *= 2; tie_finger *= 2; tie_leg *= 2;},
 ]
 
-// ***************************************** 脱缚过程的条件事件
-function event_untie_eye_function() {
-	document.getElementById("untie_button_1").style.display = "none";
+// ***************************************** 挣扎过程
+// 挣扎效果
+function struggle_function(struggle_index) {
+	if (struggle_index == 1) {
+		tie_eye -= untie_eye
+	} else if (struggle_index == 2) {
+		tie_mouth -= untie_mouth
+	} else if (struggle_index == 3) {
+		tie_arm -= untie_arm
+	} else if (struggle_index == 4) {
+		tie_finger -= untie_finger
+	} else if (struggle_index == 5) {
+		tie_leg -= untie_leg
+	}
+	pleasant += sensitivity*pleasant_augment; power -= power_consume;
+}
+
+
+// 条件事件
+function event_eye_free_function() {
+	document.getElementById("struggle_button_1").style.display = "none";
 	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已获得光明</p>"
 	event_eye_free = true; tie_eye = 0;
 }
-function event_untie_mouth_function() {
-	document.getElementById("untie_button_2").style.display = "none";
+function event_mouth_free_function() {
+	document.getElementById("struggle_button_2").style.display = "none";
 	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱嘴部束缚</p>"
 	event_mouth_free = true; tie_mouth = 0; event_call_for_help_able = true; event_persuade_able = true;
 }
-function event_untie_arm_function() {
-	document.getElementById("untie_button_3").style.display = "none";
+function event_arm_free_function() {
+	document.getElementById("struggle_button_3").style.display = "none";
 	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚，开始解开其他束缚</p>"
 	event_arm_free = true; tie_arm = 0; untie_eye *= 3; untie_eye_able = true; untie_mouth *= 3; untie_mouth_able = true;
 	untie_finger *= 3; untie_finger_able = true; untie_leg *= 3; untie_leg_able = true;
 }
-function event_untie_finger_function() {
-	document.getElementById("untie_button_4").style.display = "none";
+function event_finger_free_function() {
+	document.getElementById("struggle_button_4").style.display = "none";
 	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手指束缚</p>"
 	event_finger_free = true; untie_leg *= 3; untie_arm *= 3; tie_finger = 0;
 }
-function event_untie_leg_function() {
-	document.getElementById("untie_button_5").style.display = "none";
+function event_leg_free_function() {
+	document.getElementById("struggle_button_5").style.display = "none";
 	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱双腿束缚</p>"
 	event_leg_free = true; tie_leg = 0;
 }
+function event_pleasure_max_function() {
+	document.getElementById("event_untie_content").innerHTML += "快感到达极限，" + heroine_name + "忍不住达到高潮，体力大幅度下降。";
+	power -= power_consume_pleasure; pleasant = 0;
+	if (gift_18_judge == true) {
+		gift_18_fucntion()
+	}
+}
 
 
+// ***************************************** 休息过程
+function rest_function() {
+	power += power_recover;
+	if (gift_6_judge == true) {
+		gift_6_function()
+	}
+	if (gift_7_judge == true) {
+		gift_7_function()
+	}
+}
+
+
+// ***************************************** 探索过程
+function explore_function() {
+	power -= 20; pleasant += sensitivity * pleasant_augment;
+}
