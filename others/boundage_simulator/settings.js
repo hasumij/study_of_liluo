@@ -1,3 +1,4 @@
+console.log("已经调用")
 // ***************************************** 初始定义
 var heroine_name = ""
 var villain_name = ""
@@ -38,7 +39,7 @@ var final_difficulty = 0
 var epoch = 0
 var epoch_max = 30
 var power = 300
-var power_recover = 20 // 每次休息时的体力恢复值
+var power_recover = 30 // 每次休息时的体力恢复值
 var pleasant = 0
 var pleasant_augment = 10
 var pleasant_max = 100
@@ -160,47 +161,112 @@ var all_villain_characters = ["", "沐沐", "安宁", "言兮", "幽灵"]
 
 
 // ***************************************** 天赋选择
-var gift_number = 2
-var all_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", "天生丽质", "天生媚骨", "冷静头脑", "敏感身体", "娃娃脸", "口才", "抖M", 
-				"强健体魄", "宅女", "娇柔易推倒", "饥渴难耐", "高潮经验丰富", "性冷淡", "快感忍耐", "意志薄弱", "笨拙的舌头",
-				"笨拙的手指", "平稳气息", "幸运儿", "刀具精通", "怕痒"]
-var all_gifts_function = [
-	function gift_function1() {untie_mouth += 3},
-	function gift_function2() {untie_finger += 3; untie_arm += 2},
-	function gift_function3() {untie_finger += 3; untie_arm += 3; untie_leg += 3},
-	function gift_function4() {event_sudden_string_prob += 5},
-	function gift_function5() {event_no_clothes_prob += 5},
-	function gift_function6() {sensitivity -= 0.3; gift_6_judge = true},
-	function gift_function7() {sensitivity += 0.3; gift_7_judge = true},
-	function gift_function8() {event_very_cute_prob += 5},
-	function gift_function9() {event_persuade_prob += 3},
-	function gift_function10() {untie_eye -= 2; untie_mouth -= 2; untie_finger -= 2; untie_arm -= 2; untie_leg -= 2},
-	function gift_function11() {power += 100; power_consume_pleasure -= 10;},
-	function gift_function12() {power -= 50; power_consume_pleasure += 20;},
-	function gift_function13() {pleasant_max -= 30; power_consume_pleasure += 20},
-	function gift_function14() {event_no_clothes_prob += 3; event_string_prob += 3; sensitivity += 0.1; pleasant_max -= 20;},
-	function gift_function15() {power_consume_pleasure /= 2},
-	function gift_function16() {sensitivity -= 0.3; pleasant_max += 30},
-	function gift_function17() {pleasant_augment /= 2; power_consume_pleasure *= 1.5},
-	function gift_function18() {gift_18_judge = true;},
-	function gift_function19() {untie_mouth -= 3},
-	function gift_function20() {untie_finger -= 3; untie_arm -= 2},
-	function gift_function21() {power_recover += 20;},
-	function gift_function22() {event_knife_prob += 3; event_expose_prob -= 3;},
-	function gift_function23() {gift_22_judge == true;},
-	]
-var gifts = []
-var gift_6_judge = false
-function gift_6_function() {pleasant -= sensitivity * 5}
-var gift_7_judge = false
-function gift_7_function() {pleasant += sensitivity * 5}
-var gift_18_judge = false
-function gift_18_fucntion() {pleasant_max -= 10; sensitivity += 0.2;}
-var gift_22_judge = false
-function gift_22_function() {untie_arm += 5; untie_leg += 5;}
-var gift_23_judge = false
-function gift_23_function() {pleasant += 10; power -= 5}
+var gift_point = 0
 
+var all_positive_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", "外表柔弱", "天生傲骨", "冷静头脑", "御姐脸", "口才出众", 
+                          "抖S", "强健体魄", "倔强难屈服", "冷静镇定", "性生活懵懂", "快感忍耐", "意志坚韧", "恢复迅速", 
+                          "幸运儿", "刀具精通", "不怕痒"]
+var all_positive_gifts_function = [
+	function p_gift_function1() {untie_mouth += 3;},
+	function p_gift_function2() {untie_finger += 3; untie_arm += 2;},
+	function p_gift_function3() {untie_finger += 3; untie_arm += 3; untie_leg += 3;},
+	function p_gift_function4() {event_sudden_string_prob -= 5;},
+	function p_gift_function5() {event_no_clothes_prob -= 5;},
+	function p_gift_function6() {sensitivity -= 0.3; p_gift_6_judge = true;},
+	function p_gift_function7() {event_very_cute_prob -= 5;},
+	function p_gift_function8() {event_persuade_prob += 3;},
+	function p_gift_function9() {untie_eye += 2; untie_mouth += 2; untie_finger += 2; untie_arm += 2; untie_leg += 2;},
+	function p_gift_function10() {power += 50; power_consume_pleasure -= 10;},
+	function p_gift_function11() {pleasant_max += 30; power_consume_pleasure -= 20;},
+	function p_gift_function12() {event_no_clothes_prob -= 3; event_string_prob -= 3; sensitivity -= 0.1; pleasant_max += 20;},
+	function p_gift_function13() {power_consume_pleasure += 20;},
+	function p_gift_function14() {pleasant_augment /= 2; power_consume_pleasure *= 1.5;},
+	function p_gift_function15() {p_gift_15_judge = true;},
+	function p_gift_function16() {power_recover += 10;},
+	function p_gift_function17() {event_knife_prob += 3; event_expose_prob -= 3;},
+	function p_gift_function18() {p_gift_18_judge = true;},
+	function p_gift_function19() {event_tk_prob -= 5;},
+]
+var p_gift_6_judge = false
+function p_gift_6_function() {pleasant -= sensitivity * 5}
+var p_gift_15_judge = false
+function p_gift_15_fucntion() {pleasant_max += 10; sensitivity -= 0.2;}
+var p_gift_18_judge = false
+function p_gift_18_function() {untie_arm += 5; untie_leg += 5;}
+var all_positive_gifts_point = [
+	function p_gift_point1() {gift_point -= 1},
+	function p_gift_point2() {gift_point -= 1},
+	function p_gift_point3() {gift_point -= 1},
+	function p_gift_point4() {gift_point -= 1},
+	function p_gift_point5() {gift_point -= 1},
+	function p_gift_point6() {gift_point -= 1},
+	function p_gift_point7() {gift_point -= 1},
+	function p_gift_point8() {gift_point -= 1},
+	function p_gift_point9() {gift_point -= 1},
+	function p_gift_point10() {gift_point -= 1},
+	function p_gift_point11() {gift_point -= 1},
+	function p_gift_point12() {gift_point -= 1},
+	function p_gift_point13() {gift_point -= 1},
+	function p_gift_point14() {gift_point -= 1},
+	function p_gift_point15() {gift_point -= 1},
+	function p_gift_point16() {gift_point -= 1},
+	function p_gift_point17() {gift_point -= 1},
+	function p_gift_point18() {gift_point -= 1},
+	function p_gift_point19() {gift_point -= 1},
+]
+var all_negative_gifts = ["笨拙的舌头", "笨拙的手指", "身体僵硬", "天生丽质", "天生媚骨", "敏感身体", "娃娃脸", "笨嘴拙舌", 
+						  "抖M", "宅女体质", "娇柔易推倒", "饥渴难耐", "性经验丰富", "快感放纵", "意志薄弱", "恢复缓慢", 
+						  "倒霉蛋", "惧怕刀具", "怕痒"]
+var all_negative_gifts_function = [
+	function n_gift_function1() {untie_mouth -= 3;},
+	function n_gift_function2() {untie_finger -= 3; untie_arm -= 2;},
+	function n_gift_function3() {untie_finger -= 3; untie_arm -= 3; untie_leg -= 3;},
+	function n_gift_function4() {event_sudden_string_prob += 5;},
+	function n_gift_function5() {event_no_clothes_prob += 5;},
+	function n_gift_function6() {sensitivity += 0.3; n_gift_6_judge = true;},
+	function n_gift_function7() {event_very_cute_prob += 5;},
+	function n_gift_function8() {event_persuade_prob += 3;},
+	function n_gift_function9() {untie_eye -= 2; untie_mouth -= 2; untie_finger -= 2; untie_arm -= 2; untie_leg -= 2;},
+	function n_gift_function10() {power -= 50; power_consume_pleasure += 10;},
+	function n_gift_function11() {pleasant_max -= 30; power_consume_pleasure += 20;},
+	function n_gift_function12() {event_no_clothes_prob += 3; event_string_prob += 3; sensitivity += 0.1; pleasant_max -= 20;},
+	function n_gift_function13() {power_consume_pleasure -= 20;},
+	function n_gift_function14() {pleasant_augment *= 2; power_consume_pleasure /= 1.5;},
+	function n_gift_function15() {n_gift_15_judge = true;},
+	function n_gift_function16() {power_recover -= 10;},
+	function n_gift_function17() {event_knife_prob -= 3; event_expose_prob += 3;},
+	function n_gift_function18() {n_gift_18_judge = true;},
+	function n_gift_function19() {n_gift_19_judge = true;},
+]
+var all_negative_gifts_point = [
+	function n_gift_function1() {gift_point += 1},
+	function n_gift_function2() {gift_point += 1},
+	function n_gift_function3() {gift_point += 1},
+	function n_gift_function4() {gift_point += 1},
+	function n_gift_function5() {gift_point += 1},
+	function n_gift_function6() {gift_point += 1},
+	function n_gift_function7() {gift_point += 1},
+	function n_gift_function8() {gift_point += 1},
+	function n_gift_function9() {gift_point += 1},
+	function n_gift_function10() {gift_point += 1},
+	function n_gift_function11() {gift_point += 1},
+	function n_gift_function12() {gift_point += 1},
+	function n_gift_function13() {gift_point += 1},
+	function n_gift_function14() {gift_point += 1},
+	function n_gift_function15() {gift_point += 1},
+	function n_gift_function16() {gift_point += 1},
+	function n_gift_function17() {gift_point += 1},
+	function n_gift_function18() {gift_point += 1},
+	function n_gift_function19() {gift_point += 1},
+]
+var n_gift_6_judge = false
+function n_gift_6_function() {pleasant += sensitivity * 5}
+var n_gift_15_judge = false
+function n_gift_15_fucntion() {pleasant_max -= 10; sensitivity += 0.2;}
+var n_gift_18_judge = false
+function n_gift_18_function() {untie_arm -= 5; untie_leg -= 5;}
+var n_gift_19_judge = false
+function n_gift_19_function() {pleasant += 10; power -= 5}
 
 // ***************************************** 衣着选择
 var all_clothes = ["可爱的jk制服", "保守的女仆装", "普通的休闲装", "创可贴", "全包乳胶衣", "单薄的泳装", "性感的旗袍", 
@@ -283,21 +349,23 @@ var all_tie_post_function = [
 		tie_string += villain_name + "准备使用驷马缚捆绑" + heroine_name + ";"
 	},
 ]
-var all_tie_eye = ["眼罩", "暗淡的美瞳"]
+var all_tie_eye = ["", "眼罩", "暗淡的美瞳"]
 var all_tie_eye_display = [
-	function tie_eye_display1() {
+	function tie_eye_display1() {},
+	function tie_eye_display2() {
 		document.getElementById("tie_introduction").innerHTML = "不透光的黑色眼罩，保证眼前一片黑暗。"
 	},
-	function tie_eye_display2() {
+	function tie_eye_display3() {
 		document.getElementById("tie_introduction").innerHTML = "暗淡的美瞳，不透光，手臂自由前无法取下。"
 	},
 ]
 var all_tie_eye_function = [
-	function tie_eye_function1() {
+	function tie_eye_function1() {event_eye_free = true;},
+	function tie_eye_function2() {
 		tie_eye += 20;
 		tie_string += villain_name + "给" + heroine_name + "戴上了眼罩;";
 	},
-	function tie_eye_funciton2() {
+	function tie_eye_funciton3() {
 		untie_eye_able = false; tie_eye += 10;
 		tie_string += villain_name + "给" + heroine_name + "戴上了难以取下的不透光隐形眼镜;";
 	},
@@ -439,11 +507,8 @@ var all_tie_body_function = [
 		tie_string += villain_name + "在" + heroine_name + "的身上编织出了漂亮的龟甲缚;";
 	}
 ]
-var all_tie_reinforce = ["", "多层丝袜包裹", "加粗麻绳"]
+var all_tie_reinforce = ["多层丝袜包裹", "加粗麻绳"]
 var all_tie_reinforce_display = [
-	function tie_reinforce_display1() {
-		document.getElementById("tie_introduction").innerHTML = ""
-	},
 	function tie_reinforce_display2() {
 		document.getElementById("tie_introduction").innerHTML = "多重丝袜包裹，从外部继续加固束缚。"
 	},
@@ -452,7 +517,6 @@ var all_tie_reinforce_display = [
 	},
 ]
 var all_tie_reinforce_function = [
-	function tie_reinforce_function1() {},
 	function tie_reinforce_function2() {
 		tie_eye *= 1.5; tie_mouth *= 1.5; tie_arm *= 1.5; tie_finger *= 1.5; tie_leg *= 1.5;
 		tie_string += villain_name + "用多层丝袜将" + heroine_name + "包裹成了一个丝袜茧子;";
@@ -545,3 +609,6 @@ function rest_function() {
 function explore_function() {
 	power -= 20; pleasant += sensitivity * pleasant_augment;
 }
+
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css"/>
+        <style type="text/css">
+            #color{
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <select name="" id="color" multiple="multiple">
+        </select>
+        <button id="get_value">获取选中的值</button>
+        <button id="pull_value">红色和蓝色选中</button>
+        <button id="zero_value">清空值</button>
+    </body>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="utils.js"></script>
+    <script src="settings.js"></script>
+    <script src="god_eye/god_eye.js"></script>
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        try{
+        //初始化select2
+        var all_tie_reinforce = ["多层丝袜包裹", "加粗麻绳"]
+        reinforce_select_button = document.getElementById("color")
+        options_init(reinforce_select_button, all_tie_reinforce)
+        $("#color").select2();
+
+        $("#color").on("change", function(e) {console.log($("#color").val())})
+
+        //获取选中的值
+        $("#get_value").click(function(){
+            var color_value = $("#color").select2("val");
+            window.alert(color_value);
+        })
+        // 给多选框赋值
+        $("#pull_value").click(function(){
+            $("#color").val(["red","blue"]).trigger("change");
+        })
+        // 清空
+        $("#zero_value").click(function(){
+            $("#color").val([]).trigger("change");
+        })}
+        catch(err) {
+            window.alert(err)
+        }
+    </script>
+</html>

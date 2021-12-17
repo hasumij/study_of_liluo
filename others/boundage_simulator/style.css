@@ -272,3 +272,11 @@ body.dark {
   text-align:center;
 }
 
+#positive_gifts_select_button{
+  width: 200px;
+}
+
+#negative_gifts_select_button{
+  width: 200px;
+}
+

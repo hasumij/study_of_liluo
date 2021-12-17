@@ -5,7 +5,6 @@ restart.onclick = function() {
 	window.location.reload();
 }
 
-
 // ***************************************** 角色创建
 function character_init() {
 	heroine_select_button = document.getElementById("heroine_select_button");
@@ -43,51 +42,69 @@ character_submit_button.onclick = function(){
 	document.getElementById("character_buttons").style.display = "none";
 	document.getElementById("character").innerHTML = display_array(character_array);
 	document.getElementById("gift_select").style.display = ""
+	gift_init()
 }
 
 
 
 // ***************************************** 天赋选择
-function gift_select(gift_bumber){
-	document.getElementById("gift_buttons").style.display = "none"; // ""/"none"
-	all_gifts_mode = all_gifts
-	all_gifts_function_mode = all_gifts_function
-	for (i = 0; i < gift_number; i++) { 
-    	gift_index = Math.floor((Math.random()*all_gifts_mode.length));
-    	gifts.push(all_gifts_mode[gift_index]);
+function gift_init() {
+	positive_gifts_select_button = document.getElementById("positive_gifts_select_button");
+	options_init(positive_gifts_select_button, all_positive_gifts)
+	$("#positive_gifts_select_button").select2();
+	negative_gifts_select_button = document.getElementById("negative_gifts_select_button");
+	options_init(negative_gifts_select_button, all_negative_gifts)
+	$("#negative_gifts_select_button").select2();
+	document.getElementById("gifts_introduction").innerHTML = "当前天赋点数：" + gift_point;
+}
 
-    	all_gifts_function_mode[gift_index]();
-
-    	all_gifts_mode = all_gifts_mode.filter(function(item) {
-		    return item != all_gifts_mode[gift_index];
-		});
-		all_gifts_function_mode = all_gifts_function_mode.filter(function(item) {
-			return item != all_gifts_function_mode[gift_index];
-		})
+function gift_point_action() {
+	gift_point = 0;
+	positive_gifts = $("#positive_gifts_select_button").val();
+	negative_gifts = $("#negative_gifts_select_button").val();
+	if (positive_gifts != null) {
+		positive_index = from_array_extract_index(positive_gifts, all_positive_gifts)
+		list_function_action(positive_index, all_positive_gifts_point)
 	}
-	document.getElementById("gifts").innerHTML = heroine_name + "的天赋为：" + display_array(gifts);
+	if (negative_gifts != null) {
+		negative_index = from_array_extract_index(negative_gifts, all_negative_gifts)
+		list_function_action(negative_index, all_negative_gifts_point)
+	}
+	document.getElementById("gifts_introduction").innerHTML = "当前天赋点数：" + gift_point;
+}
+
+$("#positive_gifts_select_button").on("change", function(e) {gift_point_action()})
+$("#negative_gifts_select_button").on("change", function(e) {gift_point_action()})
+
+var gifts_confirm_button = document.getElementById("gifts_confirm_button");
+gifts_confirm_button.onclick = function() {
+	if (gift_point < 0) {
+		window.alert("最终天赋点需要大于0！")
+		gift_point = 0
+		return
+	}
+	positive_gifts = $("#positive_gifts_select_button").val();
+	negative_gifts = $("#negative_gifts_select_button").val();
+	if (negative_gifts == null) {
+		window.alert("天赋不能为空！")
+		gift_point = 0
+		return
+	}
+	if (positive_gifts != null) {
+		positive_index = from_array_extract_index(positive_gifts, all_positive_gifts)
+		list_function_action(positive_index, all_positive_gifts_function)
+		gifts = positive_gifts.concat(negative_gifts)
+	} else {
+		gifts = negative_gifts
+	}
+	negative_index = from_array_extract_index(negative_gifts, all_negative_gifts)
+	list_function_action(negative_index, all_negative_gifts_function)
+	document.getElementById("gift_buttons").style.display = "none";
+	document.getElementById("gifts").innerHTML = heroine_name + "的天赋为：" + gifts;
 	clothes_init()
 	document.getElementById("clothes_select").style.display = "";
 	window_scroll()
 }
-
-
-var gift_button_1 = document.getElementById("gift_button_1");
-gift_button_1.onclick = function(){  
-	gift_number = 2;
-    gift_select(gift_number);
-}
-var gift_button_2 = document.getElementById("gift_button_2");
-gift_button_2.onclick = function(){  
-	gift_number = 4;
-    gift_select(gift_number);
-}
-var gift_button_3 = document.getElementById("gift_button_3");
-gift_button_3.onclick = function(){  
-	gift_number = 6;
-    gift_select(gift_number);
-}
-
 
 
 // ***************************************** 衣着选择
@@ -150,6 +167,7 @@ function tie_select_init() {
 
 	reinforce_select_button = document.getElementById("reinforce_select_button")
 	options_init(reinforce_select_button, all_tie_reinforce)
+	// $("#reinforce_select_button").select2();
 
 	tie_select_display(0, 0);
 }
@@ -267,7 +285,7 @@ tie_confirm_button.onclick = function() {
 }
 
 
-// ***************************************** 收紧程度
+// ***************************************** 收紧加固
 function tight_select(tight_id){
 	document.getElementById("tight_buttons").style.display = "none";
 	all_tight_function[tight_id]()

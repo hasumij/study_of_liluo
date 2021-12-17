@@ -25,3 +25,20 @@ function options_init(select_button, select_array) {
 	}
 }
 
+function from_array_extract_index(source_array, target_array) {
+	index_array = []
+	for(i = 0; i < source_array.length; i++) {
+		index = target_array.indexOf(source_array[i])
+		index_array.push(index)
+	}
+	return index_array
+}
+
+function list_function_action(index_array, function_array) {
+	for(i = 0; i < index_array.length; i++) {
+		index = index_array[i]
+		function_array[index]()
+	}
+}
+
+
