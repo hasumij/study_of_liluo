@@ -1,4 +1,3 @@
-console.log("已经调用")
 // ***************************************** 初始定义
 var heroine_name = ""
 var villain_name = ""
@@ -68,12 +67,6 @@ function event_careless_function() {
 	tie_eye *= 0.5; tie_mouth *= 0.5; tie_arm *= 0.5; tie_finger *= 0.5; tie_leg *= 0.5; event_tie_array.push(all_event_tie[2]);
 }
 
-var event_eye_free = false // 是否能够看见
-var event_mouth_free = false //嘴部是否自由
-var event_arm_free = false // 手臂是否自由
-var event_finger_free = false //手指是否自由
-var event_leg_free = false // 双腿是否自由
-
 var event_call_for_help_prob = 10 // 呼救
 var event_call_for_help_able = false
 var event_call_for_help = false
@@ -89,6 +82,7 @@ function event_call_for_help_function() {
 	} else {
 		document.getElementById("event_untie_content").innerHTML += heroine_name + "的呼救没有引来任何人，请继续逃脱。</p>"
 		untie_action(eye_struggle, mouth_struggle, arm_struggle, finger_struggle, leg_struggle)
+		general_judge()
 		return "none"
 	}
 }
@@ -99,6 +93,7 @@ function event_sudden_string_function() {
 	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——突发收紧。" + heroine_name +
 	"挣扎的样子让监控中观察的" + villain_name + "控制不住，她不顾承诺强行将" + heroine_name + "全身的束缚收紧了。</p>";
 	tie_eye *= 1.2; tie_mouth *= 1.2; tie_arm *= 1.2; tie_finger *= 1.2; tie_leg *= 1.2;
+	general_judge()
 	return "none";
 }
 var event_very_cute_prob = 1 // 萌化
@@ -108,6 +103,7 @@ function event_very_cute_function() {
 	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——萌化。" + 
 	"由于" + heroine_name + "挣扎的样子太萌了，让" + villain_name + "忍不住与" + heroine_name + "贴贴，" + heroine_name + "达到了巅峰。</p>" 
 	power -= power_consume_pleasure; pleasant = 0;
+	general_judge()
 	return "none"
 }
 var event_persuade_prob = 1 // 说服
@@ -124,33 +120,136 @@ function event_tk_function() {
 	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——挠痒。" + 
 	villain_name + "忍不住将手伸向" + heroine_name + "的脚丫，" + heroine_name + "被阵阵钻心的痒感刺激的无力挣扎。</p>" 
 	pleasant += 20; power -= 10;
-	if (gift_23_judge == true) {
-		gift_23_function()
+	if (n_gift_19_judge == true) {
+		n_gift_19_function()
 	}
+	general_judge()
 	return "none"
 }
 
+// 探索事件
+// 探索过程中的解锁事件
+var event_unlock_eye_able = false
+var event_unlock_eye_prob = 30
+function event_unlock_eye_function() {
+	console.log(unlock_clothes_5, unlock_tie_eye_3, unlock_string_1, untie_eye_able)
+	event_unlock_eye_able = false; unlock_string_1 = true;
+	console.log(unlock_clothes_5, unlock_tie_eye_3, unlock_string_1, untie_eye_able)
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "在探索的过程中找到了眼罩钥匙。</p>"
+	general_judge()
+	return "none"
+}
+var event_unlock_mouth_able = false
+var event_unlock_mouth_prob = 30
+function event_unlock_mouth_function() {
+	event_unlock_mouth_able = false; unlock_string_2 = true;
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "在探索的过程中找到了口球钥匙。</p>"
+	general_judge()
+	return "none"
+}
+var event_unlock_arm_able = false
+var event_unlock_arm_prob = 30
+function event_unlock_arm_function() {
+	event_unlock_arm_able = false; unlock_string_3 = true;
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "在探索的过程中找到了手腕上手铐的钥匙。</p>"
+	general_judge()
+	return "none"
+}
+var event_unlock_finger_able = false
+var event_unlock_finger_prob = 30
+function event_unlock_finger_function() {
+	event_unlock_finger_able = false; unlock_string_4 = true;
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "在探索的过程中找到了手指上指铐的钥匙。</p>"
+	general_judge()
+	return "none"
+}
+var event_unlock_leg_able = false
+var event_unlock_leg_prob = 30
+function event_unlock_leg_function() {
+	event_unlock_leg_able = false; unlock_string_5 = true;
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "在探索的过程中找到了双腿上镣铐的钥匙。</p>"
+	general_judge()
+	return "none"
+}
+
+
+// 其他探索事件
 var event_knife_prob = 30 //找到小刀
 var event_knife_able = true
-var event_knife = false
 function event_knife_function() {
 	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——发现小刀。" + 
 	heroine_name + "在探索过程中找到了小刀，更容易脱缚了。"
-	untie_arm += 20; untie_finger += 20; untie_leg += 20; event_knife = true;
-	if (gift_22_judge == true) {
-		gift_22_function()
+	untie_arm += 20; untie_finger += 20; untie_leg += 20; event_knife_able = false;
+	if (p_gift_18_judge == true) {
+		p_gift_18_function()
 	}
+	if (n_gift_18_judge == true) {
+		n_gift_18_function()
+	}
+	general_judge()
 	return "none"
 }
 var event_expose_prob = 30 //暴露行踪
 var event_expose_able = true
-var event_expose = false
 function event_expose_function() {
-	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——发觉。" + 
+	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——暴露行踪。" + 
 	heroine_name + "在探索过程中被" + villain_name + "发现了，她继续加固了" + heroine_name + "身上的束缚。"
 	untie_arm += 20; untie_finger += 20; untie_leg += 20; event_knife = true;
 	tie_eye *= 1.2; tie_mouth *= 1.2; tie_arm *= 1.2; tie_finger *= 1.2; tie_leg *= 1.2; event_expose = true;
+	general_judge()
 	return "none"
+}
+
+
+// 条件事件
+var event_eye_free = false // 是否能够看见
+var event_mouth_free = false //嘴部是否自由
+var event_arm_free = false // 手臂是否自由
+var event_finger_free = false //手指是否自由
+var event_leg_free = false // 双腿是否自由
+
+function event_eye_free_function() {
+	document.getElementById("struggle_button_1").style.display = "none";
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已获得光明</p>"
+	event_eye_free = true; tie_eye = 0;
+	general_judge()
+}
+function event_mouth_free_function() {
+	document.getElementById("struggle_button_2").style.display = "none";
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱嘴部束缚</p>"
+	event_mouth_free = true; tie_mouth = 0; event_call_for_help_able = true; event_persuade_able = true;
+	general_judge()
+}
+function event_arm_free_function() {
+	document.getElementById("struggle_button_3").style.display = "none";
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚，开始解开其他束缚</p>"
+	event_arm_free = true; tie_arm = 0; untie_eye *= 3;
+	untie_finger *= 3; untie_finger_able = true; untie_leg *= 3; untie_leg_able = true;
+	unlock_clothes_5 = true; unlock_tie_eye_3 = true; unlock_tie_finger_3 = true;
+	general_judge()
+}
+function event_finger_free_function() {
+	document.getElementById("struggle_button_4").style.display = "none";
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手指束缚</p>"
+	event_finger_free = true; untie_leg *= 3; untie_arm *= 3; tie_finger = 0;
+	general_judge()
+}
+function event_leg_free_function() {
+	document.getElementById("struggle_button_5").style.display = "none";
+	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱双腿束缚</p>"
+	event_leg_free = true; tie_leg = 0;
+	general_judge()
+}
+function event_pleasure_max_function() {
+	document.getElementById("event_untie_content").innerHTML += "快感到达极限，" + heroine_name + "忍不住达到高潮，体力大幅度下降。";
+	power -= power_consume_pleasure; pleasant = 0;
+	if (p_gift_15_judge == true) {
+		p_gift_15_fucntion()
+	}
+	if (n_gift_15_judge == true) {
+		n_gift_15_function()
+	}
+	general_judge()
 }
 
 
@@ -164,7 +263,7 @@ var all_villain_characters = ["", "沐沐", "安宁", "言兮", "幽灵"]
 var gift_point = 0
 
 var all_positive_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", "外表柔弱", "天生傲骨", "冷静头脑", "御姐脸", "口才出众", 
-                          "抖S", "强健体魄", "倔强难屈服", "冷静镇定", "性生活懵懂", "快感忍耐", "意志坚韧", "恢复迅速", 
+                          "抖S", "强健体魄", "倔强难屈服", "冷静镇定", "性经验丰富", "快感忍耐", "意志坚韧", "恢复迅速", 
                           "幸运儿", "刀具精通", "不怕痒"]
 var all_positive_gifts_function = [
 	function p_gift_function1() {untie_mouth += 3;},
@@ -179,7 +278,7 @@ var all_positive_gifts_function = [
 	function p_gift_function10() {power += 50; power_consume_pleasure -= 10;},
 	function p_gift_function11() {pleasant_max += 30; power_consume_pleasure -= 20;},
 	function p_gift_function12() {event_no_clothes_prob -= 3; event_string_prob -= 3; sensitivity -= 0.1; pleasant_max += 20;},
-	function p_gift_function13() {power_consume_pleasure += 20;},
+	function p_gift_function13() {power_consume_pleasure -= 20;},
 	function p_gift_function14() {pleasant_augment /= 2; power_consume_pleasure *= 1.5;},
 	function p_gift_function15() {p_gift_15_judge = true;},
 	function p_gift_function16() {power_recover += 10;},
@@ -215,7 +314,7 @@ var all_positive_gifts_point = [
 	function p_gift_point19() {gift_point -= 1},
 ]
 var all_negative_gifts = ["笨拙的舌头", "笨拙的手指", "身体僵硬", "天生丽质", "天生媚骨", "敏感身体", "娃娃脸", "笨嘴拙舌", 
-						  "抖M", "宅女体质", "娇柔易推倒", "饥渴难耐", "性经验丰富", "快感放纵", "意志薄弱", "恢复缓慢", 
+						  "抖M", "宅女体质", "娇柔易推倒", "饥渴难耐", "性生活懵懂", "快感放纵", "意志薄弱", "恢复缓慢", 
 						  "倒霉蛋", "惧怕刀具", "怕痒"]
 var all_negative_gifts_function = [
 	function n_gift_function1() {untie_mouth -= 3;},
@@ -230,7 +329,7 @@ var all_negative_gifts_function = [
 	function n_gift_function10() {power -= 50; power_consume_pleasure += 10;},
 	function n_gift_function11() {pleasant_max -= 30; power_consume_pleasure += 20;},
 	function n_gift_function12() {event_no_clothes_prob += 3; event_string_prob += 3; sensitivity += 0.1; pleasant_max -= 20;},
-	function n_gift_function13() {power_consume_pleasure -= 20;},
+	function n_gift_function13() {power_consume_pleasure += 20;},
 	function n_gift_function14() {pleasant_augment *= 2; power_consume_pleasure /= 1.5;},
 	function n_gift_function15() {n_gift_15_judge = true;},
 	function n_gift_function16() {power_recover -= 10;},
@@ -321,12 +420,13 @@ var all_clothes_display = [
 			])
 	},
 ]
+var unlock_clothes_5 = true;
 var all_clothes_function = [
 	function clothes_function1() {event_very_cute_prob += 5; event_no_clothes_prob += 10},
 	function clothes_fucntion2() {event_sudden_string_prob += 5; sensitivity -= 0.2},
 	function clothes_function3() {sensitivity -= 0.2},
 	function clothes_function4() {sensitivity += 0.5; event_very_cute_able = false},
-	function clothes_function5() {untie_eye_able = false; tie_eye += 30; power_consume += 5},
+	function clothes_function5() {untie_eye_able = false; tie_eye += 30; power_consume += 5; unlock_clothes_5 = false;},
 	function clothes_function6() {event_sudden_string_prob += 5; event_very_cute_prob -= 10; sensitivity += 0.3},
 	function clothes_function7() {event_no_clothes_prob += 5; event_string_prob += 5; event_sudden_string_prob += 5; event_very_cute_prob -= 5},
 	function clothes_function8() {sensitivity += 0.3; event_sudden_string_prob += 10; event_tk_prob += 10},
@@ -335,6 +435,8 @@ var all_clothes_function = [
 // ***************************************** 束缚选择
 var all_tie_post = ["直立后手缚", "海老缚", "驷马"]
 var all_tie_post_display = []
+var unlock_tie_eye_3 = true;
+var unlock_tie_finger_3 = true;
 var all_tie_post_function = [
 	function tie_post_function1() {
 		tie_post += 0;
@@ -366,7 +468,7 @@ var all_tie_eye_function = [
 		tie_string += villain_name + "给" + heroine_name + "戴上了眼罩;";
 	},
 	function tie_eye_funciton3() {
-		untie_eye_able = false; tie_eye += 10;
+		untie_eye_able = false; tie_eye += 10; unlock_tie_eye_3 = false;
 		tie_string += villain_name + "给" + heroine_name + "戴上了难以取下的不透光隐形眼镜;";
 	},
 ]
@@ -429,7 +531,7 @@ var all_tie_arm_function = [
 		tie_string += villain_name + "将" + heroine_name + "捆成了极限的后手观音姿势;";
 	},
 ]
-var all_tie_finger = ["袜子", "胶带", "拇指铐", "皮革无指手套"]
+var all_tie_finger = ["袜子", "胶带", "皮革无指手套"]
 var all_tie_finger_display = [
 	function tie_finger_display1() {
 		document.getElementById("tie_introduction").innerHTML = "用袜子套在手指上，简单的限制手指自由的方法。"
@@ -438,9 +540,6 @@ var all_tie_finger_display = [
 		document.getElementById("tie_introduction").innerHTML = "用胶带将手指缠裹成两个小球，难以挣脱。"
 	},
 	function tie_finger_display3() {
-		document.getElementById("tie_introduction").innerHTML = "可以铐住大拇指的拇指铐。"
-	},
-	function tie_finger_display4() {
 		document.getElementById("tie_introduction").innerHTML = "彻底拘束手指的皮革无指手套"
 	},
 ]
@@ -454,11 +553,7 @@ var all_tie_finger_function = [
 		tie_string += villain_name + "用胶带将" + heroine_name + "的两只手分别握拳缠裹成两个小球;";
 	},
 	function tie_finger_function3() {
-		tie_finger += 30; untie_finger -= 2;
-		tie_string += villain_name + "给" + heroine_name + "的双手拇指锁到了指铐之中，并且将钥匙扔到了附近;";
-	},
-	function tie_finger_function4() {
-		untie_finger_able = false; tie_finger += 100;
+		untie_finger_able = false; tie_finger += 100; unlock_tie_finger_3 = false;
 		tie_string += villain_name + "将" + heroine_name + "的双手锁入了一个皮革无指手套之中;";
 	}
 ]
@@ -507,36 +602,84 @@ var all_tie_body_function = [
 		tie_string += villain_name + "在" + heroine_name + "的身上编织出了漂亮的龟甲缚;";
 	}
 ]
-var all_tie_reinforce = ["多层丝袜包裹", "加粗麻绳"]
-var all_tie_reinforce_display = [
-	function tie_reinforce_display2() {
-		document.getElementById("tie_introduction").innerHTML = "多重丝袜包裹，从外部继续加固束缚。"
-	},
-	function tie_reinforce_display3() {
-		document.getElementById("tie_introduction").innerHTML = "将束缚的绳索换为加粗麻绳，比普通麻绳更加坚固，让" + heroine_name + "更难挣脱。"
-	},
-]
-var all_tie_reinforce_function = [
-	function tie_reinforce_function2() {
-		tie_eye *= 1.5; tie_mouth *= 1.5; tie_arm *= 1.5; tie_finger *= 1.5; tie_leg *= 1.5;
-		tie_string += villain_name + "用多层丝袜将" + heroine_name + "包裹成了一个丝袜茧子;";
-	},
-	function tie_reinforce_function3() {
-		tie_arm *= 2;
-		tie_leg *= 2;
-	}
-]
 var all_ties = []
 var tie_string = ""
 
 
 // ***************************************** 加固和收紧选择
-var tight_id = 1
 var all_tight = ["不变", "继续收紧", "狠狠收紧"]
 var all_tight_function = [
-	function tight_function1() {},
-	function tight_function2() {tie_eye *= 1.5; tie_mouth *= 1.5; tie_arm *= 1.5; tie_finger *= 1.5; tie_leg *= 1.5;},
-	function tight_function3() {tie_eye *= 2; tie_mouth *= 2; tie_arm *= 2; tie_finger *= 2; tie_leg *= 2;},
+	function tight_function1() {
+		document.getElementById("string_grade").innerHTML = villain_name + "没有继续收紧" + heroine_name + "身上的束缚。";
+	},
+	function tight_function2() {
+		tie_eye *= 1.5; tie_mouth *= 1.5; tie_arm *= 1.5; tie_finger *= 1.5; tie_leg *= 1.5;
+		document.getElementById("string_grade").innerHTML = villain_name + "稍微收紧了" + heroine_name + "身上的束缚。";
+	},
+	function tight_function3() {
+		tie_eye *= 2; tie_mouth *= 2; tie_arm *= 2; tie_finger *= 2; tie_leg *= 2;
+		document.getElementById("string_grade").innerHTML = villain_name + "狠狠收紧了" + heroine_name + "身上的束缚。";
+	},
+]
+
+var all_tie_reinforce = ["带锁眼罩", "带锁口球", "手铐", "拇指铐", "脚镣", "多层丝袜包裹", "加粗麻绳"]
+var unlock_string_1 = true;
+var unlock_string_2 = true;
+var unlock_string_3 = true;
+var unlock_string_4 = true;
+var unlock_string_5 = true;
+var all_tie_reinforce_display = [
+	function tie_reinforce_display1() {
+		document.getElementById("string_introduction").innerHTML = "带锁的眼罩，需要找到钥匙才能打开。"
+	},
+	function tie_reinforce_display2() {
+		document.getElementById("string_introduction").innerHTML = "带锁的口球，需要找到钥匙才能打开。"
+	},
+	function tie_reinforce_display3() {
+		document.getElementById("string_introduction").innerHTML = "铐在手腕上的手铐，需要找到钥匙才能打开。"
+	},
+	function tie_reinforce_display4() {
+		document.getElementById("string_introduction").innerHTML = "可以铐住大拇指的指铐，需要找到钥匙才能打开。"
+	},
+	function tie_reinforce_display5() {
+		document.getElementById("string_introduction").innerHTML = "铐在脚踝上的脚镣，需要找到钥匙才能打开。"
+	},
+	function tie_reinforce_display6() {
+		document.getElementById("string_introduction").innerHTML = "多重丝袜包裹，从外部继续加固束缚。"
+	},
+	function tie_reinforce_display7() {
+		document.getElementById("string_introduction").innerHTML = "将束缚的绳索换为加粗麻绳，比普通麻绳更加坚固，让" + heroine_name + "更难挣脱。"
+	},
+]
+var all_tie_reinforce_function = [
+	function tie_reinforce_function1() {
+		tie_eye += 30; untie_eye_able = false; unlock_string_1 = false; event_unlock_eye_able = true;
+		document.getElementById("string_grade").innerHTML += villain_name + "给" + heroine_name + "戴上眼罩并上了锁，并且将钥匙扔到了附近;";
+	},
+	function tie_reinforce_function2() {
+		tie_mouth += 30; untie_mouth_able = false; unlock_string_2 = false; event_unlock_mouth_able = true;
+		document.getElementById("string_grade").innerHTML += villain_name + "给" + heroine_name + "的口球上挂了锁，并且将钥匙扔到了附近;";
+	},
+	function tie_reinforce_function3() {
+		tie_arm += 50; untie_arm_able = false; unlock_string_3 = false; event_unlock_arm_able = true;
+		document.getElementById("string_grade").innerHTML += villain_name + "给" + heroine_name + "的手腕戴上手铐，并且将钥匙扔到了附近;";
+	},
+	function tie_reinforce_function4() {
+		tie_finger += 30; untie_finger_able = false; unlock_string_4 = false; event_unlock_finger_able = true;
+		document.getElementById("string_grade").innerHTML += villain_name + "将" + heroine_name + "的双手拇指锁到了指铐之中，并且将钥匙扔到了附近;";
+	},
+	function tie_reinforce_function5() {
+		tie_leg += 100; untie_leg_able = false; unlock_string_5 = false; event_unlock_leg_able = true;
+		document.getElementById("string_grade").innerHTML += villain_name + "给" + heroine_name + "的的脚踝锁上脚镣，并且将钥匙扔到了附近;";
+	},
+	function tie_reinforce_function6() {
+		tie_eye *= 1.5; tie_mouth *= 1.5; tie_arm *= 1.5; tie_finger *= 1.5; tie_leg *= 1.5;
+		document.getElementById("string_grade").innerHTML += villain_name + "用多层丝袜将" + heroine_name + "包裹成了一个丝袜茧子;";
+	},
+	function tie_reinforce_function7() {
+		tie_arm *= 2; tie_leg *= 2;
+		document.getElementById("string_grade").innerHTML += villain_name + "将捆绑" + heroine_name + "手脚的绳索换成了更难逃脱的加粗绳索;";
+	}
 ]
 
 // ***************************************** 挣扎过程
@@ -557,53 +700,19 @@ function struggle_function(struggle_index) {
 }
 
 
-// 条件事件
-function event_eye_free_function() {
-	document.getElementById("struggle_button_1").style.display = "none";
-	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已获得光明</p>"
-	event_eye_free = true; tie_eye = 0;
-}
-function event_mouth_free_function() {
-	document.getElementById("struggle_button_2").style.display = "none";
-	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱嘴部束缚</p>"
-	event_mouth_free = true; tie_mouth = 0; event_call_for_help_able = true; event_persuade_able = true;
-}
-function event_arm_free_function() {
-	document.getElementById("struggle_button_3").style.display = "none";
-	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手臂束缚，开始解开其他束缚</p>"
-	event_arm_free = true; tie_arm = 0; untie_eye *= 3; untie_eye_able = true; untie_mouth *= 3; untie_mouth_able = true;
-	untie_finger *= 3; untie_finger_able = true; untie_leg *= 3; untie_leg_able = true;
-}
-function event_finger_free_function() {
-	document.getElementById("struggle_button_4").style.display = "none";
-	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱手指束缚</p>"
-	event_finger_free = true; untie_leg *= 3; untie_arm *= 3; tie_finger = 0;
-}
-function event_leg_free_function() {
-	document.getElementById("struggle_button_5").style.display = "none";
-	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "已成功挣脱双腿束缚</p>"
-	event_leg_free = true; tie_leg = 0;
-}
-function event_pleasure_max_function() {
-	document.getElementById("event_untie_content").innerHTML += "快感到达极限，" + heroine_name + "忍不住达到高潮，体力大幅度下降。";
-	power -= power_consume_pleasure; pleasant = 0;
-	if (gift_18_judge == true) {
-		gift_18_fucntion()
-	}
-}
-
-
 // ***************************************** 休息过程
 function rest_function() {
 	power += power_recover;
-	if (gift_6_judge == true) {
-		gift_6_function()
+	if (p_gift_6_judge == true) {
+		p_gift_6_function()
+	}
+	if (n_gift_6_judge == true) {
+		n_gift_6_function()
 	}
 	if (gift_7_judge == true) {
 		gift_7_function()
 	}
 }
-
 
 // ***************************************** 探索过程
 function explore_function() {

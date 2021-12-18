@@ -165,10 +165,6 @@ function tie_select_init() {
 	body_select_button = document.getElementById("body_select_button")
 	options_init(body_select_button, all_tie_body)
 
-	reinforce_select_button = document.getElementById("reinforce_select_button")
-	options_init(reinforce_select_button, all_tie_reinforce)
-	// $("#reinforce_select_button").select2();
-
 	tie_select_display(0, 0);
 }
 
@@ -185,8 +181,6 @@ function tie_select_display(tie_id, tie_select_id) {
 		all_tie_leg_display[tie_select_id]()
 	} else if (tie_id == 5) {
 		all_tie_body_display[tie_select_id]()
-	} else if (tie_id == 6) {
-		all_tie_reinforce_display[tie_select_id]()
 	}
 }
 
@@ -203,8 +197,6 @@ function tie_select(tie_id, tie_select_id) {
 		all_tie_leg_function[tie_select_id]()
 	} else if (tie_id == 5) {
 		all_tie_body_function[tie_select_id]()
-	} else if (tie_id == 6) {
-		all_tie_reinforce_function[tie_select_id]()
 	}
 }
 
@@ -250,13 +242,6 @@ body_select_button.onchange = function() {
 	window_scroll()
 }
 
-var reinforce_select_button = document.getElementById("reinforce_select_button")
-reinforce_select_button.onchange = function() {
-	reinforce_select_index = document.getElementById("reinforce_select_button").selectedIndex
-	tie_select_display(6, reinforce_select_index)
-	window_scroll()
-}
-
 var tie_confirm_button = document.getElementById("tie_confirm_button");
 tie_confirm_button.onclick = function() {  
 	document.getElementById("tie_buttons").style.display = "none";
@@ -275,40 +260,45 @@ tie_confirm_button.onclick = function() {
 	tie_select(4, leg_select_index)
 	body_select_index = document.getElementById("body_select_button").selectedIndex
 	tie_select(5, body_select_index)
-	reinforce_select_index = document.getElementById("reinforce_select_button").selectedIndex
-	tie_select(6, reinforce_select_index)
 
 	document.getElementById("tie_functions").innerHTML = tie_string;
-	document.getElementById("tight_select").style.display = "";
-
+	document.getElementById("string_select").style.display = "";
+	string_init()
 	window_scroll()
 }
 
 
 // ***************************************** 收紧加固
-function tight_select(tight_id){
-	document.getElementById("tight_buttons").style.display = "none";
+function string_init() {
+	tight_select_button = document.getElementById("tight_select_button")
+	options_init(tight_select_button, all_tight)
+
+	reinforce_select_button = document.getElementById("reinforce_select_button")
+	options_init(reinforce_select_button, all_tie_reinforce)
+	$("#reinforce_select_button").select2();
+	all_tie_reinforce_display[0]()
+}
+
+$("#reinforce_select_button").on("change", function(e) {
+	reinforce_content = $("#reinforce_select_button").val();
+	if (reinforce_content != null) {
+		reinforce_index = from_array_extract_index(reinforce_content, all_tie_reinforce).slice(-1)[0]
+		all_tie_reinforce_display[reinforce_index]()
+	}
+})
+
+var string_confirm_button = document.getElementById("string_confirm_button");
+string_confirm_button.onclick = function(){
+	tight_id = document.getElementById("tight_select_button").selectedIndex
 	all_tight_function[tight_id]()
-	document.getElementById("tight_grade").innerHTML = heroine_name + "的束缚收紧程度为：" + all_tight[tight_id];
+	reinforce_content = $("#reinforce_select_button").val();
+	if (reinforce_content != null) {
+		reinforce_index = from_array_extract_index(reinforce_content, all_tie_reinforce)
+		list_function_action(reinforce_index, all_tie_reinforce_function)
+	}
+	document.getElementById("string_buttons").style.display = "none";
 	document.getElementById("event_tie").style.display = "";
 	window_scroll()
-}
-
-
-var tight_button_1 = document.getElementById("tight_button_1");
-tight_button_1.onclick = function(){  
-	tight_id = 0
-    tight_select(tight_id);
-}
-var tight_button_2 = document.getElementById("tight_button_2");
-tight_button_2.onclick = function(){  
-	tight_id = 1
-    tight_select(tight_id);
-}
-var tight_button_3 = document.getElementById("tight_button_3");
-tight_button_3.onclick = function(){  
-	tight_id = 2
-    tight_select(tight_id);
 }
 
 
@@ -427,22 +417,20 @@ function result_judge(result) {
 	if (power <= 0) {
 		document.getElementById("event_untie_content").innerHTML = "<p>体力值耗尽，" + heroine_name + "没有挣脱束缚。</p>"
 		result = false
-	}
-	if (epoch >= epoch_max) {
+	} else if (epoch >= epoch_max) {
 		document.getElementById("event_untie_content").innerHTML = "<p>脱缚时间到，" + heroine_name + "没有挣脱束缚。</p>"
 		result = false
-	}
-	if (event_eye_free == true && event_mouth_free == true && event_arm_free == true && event_finger_free == true && event_leg_free == true) {
+	} else if (event_eye_free == true && event_mouth_free == true && event_arm_free == true && event_finger_free == true && event_leg_free == true) {
 		document.getElementById("event_untie_content").innerHTML += "所有部位解缚成功，成功逃脱。";
 		result = true
 	}
 	if (result == true) {
-		document.getElementById("event_untie_buttons").style.display = "none";
+		document.getElementById("event_untie_main_buttons").style.display = "none";
 		document.getElementById("final_evaluate_content").innerHTML = "<p>恭喜逃脱成功！最终得分为：" 
 		document.getElementById("final_evaluate_content").innerHTML = calculate_evaluation() + "</p>"
 		document.getElementById("final_evaluate").style.display = "";
 	} else if (result == false) {
-		document.getElementById("event_untie_buttons").style.display = "none";
+		document.getElementById("event_untie_main_buttons").style.display = "none";
 		document.getElementById("final_evaluate_content").innerHTML = "<p>恭喜逃脱失败！最终得分为：" + 
 		calculate_evaluation() + "</p>";
 		document.getElementById("final_evaluate").style.display = "";
@@ -482,35 +470,8 @@ function struggle_judge(sudden_event) {
 			event_leg_free_function()
 		}
 	}
-	if (pleasant > pleasant_max) {
-		event_pleasure_max_function()
-	}
 
-	if (untie_eye_able == false || event_eye_free == true) {
-		document.getElementById("struggle_button_1").style.display = "none";
-	} else {
-		document.getElementById("struggle_button_1").style.display = "";
-	}
-	if (untie_mouth_able == false || event_mouth_free == true) {
-		document.getElementById("struggle_button_2").style.display = "none";
-	} else {
-		document.getElementById("struggle_button_2").style.display = "";
-	}
-	if (untie_arm_able == false || event_arm_free == true) {
-		document.getElementById("struggle_button_3").style.display = "none";
-	} else {
-		document.getElementById("struggle_button_3").style.display = "";
-	}
-	if (untie_finger_able == false || event_finger_free == true) {
-		document.getElementById("struggle_button_4").style.display = "none";
-	} else {
-		document.getElementById("struggle_button_4").style.display = "";
-	}
-	if (untie_leg_able == false || event_leg_free == true) {
-		document.getElementById("struggle_button_5").style.display = "none";
-	} else {
-		document.getElementById("struggle_button_5").style.display = "";
-	}
+	general_judge()
 
 	// 突发事件判定
 	if (sudden_event == true) { //只在每轮脱缚阶段之前进行事件判定
@@ -556,7 +517,7 @@ function struggle_action(struggle_index) {
 
 
 var struggle_button_1 = document.getElementById("struggle_button_1");
-struggle_button_1.onclick = function(){  
+struggle_button_1.onclick = function(){ 
 	struggle_action(1)
 	window_scroll()
 }
@@ -594,9 +555,10 @@ untie_main_button_2.onclick = function() {
 	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
 	document.getElementById("event_untie_content").innerHTML += "<p>本回合休息，体力值获得了少量恢复。</p>"
 
+	general_judge()
 	rest_function();
-
 	display_untie_information()
+	general_judge()
 	
 	document.getElementById("event_untie_content").innerHTML += display_array(current_attribute_array);
 	result_judge("none")
@@ -604,12 +566,28 @@ untie_main_button_2.onclick = function() {
 }
 
 function explore_judge() {
-	if (event_knife_able == true && random(1, 100) <= event_knife_prob && event_knife == false) {
+	if (event_unlock_eye_able == true && random(1, 100) <= event_unlock_eye_prob) {
+		return event_unlock_eye_function()
+	}
+	if (event_unlock_mouth_able == true && random(1, 100) <= event_unlock_mouth_prob) {
+		return event_unlock_mouth_function()
+	}
+	if (event_unlock_arm_able == true && random(1, 100) <= event_unlock_arm_prob) {
+		return event_unlock_arm_function()
+	}
+	if (event_unlock_finger_able == true && random(1, 100) <= event_unlock_finger_prob) {
+		return event_unlock_finger_function()
+	}
+	if (event_unlock_leg_able == true && random(1, 100) <= event_unlock_leg_prob) {
+		return event_unlock_leg_function()
+	}
+	if (event_knife_able == true && random(1, 100) <= event_knife_prob) {
 		return event_knife_function()
 	}
 	if (event_expose_able == true && random(1, 100) <= event_expose_prob) {
 		return event_expose_function()
 	}
+
 	return "none_event"
 }
 
@@ -623,7 +601,6 @@ untie_main_button_3.onclick = function() {
 		document.getElementById("event_untie_content").innerHTML += "<p>没有找到什么东西。</p>"
 	}
 	explore_function()
-
 	display_untie_information()
 	result_judge("none")
 	window_scroll()

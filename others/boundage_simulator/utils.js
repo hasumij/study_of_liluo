@@ -41,4 +41,52 @@ function list_function_action(index_array, function_array) {
 	}
 }
 
+function general_judge() {
+	if (pleasant > pleasant_max) {
+		event_pleasure_max_function()
+	}
+
+	if (unlock_clothes_5 == true && unlock_tie_eye_3 == true && unlock_string_1 == true) {
+		untie_eye_able = true;
+	}
+	if (unlock_string_2 == true) {
+		untie_mouth_able = true;
+	}
+	if (unlock_string_3 == true) {
+		untie_arm_able = true;
+	}
+	if (unlock_tie_finger_3 == true && unlock_string_4 == true) {
+		untie_finger_able = true
+	}
+	if (unlock_string_5 == true) {
+		untie_leg_able = true;
+	}
+
+	if (untie_eye_able == false || event_eye_free == true) {
+		document.getElementById("struggle_button_1").style.display = "none";
+	} else {
+		document.getElementById("struggle_button_1").style.display = "";
+	}
+	if (untie_mouth_able == false || event_mouth_free == true) {
+		document.getElementById("struggle_button_2").style.display = "none";
+	} else {
+		document.getElementById("struggle_button_2").style.display = "";
+	}
+	if (untie_arm_able == false || event_arm_free == true) {
+		document.getElementById("struggle_button_3").style.display = "none";
+	} else {
+		document.getElementById("struggle_button_3").style.display = "";
+	}
+	if (untie_finger_able == false || event_finger_free == true) {
+		document.getElementById("struggle_button_4").style.display = "none";
+	} else {
+		document.getElementById("struggle_button_4").style.display = "";
+	}
+	if (untie_leg_able == false || event_leg_free == true) {
+		document.getElementById("struggle_button_5").style.display = "none";
+	} else {
+		document.getElementById("struggle_button_5").style.display = "";
+	}
+}
+
 
