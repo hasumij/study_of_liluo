@@ -39,7 +39,7 @@ function god_eye_content_insert() {
     "找到手铐钥匙事件——" + event_unlock_arm_prob + "%",
     "找到指铐钥匙事件——" + event_unlock_finger_prob + "%",
     "找到脚镣钥匙事件——" + event_unlock_leg_prob + "%",
-    "找到小刀事件——" + event_knife_able + "%",
+    "找到小刀事件——" + event_knife_prob + "%",
     "暴露行踪事件——" + event_expose_prob + "%",
     "玻璃碴事件——" + event_glass_prob + "%",
     ]

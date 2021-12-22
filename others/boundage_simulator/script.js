@@ -601,35 +601,42 @@ untie_main_button_3.onclick = function() {
 
 var untie_main_button_4 = document.getElementById("untie_main_button_4");
 untie_main_button_4.onclick = function() {
-	document.getElementById("sikll_buttons").style.display = "";
+	function skill_return_action() {
+		skill_buttons.innerHTML += "<p><input id='skill_return_button' type='button' value='返回' class='button'></p>";
+		skill_return_button = document.getElementById("skill_return_button")
+		skill_return_button.onclick = function() {
+			document.getElementById("skill_buttons").style.display = "none";
+			document.getElementById("event_untie_main_buttons").style.display = "";
+			window_scroll()
+		}
+	}
+
+	document.getElementById("skill_buttons").style.display = "";
 	document.getElementById("event_untie_main_buttons").style.display = "none";
 
-	sikll_buttons = document.getElementById("sikll_buttons")
+	skill_buttons = document.getElementById("skill_buttons")
 	if (heroine_name == "魅魔喵-") {
-		sikll_buttons.innerHTML = "<p><input id='skill_button_1' type='button' value='魅惑' class='button'></p>" + sikll_buttons.innerHTML;
+		skill_buttons.innerHTML = "<p><input id='skill_button_1' type='button' value='魅惑' class='button'></p>";
 		skill_button_1 = document.getElementById("skill_button_1")
+		skill_return_action()
 		skill_button_1.onclick = function() {
 			result_judge(general_action())
 			result_judge(skill_meimomiao_1())
 			window_scroll()
 		}
-	}
-	if (heroine_name == "花梦-") {
-		sikll_buttons.innerHTML = "<p><input id='skill_button_1' type='button' value='打桩' class='button'></p>" + sikll_buttons.innerHTML;
+	} else if (heroine_name == "花梦-") {
+		skill_buttons.innerHTML = "<p><input id='skill_button_1' type='button' value='打桩' class='button'></p>";
 		skill_button_1 = document.getElementById("skill_button_1")
+		skill_return_action()
 		skill_button_1.onclick = function() {
 			result_judge(general_action())
 			result_judge(skill_huameng_1())
 			window_scroll()
 		}
 	}
-	window_scroll()
-}
-
-skill_return_button = document.getElementById("skill_return_button")
-skill_return_button.onclick = function() {
-	document.getElementById("sikll_buttons").style.display = "none";
-	document.getElementById("event_untie_main_buttons").style.display = "";
+	if(skill_buttons.innerHTML.length == 0) {
+		skill_return_action()
+	}
 	window_scroll()
 }
 
