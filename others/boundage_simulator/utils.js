@@ -187,7 +187,7 @@ function result_judge(result) {
 	function result_action(judge) {
 		document.getElementById("event_untie_main_buttons").style.display = "none";
 		document.getElementById("struggle_buttons").style.display = "none";
-		document.getElementById("sikll_buttons").style.display = "none"
+		document.getElementById("skill_buttons").style.display = "none"
 		document.getElementById("final_evaluate").style.display = ""
 		document.getElementById("final_evaluate_content").innerHTML = "<p>恭喜逃脱" + judge + "！最终得分为：" + 
 		calculate_evaluation() + "</p>";

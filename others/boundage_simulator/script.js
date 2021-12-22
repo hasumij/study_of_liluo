@@ -617,8 +617,8 @@ untie_main_button_4.onclick = function() {
 	skill_buttons = document.getElementById("skill_buttons")
 	if (heroine_name == "魅魔喵-") {
 		skill_buttons.innerHTML = "<p><input id='skill_button_1' type='button' value='魅惑' class='button'></p>";
-		skill_button_1 = document.getElementById("skill_button_1")
 		skill_return_action()
+		skill_button_1 = document.getElementById("skill_button_1")
 		skill_button_1.onclick = function() {
 			result_judge(general_action())
 			result_judge(skill_meimomiao_1())
@@ -626,8 +626,8 @@ untie_main_button_4.onclick = function() {
 		}
 	} else if (heroine_name == "花梦-") {
 		skill_buttons.innerHTML = "<p><input id='skill_button_1' type='button' value='打桩' class='button'></p>";
-		skill_button_1 = document.getElementById("skill_button_1")
 		skill_return_action()
+		skill_button_1 = document.getElementById("skill_button_1")
 		skill_button_1.onclick = function() {
 			result_judge(general_action())
 			result_judge(skill_huameng_1())
