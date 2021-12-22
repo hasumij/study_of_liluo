@@ -5,6 +5,18 @@ restart.onclick = function() {
 	window.location.reload();
 }
 
+
+// ***************************************** 初始化
+function all_init() {
+	character_init()
+	random_y_init()
+	gift_init()
+	clothes_init()
+	tie_select_init()
+	string_init()
+}
+all_init()
+
 // ***************************************** 角色创建
 function character_init() {
 	heroine_select_button = document.getElementById("heroine_select_button");
@@ -12,8 +24,6 @@ function character_init() {
 	villain_select_button = document.getElementById("villain_select_button");
 	options_init(villain_select_button, all_villain_characters)
 }
-
-character_init()
 
 var heroine_select_button = document.getElementById("heroine_select_button")
 heroine_select_button.onchange = function() {
@@ -36,15 +46,61 @@ character_submit_button.onclick = function(){
 	}
 	character_array.push("被绑者角色名为" + heroine_name)
 	character_array.push("绑架者角色名为" + villain_name)
-	window.localStorage["heroine_name"] = heroine_name
-	window.localStorage["villain_name"] = villain_name
 
-	document.getElementById("character_buttons").style.display = "none";
+	if (villain_name == "逗鲨-") {
+		skill_dousha_1()
+	}
+
 	document.getElementById("character").innerHTML = display_array(character_array);
-	document.getElementById("gift_select").style.display = ""
-	gift_init()
+	document.getElementById("character_buttons").style.display = "none";
+	document.getElementById("random_select").style.display = ""
+	window_scroll()
 }
 
+
+// ***************************************** 全随机开局
+function random_buttons_action() {
+	document.getElementById("random_select").style.display = "none"
+	document.getElementById("gift_select").style.display = ""
+	window_scroll()
+}
+
+var random_n_button = document.getElementById("random_n_button");
+random_n_button.onclick = function() {
+	random_buttons_action()
+}
+
+function random_y_init() {
+	gifts_random_select_button = document.getElementById("gifts_random_select_button");
+	options_init(gifts_random_select_button, all_gift_random_numbers)
+	reinforce_random_select_button = document.getElementById("reinforce_random_select_button");
+	options_init(reinforce_random_select_button, all_reinforce_random_numbers)
+}
+
+var random_y_button = document.getElementById("random_y_button")
+random_y_button.onclick = function() {
+	document.getElementById("random_main_buttons").style.display = "none"
+	document.getElementById("random_y_buttons").style.display = ""
+	window_scroll()
+}
+
+var random_n_confirm_button = document.getElementById("random_n_confirm_button");
+random_n_confirm_button.onclick = function() {
+	gift_random_select_index = document.getElementById("gifts_random_select_button").selectedIndex
+	gift_number = all_gift_random_numbers[gift_random_select_index]
+	gifts_random_action(all_positive_gifts, gift_number, true);
+	gifts_random_action(all_negative_gifts, gift_number, false);
+	gifts_confirm_button.click();
+	document.getElementById("clothes_select_button").selectedIndex = random(0, all_clothes.length - 1)
+	clothes_confirm_button.click();
+	tie_random_button.click();
+	tie_confirm_button.click();
+	reinforce_random_select_number = all_reinforce_random_numbers[document.getElementById("reinforce_random_select_button").selectedIndex];
+	string_random_action(reinforce_random_select_number)
+	string_confirm_button.click();
+	event_tie_button_1.click();
+	random_buttons_action()
+}
 
 
 // ***************************************** 天赋选择
@@ -52,9 +108,11 @@ function gift_init() {
 	positive_gifts_select_button = document.getElementById("positive_gifts_select_button");
 	options_init(positive_gifts_select_button, all_positive_gifts)
 	$("#positive_gifts_select_button").select2();
+	$('#positive_gifts_select_button').select2({closeOnSelect: false});
 	negative_gifts_select_button = document.getElementById("negative_gifts_select_button");
 	options_init(negative_gifts_select_button, all_negative_gifts)
 	$("#negative_gifts_select_button").select2();
+	$('#negative_gifts_select_button').select2({closeOnSelect: false});
 	document.getElementById("gifts_introduction").innerHTML = "当前天赋点数：" + gift_point;
 }
 
@@ -75,6 +133,28 @@ function gift_point_action() {
 
 $("#positive_gifts_select_button").on("change", function(e) {gift_point_action()})
 $("#negative_gifts_select_button").on("change", function(e) {gift_point_action()})
+
+function gifts_random_action(all_gifts, gift_number, if_positive) {
+	all_gifts_mode = all_gifts
+	gifts_select = []
+	for(i = 0; i < gift_number; i++) {
+		gift = random_sample(all_gifts_mode)
+		all_gifts_mode = delete_value(all_gifts_mode, gift)
+		gifts_select.push(gift)
+	}
+	if(if_positive == true) {
+		$("#positive_gifts_select_button").val(gifts_select).trigger("change");
+	} else {
+		$("#negative_gifts_select_button").val(gifts_select).trigger("change");
+	}
+}
+
+var gifts_random_button = document.getElementById("gifts_random_button");
+gifts_random_button.onclick = function() {
+	gifts_random_action(all_positive_gifts, 5, true);
+	gifts_random_action(all_negative_gifts, 5, false);
+	window_scroll()
+}
 
 var gifts_confirm_button = document.getElementById("gifts_confirm_button");
 gifts_confirm_button.onclick = function() {
@@ -101,7 +181,6 @@ gifts_confirm_button.onclick = function() {
 	list_function_action(negative_index, all_negative_gifts_function)
 	document.getElementById("gift_buttons").style.display = "none";
 	document.getElementById("gifts").innerHTML = heroine_name + "的天赋为：" + gifts;
-	clothes_init()
 	document.getElementById("clothes_select").style.display = "";
 	window_scroll()
 }
@@ -129,24 +208,15 @@ clothes_confirm_button.onclick = function() {
 	all_clothes_function[clothes_id]();
 	document.getElementById("clothes").innerHTML = heroine_name + "的服装为：" + all_clothes[clothes_id];
 	document.getElementById("tie_select").style.display = "";
-	window_scroll();
-    tie_select_init();
+    window_scroll();
 }
 
 
 // ***************************************** 束缚选择
-function tie_post_select() {
-	post = document.getElementsByName("post");
-	if (post[0].checked == true) {
-		all_tie_post_function[0]()
-	} else if (post[1].checked == true) {
-		all_tie_post_function[1]()
-	} else if (post[2].checked == true) {
-		all_tie_post_function[2]()
-	}
-}
-
 function tie_select_init() {
+	post_select_button = document.getElementById("post_select_button");
+	options_init(post_select_button, all_tie_post)
+
 	eye_select_button = document.getElementById("eye_select_button");
 	options_init(eye_select_button, all_tie_eye)
 
@@ -170,100 +240,115 @@ function tie_select_init() {
 
 function tie_select_display(tie_id, tie_select_id) {
 	if (tie_id == 0) {
-		all_tie_eye_display[tie_select_id]()
+		all_tie_post_display[tie_select_id]()
 	} else if (tie_id == 1) {
-		all_tie_mouth_display[tie_select_id]()
+		all_tie_eye_display[tie_select_id]()
 	} else if (tie_id == 2) {
-		all_tie_arm_display[tie_select_id]()
+		all_tie_mouth_display[tie_select_id]()
 	} else if (tie_id == 3) {
-		all_tie_finger_display[tie_select_id]()
+		all_tie_arm_display[tie_select_id]()
 	} else if (tie_id == 4) {
-		all_tie_leg_display[tie_select_id]()
+		all_tie_finger_display[tie_select_id]()
 	} else if (tie_id == 5) {
+		all_tie_leg_display[tie_select_id]()
+	} else if (tie_id == 6) {
 		all_tie_body_display[tie_select_id]()
 	}
 }
 
 function tie_select(tie_id, tie_select_id) {
 	if (tie_id == 0) {
-		all_tie_eye_function[tie_select_id]()
+		all_tie_post_function[tie_select_id]()
 	} else if (tie_id == 1) {
-		all_tie_mouth_function[tie_select_id]()
+		all_tie_eye_function[tie_select_id]()
 	} else if (tie_id == 2) {
-		all_tie_arm_function[tie_select_id]()
+		all_tie_mouth_function[tie_select_id]()
 	} else if (tie_id == 3) {
-		all_tie_finger_function[tie_select_id]()
+		all_tie_arm_function[tie_select_id]()
 	} else if (tie_id == 4) {
-		all_tie_leg_function[tie_select_id]()
+		all_tie_finger_function[tie_select_id]()
 	} else if (tie_id == 5) {
+		all_tie_leg_function[tie_select_id]()
+	} else if (tie_id == 6) {
 		all_tie_body_function[tie_select_id]()
 	}
 }
 
+var post_select_button = document.getElementById("post_select_button")
+post_select_button.onchange = function() {
+	post_select_index = document.getElementById("post_select_button").selectedIndex
+	tie_select_display(0, post_select_index)
+	window_scroll()
+}
 var eye_select_button = document.getElementById("eye_select_button")
 eye_select_button.onchange = function() {
 	eye_select_index = document.getElementById("eye_select_button").selectedIndex
-	tie_select_display(0, eye_select_index)
+	tie_select_display(1, eye_select_index)
 	window_scroll()
 }
-
 var mouth_select_button = document.getElementById("mouth_select_button")
 mouth_select_button.onchange = function() {
 	mouth_select_index = document.getElementById("mouth_select_button").selectedIndex
-	tie_select_display(1, mouth_select_index)
+	tie_select_display(2, mouth_select_index)
 	window_scroll()
 }
-
 var arm_select_button = document.getElementById("arm_select_button")
 arm_select_button.onchange = function() {
 	arm_select_index = document.getElementById("arm_select_button").selectedIndex
-	tie_select_display(2, arm_select_index)
+	tie_select_display(3, arm_select_index)
 	window_scroll()
 }
-
 var finger_select_button = document.getElementById("finger_select_button")
 finger_select_button.onchange = function() {
 	finger_select_index = document.getElementById("finger_select_button").selectedIndex
-	tie_select_display(3, finger_select_index)
+	tie_select_display(4, finger_select_index)
 	window_scroll()
 }
-
 var leg_select_button = document.getElementById("leg_select_button")
 leg_select_button.onchange = function() {
 	leg_select_index = document.getElementById("leg_select_button").selectedIndex
-	tie_select_display(4, leg_select_index)
+	tie_select_display(5, leg_select_index)
 	window_scroll()
 }
-
 var body_select_button = document.getElementById("body_select_button")
 body_select_button.onchange = function() {
 	body_select_index = document.getElementById("body_select_button").selectedIndex
-	tie_select_display(5, body_select_index)
+	tie_select_display(6, body_select_index)
+	window_scroll()
+}
+
+
+var tie_random_button = document.getElementById("tie_random_button");
+tie_random_button.onclick = function() {
+	document.getElementById("post_select_button").selectedIndex = random(0, all_tie_post.length)
+	document.getElementById("eye_select_button").selectedIndex = random(0, all_tie_eye.length)
+	document.getElementById("mouth_select_button").selectedIndex = random(0, all_tie_mouth.length)
+	document.getElementById("arm_select_button").selectedIndex = random(0, all_tie_arm.length)
+	document.getElementById("finger_select_button").selectedIndex = random(0, all_tie_finger.length)
+	document.getElementById("leg_select_button").selectedIndex = random(0, all_tie_leg.length)
+	document.getElementById("body_select_button").selectedIndex = random(0, all_tie_body.length)
 	window_scroll()
 }
 
 var tie_confirm_button = document.getElementById("tie_confirm_button");
 tie_confirm_button.onclick = function() {  
 	document.getElementById("tie_buttons").style.display = "none";
-
-	tie_post_select();
-
+	post_select_index = document.getElementById("post_select_button").selectedIndex
+	tie_select(0, post_select_index)
 	eye_select_index = document.getElementById("eye_select_button").selectedIndex
-	tie_select(0, eye_select_index)
+	tie_select(1, eye_select_index)
 	mouth_select_index = document.getElementById("mouth_select_button").selectedIndex
-	tie_select(1, mouth_select_index)
+	tie_select(2, mouth_select_index)
 	arm_select_index = document.getElementById("arm_select_button").selectedIndex
-	tie_select(2, arm_select_index)
+	tie_select(3, arm_select_index)
 	finger_select_index = document.getElementById("finger_select_button").selectedIndex
-	tie_select(3, finger_select_index)
+	tie_select(4, finger_select_index)
 	leg_select_index = document.getElementById("leg_select_button").selectedIndex
-	tie_select(4, leg_select_index)
+	tie_select(5, leg_select_index)
 	body_select_index = document.getElementById("body_select_button").selectedIndex
-	tie_select(5, body_select_index)
-
+	tie_select(6, body_select_index)
 	document.getElementById("tie_functions").innerHTML = tie_string;
 	document.getElementById("string_select").style.display = "";
-	string_init()
 	window_scroll()
 }
 
@@ -276,6 +361,7 @@ function string_init() {
 	reinforce_select_button = document.getElementById("reinforce_select_button")
 	options_init(reinforce_select_button, all_tie_reinforce)
 	$("#reinforce_select_button").select2();
+	$('#reinforce_select_button').select2({closeOnSelect: false});
 	all_tie_reinforce_display[0]()
 }
 
@@ -286,6 +372,24 @@ $("#reinforce_select_button").on("change", function(e) {
 		all_tie_reinforce_display[reinforce_index]()
 	}
 })
+
+function string_random_action(reinforce_random_select_number=5) {
+	document.getElementById("tight_select_button").selectedIndex = random(0, all_tight.length - 1)
+	all_tie_reinforce_mode = all_tie_reinforce
+	tie_reinforce_seletct = []
+	for(i = 0; i < reinforce_random_select_number; i++) {
+		tie_reinforce = random_sample(all_tie_reinforce_mode)
+		all_tie_reinforce_mode = delete_value(all_tie_reinforce_mode, tie_reinforce)
+		tie_reinforce_seletct.push(tie_reinforce)
+	}
+	$("#reinforce_select_button").val(tie_reinforce_seletct).trigger("change");
+}
+
+var string_random_button = document.getElementById("string_random_button");
+string_random_button.onclick = function() {
+	string_random_action()
+	window_scroll()
+}
 
 var string_confirm_button = document.getElementById("string_confirm_button");
 string_confirm_button.onclick = function(){
@@ -378,141 +482,46 @@ event_tie_button_1.onclick = function(){
 
 
 // ***************************************** 脱缚过程和最终评价
-var untie_main_button_1 = document.getElementById("untie_main_button_1");
-untie_main_button_1.onclick = function(){  
-	document.getElementById("event_untie_buttons").style.display = "";
-	document.getElementById("event_untie_main_buttons").style.display = "none";
-	window_scroll()
-}
-
-
-function display_untie_information() {
-	if (tie_eye <= 0) {
-		current_attribute_array = [
-	"眼部束缚值——" + tie_eye,
-	"嘴部束缚值——" + tie_mouth,
-	"手臂束缚值——" + tie_arm,
-	"手指束缚值——" + tie_finger,
-	"腿部束缚值——" + tie_leg,
-	"当前快感值——" + pleasant + "(" + pleasant_max + ")",
-	"当前体力值——" + power,
-	];
-	} else {
-		current_attribute_array = [
-	heroine_name + "的眼前一片黑暗，无法看到当前身上的束缚情况。",
-	"当前快感值——" + pleasant + "(" + pleasant_max + ")",
-	"当前体力值——" + power,
-		]
-	}
-	document.getElementById("event_untie_content").innerHTML += display_array(current_attribute_array);
-}
-
-function calculate_evaluation() {
-	final_evaluation = final_difficulty - (tie_eye*0.1 + tie_mouth*0.1 + tie_arm*0.3 + tie_finger*0.3 + tie_leg*0.2);
-	return final_evaluation
-}
-
-function result_judge(result) {
-	// 结局事件判定
-	if (power <= 0) {
-		document.getElementById("event_untie_content").innerHTML = "<p>体力值耗尽，" + heroine_name + "没有挣脱束缚。</p>"
-		result = false
-	} else if (epoch >= epoch_max) {
-		document.getElementById("event_untie_content").innerHTML = "<p>脱缚时间到，" + heroine_name + "没有挣脱束缚。</p>"
-		result = false
-	} else if (event_eye_free == true && event_mouth_free == true && event_arm_free == true && event_finger_free == true && event_leg_free == true) {
-		document.getElementById("event_untie_content").innerHTML += "所有部位解缚成功，成功逃脱。";
-		result = true
-	}
-	if (result == true) {
-		document.getElementById("event_untie_main_buttons").style.display = "none";
-		document.getElementById("final_evaluate_content").innerHTML = "<p>恭喜逃脱成功！最终得分为：" 
-		document.getElementById("final_evaluate_content").innerHTML = calculate_evaluation() + "</p>"
-		document.getElementById("final_evaluate").style.display = "";
-	} else if (result == false) {
-		document.getElementById("event_untie_main_buttons").style.display = "none";
-		document.getElementById("final_evaluate_content").innerHTML = "<p>恭喜逃脱失败！最终得分为：" + 
-		calculate_evaluation() + "</p>";
-		document.getElementById("final_evaluate").style.display = "";
-	}
-	return result
-}
-
-function struggle_judge(sudden_event) {
-	// 条件事件判定
-	if (tie_eye <= 0) {
-		tie_eye = 0;
-		if (event_eye_free == false) {
-			event_eye_free_function()
-		}
-	}
-	if (tie_mouth <= 0) {
-		tie_mouth = 0;
-		if (event_mouth_free == false) {
-			event_mouth_free_function()
-		}
-	}
-	if (tie_arm <= 0) {
-		tie_arm = 0;
-		if (event_arm_free == false) {
-			event_arm_free_function()
-		}
-	}
-	if (tie_finger <= 0) {
-		tie_finger = 0;
-		if (event_finger_free == false) {
-			event_finger_free_function()
-		}
-	}
-	if (tie_leg <= 0) {
-		tie_leg = 0;
-		if (event_leg_free == false) {
-			event_leg_free_function()
-		}
-	}
-
-	general_judge()
-
-	// 突发事件判定
-	if (sudden_event == true) { //只在每轮脱缚阶段之前进行事件判定
-		if (event_call_for_help_able == true && random(1, 100) <= event_call_for_help_prob) {
-		return event_call_for_help_function()
-		}
-		if (event_sudden_string_able == true && random(1, 100) <= event_sudden_string_prob) {
-			return event_sudden_string_function()
-		}
-		if (event_very_cute_able == true && random(1, 100) <= event_very_cute_prob) {
-			return event_very_cute_function()
-		}
-		if (event_persuade_able == true && random(1, 100) <= event_persuade_prob) {
-			return event_persuade_function()
-		}
-		if (event_tk_able == true && random(1, 100) <= event_tk_prob) {
-			return event_tk_function()
-		}
-	}
-
-	return "none"
-}
-
-
 var start_to_untie_button = document.getElementById("start_to_untie_button");
 start_to_untie_button.onclick = function(){  
 	document.getElementById("start_to_untie_buttons").style.display = "none";
 	document.getElementById("event_tie_content").innerHTML += display_array(display_attributes_values());
 	document.getElementById("event_untie").style.display = "";
-	struggle_judge(false)
+	result_judge()
 	window_scroll()
 }
 
+var untie_main_button_1 = document.getElementById("untie_main_button_1");
+untie_main_button_1.onclick = function(){
+	document.getElementById("struggle_buttons").style.display = "";
+	document.getElementById("event_untie_main_buttons").style.display = "none";
+	window_scroll()
+}
+
+function struggle_judge() {
+	// 突发事件判定
+	if (event_call_for_help_able == true && random(1, 100) <= event_call_for_help_prob) {
+	return event_call_for_help_function()
+	}
+	if (event_sudden_string_able == true && random(1, 100) <= event_sudden_string_prob) {
+		return event_sudden_string_function()
+	}
+	if (event_very_cute_able == true && random(1, 100) <= event_very_cute_prob) {
+		return event_very_cute_function()
+	}
+	if (event_persuade_able == true && random(1, 100) <= event_persuade_prob) {
+		return event_persuade_function()
+	}
+	if (event_tk_able == true && random(1, 100) <= event_tk_prob) {
+		return event_tk_function()
+	}
+	return "none"
+}
 
 function struggle_action(struggle_index) {
-	epoch += 1
-	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
-	result_judge(struggle_judge(true))
-	struggle_function(struggle_index)
-	display_untie_information()
-	result_judge(struggle_judge(false))
+	result_judge(general_action())
+	result_judge(struggle_judge())
+	result_judge(struggle_function(struggle_index))
 }
 
 
@@ -522,7 +531,7 @@ struggle_button_1.onclick = function(){
 	window_scroll()
 }
 var struggle_button_2 = document.getElementById("struggle_button_2");
-struggle_button_2.onclick = function(){  
+struggle_button_2.onclick = function(){
 	struggle_action(2)
 	window_scroll()
 }
@@ -543,25 +552,15 @@ struggle_button_5.onclick = function(){
 }
 var struggle_button_6 = document.getElementById("struggle_button_6");
 struggle_button_6.onclick = function(){  
-	document.getElementById("event_untie_buttons").style.display = "none";
+	document.getElementById("struggle_buttons").style.display = "none";
 	document.getElementById("event_untie_main_buttons").style.display = "";
 	window_scroll()
 }
 
 var untie_main_button_2 = document.getElementById("untie_main_button_2");
 untie_main_button_2.onclick = function() {
-	result_judge("none")
-	epoch += 1
-	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
-	document.getElementById("event_untie_content").innerHTML += "<p>本回合休息，体力值获得了少量恢复。</p>"
-
-	general_judge()
-	rest_function();
-	display_untie_information()
-	general_judge()
-	
-	document.getElementById("event_untie_content").innerHTML += display_array(current_attribute_array);
-	result_judge("none")
+	result_judge(general_action())
+	result_judge(rest_function())
 	window_scroll()
 }
 
@@ -587,22 +586,50 @@ function explore_judge() {
 	if (event_expose_able == true && random(1, 100) <= event_expose_prob) {
 		return event_expose_function()
 	}
-
-	return "none_event"
+	document.getElementById("event_untie_content").innerHTML += "<p>没有找到什么东西。</p>"
+	return "none"
 }
 
 var untie_main_button_3 = document.getElementById("untie_main_button_3");
 untie_main_button_3.onclick = function() {
-	epoch += 1
-	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
+	result_judge(general_action())
 	document.getElementById("event_untie_content").innerHTML += "<p>" + heroine_name + "对自己周围进行了探索。</p>"
-	result = result_judge(explore_judge())
-	if (result == "none_event") {
-		document.getElementById("event_untie_content").innerHTML += "<p>没有找到什么东西。</p>"
+	result_judge(explore_judge())
+	result_judge(explore_function())
+	window_scroll()
+}
+
+var untie_main_button_4 = document.getElementById("untie_main_button_4");
+untie_main_button_4.onclick = function() {
+	document.getElementById("sikll_buttons").style.display = "";
+	document.getElementById("event_untie_main_buttons").style.display = "none";
+
+	sikll_buttons = document.getElementById("sikll_buttons")
+	if (heroine_name == "魅魔喵-") {
+		sikll_buttons.innerHTML = "<p><input id='skill_button_1' type='button' value='魅惑' class='button'></p>" + sikll_buttons.innerHTML;
+		skill_button_1 = document.getElementById("skill_button_1")
+		skill_button_1.onclick = function() {
+			result_judge(general_action())
+			result_judge(skill_meimomiao_1())
+			window_scroll()
+		}
 	}
-	explore_function()
-	display_untie_information()
-	result_judge("none")
+	if (heroine_name == "花梦-") {
+		sikll_buttons.innerHTML = "<p><input id='skill_button_1' type='button' value='打桩' class='button'></p>" + sikll_buttons.innerHTML;
+		skill_button_1 = document.getElementById("skill_button_1")
+		skill_button_1.onclick = function() {
+			result_judge(general_action())
+			result_judge(skill_huameng_1())
+			window_scroll()
+		}
+	}
+	window_scroll()
+}
+
+skill_return_button = document.getElementById("skill_return_button")
+skill_return_button.onclick = function() {
+	document.getElementById("sikll_buttons").style.display = "none";
+	document.getElementById("event_untie_main_buttons").style.display = "";
 	window_scroll()
 }
 

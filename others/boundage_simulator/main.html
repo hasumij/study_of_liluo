@@ -14,10 +14,13 @@
 </head>
 
 <body>
+  <div id="background"></div>
+
   <div id="story" class="container">
     <div id="controls" class="buttons">
         <a id="restart" title="" href="#">重新开始</a>
         <a id="god_eye">上帝视角</a>
+        <a id="dark_mode">黑夜模式</a>
     </div>
   </div>
 
@@ -30,18 +33,6 @@
     </div>
   </div>
 
-  <!-- 上帝视角弹窗主体 -->
-  <div id="god_eye_window" class="god_eye_window" style="display: none;">
-      <!-- 上帝视角标题 -->
-      <div id="god_eye_title" class="god_eye_title">
-        <span>上帝视角</span>
-        <span><a id="god_eye_close_button" href="javascript:void(0)">关闭</a></span>
-        <hr>
-      </div>
-      <!-- 上帝视角内容 -->
-      <div id="god_eye_content" class="main_text"></div>
-  </div>
-
   <div class="playing">
     <div id="character_select">
       <h2 class="subsection">角色创建</h2>
@@ -49,12 +40,27 @@
         <p>被缚者角色名:<input id="heroine_name" type="text" value="璃落" /></p>
         <p>绑架者角色名:<input id="villain_name" type="text" value="沐沐" /></p>
         <p>
-          已有被缚者角色:<select id="heroine_select_button"></select>
-          已有绑架者角色:<select id="villain_select_button"></select>
+          英雄被缚者角色:<select id="heroine_select_button"></select>
+          英雄绑架者角色:<select id="villain_select_button"></select>
         </p>
         <p><input id="character_submit_button" type="button" value="提交" class="button"></p>
       </div>
       <div id="character" class="main_text"></div>
+    </div>
+
+    <div id="random_select" style="display: none;">
+      <h2 class="subsection">是否选择全随机开局</h2>
+      <div id="random_main_buttons" class="button">
+        <p>
+          <input id="random_y_button" type="button" value="是" class="button">
+          <input id="random_n_button" type="button" value="否" class="button">
+        </p>
+      </div>
+      <div id="random_y_buttons" class="button" style="display: none;">
+        <p>证明/负面天赋个数：<select id="gifts_random_select_button"></select></p>
+        <p>加固道具个数：<select id="reinforce_random_select_button"></select></p>
+        <p><input id="random_n_confirm_button" type="button" value="确定" class="button"></p>
+      </div>
     </div>
 
     <div id="gift_select" style="display: none;">
@@ -64,7 +70,10 @@
       <div id="gift_buttons" class="button">
        <p>正天赋（-天赋点）<select id="positive_gifts_select_button" multiple="multiple" class="multi_select"></select></p>
        <p>负天赋（+天赋点）<select id="negative_gifts_select_button" multiple="multiple" class="multi_select"></select></p>
-       <p><input id="gifts_confirm_button" type="button" value="确定" class="button"></p>
+       <p>
+        <input id="gifts_confirm_button" type="button" value="确定" class="button">
+        <input id="gifts_random_button" type="button" value="随机" class="button">
+       </p>
       </div>
       <div id="gifts" class="main_text">
       </div>
@@ -75,7 +84,7 @@
       <div id="clothes_buttons" class="button">
        <p><select id="clothes_select_button"></select></p>
        <div id="clothes_introduction" class="main_text"></div>
-       <p><input  id="clothes_confirm_button" type="button" value="确定" class="button"></p>
+       <p><input id="clothes_confirm_button" type="button" value="确定" class="button"></p>
       </div>
       <div id="clothes" class="main_text"></div>
     </div>
@@ -83,12 +92,7 @@
     <div id="tie_select" style="display: none;">
       <h2 class="subsection">束缚选择</h2>
       <div id="tie_buttons" class="button">
-        <p>
-          姿势:
-          <input id="post1" type="radio" name="post" value="直立后手缚" />直立缚
-          <input id="post2" type="radio" name="post" value="海老缚" />海老缚
-          <input id="post3" type="radio" name="post" value="驷马" />驷马
-        </p>
+        <p>姿势：<select id="post_select_button"></select></p>
         <p>眼部：<select id="eye_select_button"></select></p>
         <p>嘴部：<select id="mouth_select_button"></select></p>
         <p>手臂：<select id="arm_select_button"></select></p>
@@ -96,7 +100,10 @@
         <p>腿部：<select id="leg_select_button"></select></p>
         <p>身体：<select id="body_select_button"></select></p>
         <div id="tie_introduction" class="main_text"></div>
-        <p><input  id="tie_confirm_button" type="button" value="确定" class="button"><p>
+        <p>
+          <input id="tie_confirm_button" type="button" value="确定" class="button">
+          <input id="tie_random_button" type="button" value="随机" class="button">
+        <p>
       </div>
       <div id="tie_functions" class="main_text"></div>
     </div>
@@ -106,8 +113,11 @@
       <div id="string_buttons" class="button">
         <p>收紧：<select id="tight_select_button"></select><p>
         <p>加固：<select id="reinforce_select_button" multiple="multiple" class="multi_select"></select></p>
-        <div id="string_introduction" class="main_text">asaa</div>
-        <p><input  id="string_confirm_button" type="button" value="确定" class="button"><p>
+        <div id="string_introduction" class="main_text"></div>
+        <p>
+          <input id="string_confirm_button" type="button" value="确定" class="button">
+          <input id="string_random_button" type="button" value="随机" class="button">
+        <p>
       </div>
       <div id="string_grade" class="main_text"></div>
     </div>
@@ -115,30 +125,34 @@
     <div id="event_tie" style="display: none;">
       <h2 class="subsection">紧缚过程</h2>
       <div id="event_tie_buttons" class="button">
-        <p><input  id="event_tie_button_1" type="button" value="开始紧缚" class="button"><p>
+        <p><input id="event_tie_button_1" type="button" value="开始紧缚" class="button"><p>
       </div>
       <div id="event_tie_content" class="main_text"></div>
     </div>
 
     <div id="start_to_untie_buttons" class="button" style="display: none;">
-      <p><input  id="start_to_untie_button" type="button" value="开始脱缚" class="button"><p>
+      <p><input id="start_to_untie_button" type="button" value="开始脱缚" class="button"><p>
     </div>
 
     <div id="event_untie" style="display: none;">
       <h2 class="subsection">脱缚过程</h2>
       <div id="event_untie_content" class="main_text"></div>
       <div id="event_untie_main_buttons" class="button">
-        <p><input  id="untie_main_button_1" type="button" value="挣扎" class="button"><p>
-        <p><input  id="untie_main_button_2" type="button" value="休息" class="button"><p>
-        <p><input  id="untie_main_button_3" type="button" value="探索" class="button"><p>
+        <p><input id="untie_main_button_1" type="button" value="挣扎" class="button"></p>
+        <p><input id="untie_main_button_2" type="button" value="休息" class="button"></p>
+        <p><input id="untie_main_button_3" type="button" value="探索" class="button"></p>
+        <p><input id="untie_main_button_4" type="button" value="技能" class="button"></p>
       </div>
-      <div id="event_untie_buttons" class="button" style="display: none;">
-        <p><input  id="struggle_button_1" type="button" value="挣扎眼部" class="button"><p>
-        <p><input  id="struggle_button_2" type="button" value="挣扎嘴部" class="button"><p>
-        <p><input  id="struggle_button_3" type="button" value="挣扎手臂" class="button"><p>
-        <p><input  id="struggle_button_4" type="button" value="挣扎手指" class="button"><p>
-        <p><input  id="struggle_button_5" type="button" value="挣扎双腿" class="button"><p>
-        <p><input  id="struggle_button_6" type="button" value="返回" class="button"><p>
+      <div id="struggle_buttons" class="button" style="display: none;">
+        <p><input id="struggle_button_1" type="button" value="挣扎眼部" class="button"></p>
+        <p><input id="struggle_button_2" type="button" value="挣扎嘴部" class="button"></p>
+        <p><input id="struggle_button_3" type="button" value="挣扎手臂" class="button"></p>
+        <p><input id="struggle_button_4" type="button" value="挣扎手指" class="button"></p>
+        <p><input id="struggle_button_5" type="button" value="挣扎双腿" class="button"></p>
+        <p><input id="struggle_button_6" type="button" value="返回" class="button"></p>
+      </div>
+      <div id="sikll_buttons" class="button" style="display: none;">
+        <p><input id='skill_return_button' type='button' value='返回' class='button'></p>
       </div>
     </div>
 
@@ -148,6 +162,18 @@
     </div>
   </div>
 
+  <!-- 上帝视角弹窗主体 -->
+  <div id="god_eye_window" class="god_eye_window" style="display: none;">
+      <!-- 上帝视角标题 -->
+      <div id="god_eye_title" class="god_eye_title">
+        <span>上帝视角</span><hr>
+      </div>
+      <!-- 上帝视角内容 -->
+      <div id="god_eye_content" class="main_text"></div>
+      <p><input id='god_eye_close_button' type='button' value='关闭' class='button'></p>
+  </div>
+
+  <script src="darkmode-js.js"></script>
   <script src="import_files/jquery.min.js"></script>
   <script src="import_files/select2.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="utils.js"></script>

@@ -1,18 +1,11 @@
 /* 登陆框主体 */
 .god_eye_window{
-    position: fixed;
-    width: 50%;
-    height: 50%;
+    text-align:center;
     z-index: 9999;
-    display: none;
     background-color: silver;
-    /* 这里要注意绝对定位的盒子怎么在屏幕显示居中 */
-    left: 50%;
-    margin-left: -350px;
-    bottom: 20px;
     border: 1px solid gray;
     overflow-x:hidden;
-    overflow-y:scroll;
+    overflow-y:hidden;
 }
 /* 登陆框标题 */
 .god_eye_title{

@@ -350,7 +350,6 @@
             } catch (e) {
                 console.warn("Couldn't save state");
             }
-
         });
 
         let reloadEl = document.getElementById("reload");
