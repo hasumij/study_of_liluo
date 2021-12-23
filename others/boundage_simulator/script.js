@@ -1,3 +1,16 @@
+// ***************************************** 整体设置
+const width = document.documentElement.clientWidth; //获取当前手机屏宽
+const height = document.documentElement.clientHeight; //手机褡高
+if (width < height) { //如果宽小于高，就是代表竖屏
+	const contentDOM = document.body; //获取lingan_1元素
+	contentDOM.style.width = height + 'px';  //设置该元素的宽等于屏高
+	contentDOM.style.height = width + 'px'; //设置该元素的高等于屏宽
+	contentDOM.style.top = (height - width) / 2 + 'px';
+	contentDOM.style.left = 0 - (height - width) / 2 + 'px';
+	contentDOM.style.transform = 'rotate(90deg)'; //让该元素旋转90度，使其横屏展示
+}
+
+
 // ***************************************** 右上角函数
 var restart = document.getElementById("restart");
 restart.onclick = function() {
