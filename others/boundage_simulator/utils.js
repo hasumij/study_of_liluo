@@ -221,8 +221,12 @@ function general_action() {
 	document.getElementById("event_untie_content").innerHTML = "<p>第" + epoch + "(" + epoch_max + ")轮脱缚回合</p>"
 
 	// 每轮触发的被缚者被动技能
-	if (heroine_name == "璃落(英雄)") {
+	if (heroine_name == "璃落-") {
 		sklill_liluo_1()
+	}
+
+	if (villain_name == "亡灵-") {
+		skill_wangling_1()
 	}
 
 	if (tie_reinforce_11_judge == true) {

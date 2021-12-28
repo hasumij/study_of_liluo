@@ -1,0 +1,52 @@
+.Container{ 
+    margin: 4% auto; 
+    width: 210px; 
+    height: 230px; 
+    position: relative; 
+    perspective: 1000px; 
+} 
+#carousel{ 
+    width: 100%; 
+    height: 100%; 
+    position: absolute; 
+    transform-style:preserve-3d; 
+    animation: rotation 20s infinite linear; 
+} 
+#carousel:hover{ 
+    animation-play-state: paused; 
+} 
+#carousel figure{ 
+  display: block;
+    position: absolute; 
+    width: 220px; 
+    height: 200px; 
+    left: 10px; 
+    top: 10px; 
+    background: black; 
+    overflow: hidden; 
+    border: solid 5px black; 
+} 
+#carousel img{ 
+    filter: grayscale(0); 
+    cursor: pointer; 
+    transition:all 0.3s ease 0s; 
+    width: 100%; 
+    height: 100%; 
+    transform: scale(1.2,1.2); 
+} 
+
+#carousel figure:nth-child(1){transform: rotateY(0deg) translateZ(288px);} 
+#carousel figure:nth-child(2) { transform: rotateY(60deg) translateZ(288px);} 
+#carousel figure:nth-child(3) { transform: rotateY(120deg) translateZ(288px);} 
+#carousel figure:nth-child(4) { transform: rotateY(180deg) translateZ(288px);} 
+#carousel figure:nth-child(5) { transform: rotateY(240deg) translateZ(288px);} 
+#carousel figure:nth-child(6) { transform: rotateY(300deg) translateZ(288px);} 
+
+@keyframes rotation{ 
+    from{ 
+        transform: rotateY(0deg); 
+    } 
+    to{ 
+        transform: rotateY(360deg); 
+    } 
+} 

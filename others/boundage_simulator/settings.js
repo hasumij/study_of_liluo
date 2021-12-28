@@ -46,23 +46,18 @@ var pleasant_max_number = 0
 var final_evaluation = 0
 
 //捆绑过程的特殊事件
-var event_tie_array = []
 var event_no_clothes_prob = 5 // 脱衣
 var event_no_clothes_able = true
-var event_no_clothes = false
 function event_no_clothes_function() {
-	event_no_clothes = true; sensitivity += 0.2; event_very_cute_able = false;
+	sensitivity += 0.2; event_very_cute_able = false;
 }
 var event_string_prob = 5  //收紧
 var event_string_able = true
-var event_string = false
 function event_string_function() {
 	tie_eye *= 2; tie_mouth *= 2; tie_arm *= 2; tie_finger *= 2; tie_leg *= 2;
-	event_string = true;
 }
 var event_careless_prob = 5 //粗心大意
 var event_careless_able = true
-var event_careless = false
 function event_careless_function() {
 	tie_eye *= 0.5; tie_mouth *= 0.5; tie_arm *= 0.5; tie_finger *= 0.5; tie_leg *= 0.5;
 }
@@ -70,7 +65,6 @@ function event_careless_function() {
 //脱缚过程的特殊事件
 var event_call_for_help_prob = 10 // 呼救
 var event_call_for_help_able = false
-var event_call_for_help = false
 var event_call_for_help_success_prob = 30  // 呼救出帮手或绑架者的概率
 function event_call_for_help_function() {
 	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——呼救。"
@@ -88,7 +82,6 @@ function event_call_for_help_function() {
 }
 var event_sudden_string_prob = 5 // 突发收紧
 var event_sudden_string_able = true
-var event_sudden_string = false
 function event_sudden_string_function() {
 	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——突发收紧。" + heroine_name +
 	"挣扎的样子让监控中观察的" + villain_name + "控制不住，她不顾承诺强行将" + heroine_name + "全身的束缚收紧了。</p>";
@@ -97,7 +90,6 @@ function event_sudden_string_function() {
 }
 var event_very_cute_prob = 1 // 萌化
 var event_very_cute_able = true
-var event_very_cute = false
 function event_very_cute_function() {
 	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——萌化。" + 
 	"由于" + heroine_name + "挣扎的样子太萌了，让" + villain_name + "忍不住与" + heroine_name + "贴贴，" + heroine_name + "达到了巅峰。</p>" 
@@ -106,7 +98,6 @@ function event_very_cute_function() {
 }
 var event_persuade_prob = 1 // 说服
 var event_persuade_able = false
-var event_persuade = false
 function event_persuade_function() {
 	document.getElementById("event_untie_content").innerHTML += "<p>触发特殊事件——说服。" + 
 	"由于" + heroine_name + "晓之以理动之以情，" + villain_name + "被" + heroine_name + "成功说动了，最终决定放了" + heroine_name + "。</p>" 
@@ -312,9 +303,87 @@ function skill_huameng_1() { //打桩姬
 	}
 }
 
-var all_villain_characters = ["", "逗鲨-",]
+var all_villain_characters = ["", "逗鲨-", "亡灵-"]
+
 function skill_dousha_1() { //机械化规格
 	event_string_prob = 100; event_sudden_string_prob += 10;
+}
+
+function skill_wangling_1() { //双面人格
+	prob = random(1, 100)
+	if(prob <= 31) {
+		document.getElementById("event_untie_content").innerHTML += "<p>" + villain_name + 
+		"发动技能：双面人格。当前为白人格，为" + heroine_name + "松开了部分束缚。</p>"
+		if(untie_eye_able == true) {
+			tie_eye *= 0.7
+		}
+		if(untie_mouth_able == true) {
+			tie_mouth *= 0.7
+		}
+		if(untie_arm_able == true) {
+			tie_arm *= 0.7
+		}
+		if(untie_finger_able == true) {
+			tie_finger *= 0.7
+		}
+		if(untie_leg_able == true) {
+			tie_leg *= 0.7
+		}
+	} else if(prob > 31 && prob <= 33) {
+		document.getElementById("event_untie_content").innerHTML += "<p>" + villain_name + 
+		"发动技能：双面人格。当前为白人格。" + villain_name + "触发特殊事件：大慈大悲，为" + heroine_name + "松开了绝大部分束缚。</p>"
+		if(untie_eye_able == true) {
+			tie_eye *= 0.01
+		}
+		if(untie_mouth_able == true) {
+			tie_mouth *= 0.01
+		}
+		if(untie_arm_able == true) {
+			tie_arm *= 0.01
+		}
+		if(untie_finger_able == true) {
+			tie_finger *= 0.01
+		}
+		if(untie_leg_able == true) {
+			tie_leg *= 0.01
+		}
+	} else if(prob > 33 && prob <= 64) {
+		document.getElementById("event_untie_content").innerHTML += "<p>" + villain_name + 
+		"发动技能：双面人格。当前为黑人格。为" + heroine_name + "收紧了束缚。</p>"
+		if(untie_eye_able == true) {
+			tie_eye *= 1.3
+		}
+		if(untie_mouth_able == true) {
+			tie_mouth *= 1.3
+		}
+		if(untie_arm_able == true) {
+			tie_arm *= 1.3
+		}
+		if(untie_finger_able == true) {
+			tie_finger *= 1.3
+		}
+		if(untie_leg_able == true) {
+			tie_leg *= 1.3
+		}
+	} else if(prob > 64 && prob <= 69) {
+		document.getElementById("event_untie_content").innerHTML += "<p>" + villain_name + 
+		"发动技能：双面人格。当前为黑人格。" + villain_name + "触发特殊事件：无耻之徒，极大地收紧了" + heroine_name + "身上的束缚。</p>"
+		if(untie_eye_able == true) {
+			tie_eye *= 2
+		}
+		if(untie_mouth_able == true) {
+			tie_mouth *= 2
+		}
+		if(untie_arm_able == true) {
+			tie_arm *= 2
+		}
+		if(untie_finger_able == true) {
+			tie_finger *= 2
+		}
+		if(untie_leg_able == true) {
+			tie_leg *= 2
+		}
+	}
 }
 
 // ***************************************** 全随机开局
@@ -324,7 +393,6 @@ all_reinforce_random_numbers = range(0, 11)
 
 // ***************************************** 天赋选择
 var gift_point = 0
-
 var all_positive_gifts = ["灵活的舌头", "灵活的手指", "舞蹈演员", "外表柔弱", "天生傲骨", "冷静头脑", "御姐脸", "口才出众", 
                           "抖S", "强健体魄", "倔强难屈服", "冷静镇定", "性经验丰富", "快感忍耐", "意志坚韧", "恢复迅速", 
                           "幸运儿", "刀具精通", "不怕痒"]
@@ -802,8 +870,8 @@ var all_tie_reinforce_function = [
 		document.getElementById("string_grade").innerHTML += villain_name + "将" + heroine_name + "的双脚埋入了水泥中。";
 	}
 ]
-tie_reinforce_11_judge = false
-tie_reinforce_11_condition_epoch = 10
+var tie_reinforce_11_judge = false
+var tie_reinforce_11_condition_epoch = 10
 function tie_reinforce_11_function() {
 	if (event_leg_free == true) {
 		return
@@ -814,8 +882,8 @@ function tie_reinforce_11_function() {
 		event_tie_reinforce_11_able = true;
 	}
 }
-event_tie_reinforce_11_able = false;
-event_tie_reinforce_11_prob = 100;
+var event_tie_reinforce_11_able = false;
+var event_tie_reinforce_11_prob = 100;
 function event_tie_reinforce_11_function() {
 	event_tie_reinforce_11_able = false;
 	document.getElementById("event_untie_content").innerHTML += 

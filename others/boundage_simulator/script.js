@@ -1,23 +1,9 @@
-// ***************************************** 整体设置
-const width = document.documentElement.clientWidth; //获取当前手机屏宽
-const height = document.documentElement.clientHeight; //手机褡高
-if (width < height) { //如果宽小于高，就是代表竖屏
-	const contentDOM = document.body; //获取lingan_1元素
-	contentDOM.style.width = height + 'px';  //设置该元素的宽等于屏高
-	contentDOM.style.height = width + 'px'; //设置该元素的高等于屏宽
-	contentDOM.style.top = (height - width) / 2 + 'px';
-	contentDOM.style.left = 0 - (height - width) / 2 + 'px';
-	contentDOM.style.transform = 'rotate(90deg)'; //让该元素旋转90度，使其横屏展示
-}
-
-
 // ***************************************** 右上角函数
 var restart = document.getElementById("restart");
 restart.onclick = function() {
 	window.history.back(-1);
 	window.location.reload();
 }
-
 
 // ***************************************** 初始化
 function all_init() {
@@ -47,6 +33,26 @@ var villain_select_button = document.getElementById("villain_select_button")
 villain_select_button.onchange = function() {
 	villain_select_index = document.getElementById("villain_select_button").selectedIndex
 	document.getElementById("villain_name").value = all_villain_characters[villain_select_index]
+}
+
+character_submit_button_function = function() {
+	heroine_name = document.getElementById("heroine_name").value
+	villain_name = document.getElementById("villain_name").value
+	if (heroine_name == "" || villain_name == "") {
+		window.alert("主角名或绑匪名为空。")
+		return
+	}
+	character_array.push("被绑者角色名为" + heroine_name)
+	character_array.push("绑架者角色名为" + villain_name)
+
+	if (villain_name == "逗鲨-") {
+		skill_dousha_1()
+	}
+
+	document.getElementById("character").innerHTML = display_array(character_array);
+	document.getElementById("character_buttons").style.display = "none";
+	document.getElementById("random_select").style.display = ""
+	window_scroll()
 }
 
 var character_submit_button = document.getElementById("character_submit_button");
