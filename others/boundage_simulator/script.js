@@ -440,9 +440,18 @@ function event_tie_action() {
 		event_careless_function()
 		return
 	}
-
-	event_tie_array.push("捆绑过程无特殊事件")
+	document.getElementById("event_tie_content").innerHTML = "紧缚过程没有特殊事件。"
 }
+
+var event_tie_button_1 = document.getElementById("event_tie_button_1");
+event_tie_button_1.onclick = function(){  
+    event_tie_action();
+	document.getElementById("start_to_untie_buttons").style.display = "";
+	window_scroll()
+}
+
+
+// ***************************************** 脱缚过程和最终评价
 
 function display_attributes_values() {
 	tie_difficulty = (tie_eye + tie_mouth)*0.1 + tie_arm*0.3 + tie_finger*0.3 + tie_leg*0.2 + tie_post*0.1
@@ -491,16 +500,6 @@ function display_attributes_values() {
 	return tie_array
 }
 
-var event_tie_button_1 = document.getElementById("event_tie_button_1");
-event_tie_button_1.onclick = function(){  
-    event_tie_action();
-    document.getElementById("event_tie_content").innerHTML = "<p>紧缚过程的特殊事件为:" + event_tie_array + "</p>";
-	document.getElementById("start_to_untie_buttons").style.display = "";
-	window_scroll()
-}
-
-
-// ***************************************** 脱缚过程和最终评价
 var start_to_untie_button = document.getElementById("start_to_untie_button");
 start_to_untie_button.onclick = function(){  
 	document.getElementById("start_to_untie_buttons").style.display = "none";

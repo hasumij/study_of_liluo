@@ -50,16 +50,19 @@ var event_no_clothes_prob = 5 // 脱衣
 var event_no_clothes_able = true
 function event_no_clothes_function() {
 	sensitivity += 0.2; event_very_cute_able = false;
+	document.getElementById("event_tie_content").innerHTML = "触发脱衣事件。"
 }
 var event_string_prob = 5  //收紧
 var event_string_able = true
 function event_string_function() {
 	tie_eye *= 2; tie_mouth *= 2; tie_arm *= 2; tie_finger *= 2; tie_leg *= 2;
+	document.getElementById("event_tie_content").innerHTML = "触发收紧事件。"
 }
 var event_careless_prob = 5 //粗心大意
 var event_careless_able = true
 function event_careless_function() {
 	tie_eye *= 0.5; tie_mouth *= 0.5; tie_arm *= 0.5; tie_finger *= 0.5; tie_leg *= 0.5;
+	document.getElementById("event_tie_content").innerHTML = "触发粗心大意事件。"
 }
 
 //脱缚过程的特殊事件
